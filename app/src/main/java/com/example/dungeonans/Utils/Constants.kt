@@ -15,10 +15,14 @@ enum class RESPONSE_STATUS {
     NO_CONTENT
 }
 
-enum class COMMENT_TYPE {
-    TYPE_1,
-    TYPE_2
+
+
+object COMMENT_TYPE {
+    const val comment_type1 = 1
+    const val comment_type2 = 2
 }
+
+
 
 
 object API {

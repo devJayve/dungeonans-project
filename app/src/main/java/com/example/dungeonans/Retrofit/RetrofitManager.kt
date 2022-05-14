@@ -38,7 +38,6 @@ class RetrofitManager {
 
             // 응답 실패시
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
-                Log.d(TAG, "RetrofitManager - onFailure() called / t: $t")
 
                 completion(RESPONSE_STATUS.FAIL, null)
             }

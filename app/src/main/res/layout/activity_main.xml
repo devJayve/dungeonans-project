@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.Toolbar
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/toolbar"
-        app:menu="@menu/toolbar_menu"
+        app:menu="@menu/toolbar_main_menu"
         android:background="@drawable/bottomstroke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
