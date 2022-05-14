@@ -83,11 +83,16 @@ class PostActivity : AppCompatActivity() {
 
         var answerBtn : Button = findViewById(R.id.answerBtn)
         answerBtn.setOnClickListener{
+            val answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
+            startActivity(answerActivity)
+
             commentEditText.hint = "답변을 입력하세요"
             commentEditText.requestFocus()
             var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             manager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT)
             setRecyclerView = 1
+
+
         }
 
         var writerProfileImageView : ImageView = findViewById(R.id.writerProfileImageView)
