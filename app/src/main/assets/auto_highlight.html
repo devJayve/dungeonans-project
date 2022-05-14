@@ -302,7 +302,7 @@
                     var html4 = html3.replace(new RegExp('<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>', "g"),'<br>')
 
 
-                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + " onchange = " + '"'+ auto_grow2(document.getElementById("asdf")) + '"' + "style = width:fit-content;" +"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
+                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + "style = width:fit-content;" +"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
                     textcound = 0;
                 }
 
@@ -327,14 +327,7 @@
             element.style.height = "5px";
             element.style.height = (element.scrollHeight)+"px";
         }
-        function auto_grow2(element) {
-            if (my > 0){
-                console.log(element);
-                element.style.height = "5px";
-                element.style.height = (element.scrollHeight)+"px";
-            }
-            my += 1;
-        }
+
 
         function resize() {
             const editor = document.querySelector('#editing-code');
