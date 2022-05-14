@@ -17,6 +17,7 @@ import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import kotlinx.android.synthetic.main.myprofilepage_fragment.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -79,8 +80,7 @@ class PostActivity : AppCompatActivity() {
                         Log.d("tag","fail")
                     }
                     override fun onResponse(call: Call<NoneData>, response: Response<NoneData>) {
-                        Log.d("tag","success")
-                        Log.d("tag",response.message())
+                        Log.d("onresoponse",response.message())
                     }
                 })
             }
@@ -144,38 +144,37 @@ class PostActivity : AppCompatActivity() {
         var getComment = retrofit.create(RetrofitClient.GetCommentApi::class.java)
         getComment.getComment(1).enqueue(object : retrofit2.Callback<Comment> {
             override fun onFailure(call: Call<Comment>, t: Throwable) {
-                Log.d("tag",t.toString())
+                Toast.makeText(this@PostActivity,"서버 연결이 불안정합니다.",Toast.LENGTH_SHORT).show()
             }
             override fun onResponse(call: Call<Comment>, response: Response<Comment>) {
-                Log.d("tag",response.body().toString())
+                if (response.body()!!.comment_list.count() != 0) {
+                    var data : MutableList<PostCommentData> = setCommentData(response.body()!!.comment_list)
+                    var adapter = PostCommentCardViewAdapter()
+                    adapter.setItemClickListener(object : PostCommentCardViewAdapter.OnItemClickListener {
+                        override fun commentClick(v: View, position: Int) {
+                            commentPosition = position
+                            setRecyclerView = 0
+                            commentEditText.requestFocus()
+                            commentEditText.hint = "대댓글을 작성해보세요"
+                            var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                            manager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT)
+                        }
+                        override fun likeClick(v: View, position: Int) {
+                        }
+                        override fun profileClick(v: View, position: Int) {
+                            var intent = Intent(this@PostActivity,UserProfileActivity::class.java)
+                            startActivity(intent)
+                        }
+                    })
+                    recyclerView = findViewById(R.id.postCommentRecyclerView)
+                    adapter.listData = data
+                    recyclerView.adapter = adapter
+                    LinearLayoutManager(this@PostActivity).also { recyclerView.layoutManager = it }
+                    commentPosition = recyclerView.adapter!!.itemCount
+                    commentItemCount = recyclerView.adapter!!.itemCount
+                }
             }
         })
-
-        recyclerView = findViewById(R.id.postCommentRecyclerView)
-        var data : MutableList<PostCommentData> = setCommentData()
-        var adapter = PostCommentCardViewAdapter()
-        adapter.setItemClickListener(object : PostCommentCardViewAdapter.OnItemClickListener {
-            override fun commentClick(v: View, position: Int) {
-                commentPosition = position
-                setRecyclerView = 0
-                commentEditText.requestFocus()
-                commentEditText.hint = "대댓글을 작성해보세요"
-                var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                manager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT)
-            }
-
-            override fun likeClick(v: View, position: Int) {
-            }
-            override fun profileClick(v: View, position: Int) {
-                var intent = Intent(this@PostActivity,UserProfileActivity::class.java)
-                startActivity(intent)
-            }
-        })
-        adapter.listData = data
-        recyclerView.adapter = adapter
-        LinearLayoutManager(this).also { recyclerView.layoutManager = it }
-        commentPosition = recyclerView.adapter!!.itemCount
-        commentItemCount = recyclerView.adapter!!.itemCount
     }
     private fun putComment(body: String, commentEditText : EditText) {
         recyclerView = findViewById(R.id.postCommentRecyclerView)
@@ -231,14 +230,14 @@ class PostActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCommentData() : MutableList<PostCommentData> {
-        for (index in 0 until 6) {
+    private fun setCommentData(comment : List<comment_format_res>) : MutableList<PostCommentData> {
+        for (index in 0 until comment.count()) {
             var commentWriteProfile = R.drawable.profile_base_icon
-            var commentWriterName = "${index}번째 작성자"
-            var commentWriterNickname = "(@yongkingg)"
-            var commentWriteTime = "03/21 12:45"
-            var commentBody = "안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요"
-            var like = 0
+            var commentWriterName = comment[index].name
+            var commentWriterNickname = comment[index].nickname
+            var commentWriteTime = "0"
+            var commentBody = comment[index].content
+            var like = comment[index].like_num
             var listData = PostCommentData(comment_type1,commentWriteProfile,commentWriterName,commentWriterNickname,commentWriteTime,commentBody,like)
             commentData.add(listData)
         }
