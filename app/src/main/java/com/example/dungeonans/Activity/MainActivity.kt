@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         var postBtn = findViewById<ConstraintLayout>(R.id.mainActivityPostingLayout)
         postBtn.setOnClickListener{
-            Log.d("tag","clicked")
             var intent = Intent(this, AskPostActivity::class.java)
             startActivity(intent)
         }

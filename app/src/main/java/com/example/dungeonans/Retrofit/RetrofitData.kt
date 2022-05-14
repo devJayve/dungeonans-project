@@ -16,8 +16,10 @@ data class ClickedPostData(
 data class board_req_format(
     @SerializedName("start_index") var start_index  : Int,
     @SerializedName("post_cnt") var post_cnt : Int,
-    @SerializedName("board_tag") var board_tag : Int,
-    @SerializedName("language_tag") var language_tag : language_tag
+)
+
+data class send_post_cnt(
+    @SerializedName("post_cnt") var post_cnt : Int
 )
 
 data class CommunityPostData(
@@ -28,6 +30,11 @@ data class CommunityPostData(
     var board_tag_list : List<TagTextData>
 )
 
+data class CommunityHotPostData(
+    var success : Boolean,
+    var errmsg: String,
+    var posting_list: List<posting_format_res>
+)
 data class Comment(
     var success: Boolean,
     var errmsg: String,
@@ -58,13 +65,15 @@ data class posting_format_res(
     var board_index : Int,
     var posting_index : Int,
     var name : String,
+    var id : String,
     var nickname : String,
     var title : String,
     var content : String,
     var date : String,
     var like_num : Int,
     var comment_num : Int,
-    var board_tag : Int
+    var board_tag : Int,
+    var row_number : String
 )
 
 data class TagTextData(
