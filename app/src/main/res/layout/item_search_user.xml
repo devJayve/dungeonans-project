@@ -48,7 +48,6 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="profile_iv"
                 app:layout_constraintStart_toEndOf="@+id/profile_iv"
                 app:layout_constraintTop_toTopOf="parent" />
 
