@@ -9,9 +9,7 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
-
 import android.text.*
-
 import android.webkit.*
 import android.widget.*
 import android.util.DisplayMetrics

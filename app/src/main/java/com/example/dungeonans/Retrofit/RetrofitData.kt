@@ -13,6 +13,13 @@ data class ClickedPostData(
     @SerializedName("posting") var posting: List<posting_format_res>
 )
 
+
+data class ProfileData(
+    @SerializedName("success") var success: Boolean,
+    @SerializedName("errmsg") var errmsg : String,
+    @SerializedName("profile_list") var profile_list : profile_format_res
+)
+
 data class board_req_format(
     @SerializedName("start_index") var start_index  : Int,
     @SerializedName("post_cnt") var post_cnt : Int,
@@ -21,6 +28,7 @@ data class board_req_format(
 data class send_post_cnt(
     @SerializedName("post_cnt") var post_cnt : Int
 )
+
 
 data class CommunityPostData(
     var success : Boolean,
@@ -76,6 +84,27 @@ data class posting_format_res(
     var row_number : String
 )
 
+data class profile_format_res(
+    var profile_index : Int,
+    var id : String,
+    var name : String,
+    var nickname : String,
+    var score : Int,
+    var dev_stack : DevStack
+)
+
+data class DevStack(
+    var cpp : Boolean,
+    var sql : Boolean,
+    var html : Boolean,
+    var java: Boolean,
+    var clang : Boolean,
+    var shell : Boolean,
+    var swift : Boolean,
+    var kotlin: Boolean,
+    var python: Boolean,
+    var javascript: Boolean
+)
 data class TagTextData(
     var tagText : String
 )
@@ -92,6 +121,9 @@ data class language_tag(
     var sql : Boolean,
     var shell : Boolean
 )
+// profile_photo
+// github_link
+// insta_link
 
 data class comment_format_req(
     var board_index: Int,

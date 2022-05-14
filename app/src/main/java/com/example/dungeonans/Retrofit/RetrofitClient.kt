@@ -187,4 +187,9 @@ object RetrofitClient {
             @Body loginData : LoginData
         ) :Call<LoginResponse>
     }
+
+    interface GetProfileInfoApi{
+        @GET("/profile")
+        fun getProfile(@Query("auth") token: String) : Call<ProfileData>
+    }
 }

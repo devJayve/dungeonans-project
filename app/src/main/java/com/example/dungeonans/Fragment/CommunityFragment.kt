@@ -1,6 +1,7 @@
 package com.example.dungeonans.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +22,7 @@ import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +31,6 @@ class CommunityFragment : Fragment() {
     var selectedBtn : Int? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.communitypage_fragment,container,false)
-
-
 
         setHashTag(view)
         renderPost(view)
@@ -66,6 +68,7 @@ class CommunityFragment : Fragment() {
                 selectedBtn = index
             }
         }
+
         // 라디오 버튼 선택 해제 로직
         radioGroup.setOnCheckedChangeListener{ _, checkedId ->
             if (selectedBtn != null) {
@@ -87,9 +90,28 @@ class CommunityFragment : Fragment() {
         getCommunityHotPostApi.sendPostCount(data).enqueue(object : Callback<CommunityHotPostData> {
             override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
             }
-
             override fun onResponse(call: Call<CommunityHotPostData>,response: Response<CommunityHotPostData>) {
+                if(response.body()!!.success == true) {
+                    var hotpost_1 = view.findViewById<ConstraintLayout>(R.id.hotpost_1)
+                    var hotpost_1_title = hotpost_1.findViewById<TextView>(R.id.hotpost_1_title)
+                    hotpost_1_title.text = response.body()!!.posting_list[0].title
+                    var hotpost_1_content = hotpost_1.findViewById<TextView>(R.id.hotpost_1_content)
+                    hotpost_1_content.text = response.body()!!.posting_list[0].content
+                    var hotpost_1_likecount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_likecount)
+                    hotpost_1_likecount.text = response.body()!!.posting_list[0].like_num.toString()
+                    var hotpost_1_commentcount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_commentcount)
+                    hotpost_1_commentcount.text = response.body()!!.posting_list[0].comment_num.toString()
 
+                    var hotpost_2 = view.findViewById<ConstraintLayout>(R.id.hotpost_2)
+                    var hotpost_2_title = hotpost_2.findViewById<TextView>(R.id.hotpost_2_title)
+                    hotpost_2_title.text = response.body()!!.posting_list[1].title
+                    var hotpost_2_content = hotpost_2.findViewById<TextView>(R.id.hotpost_2_content)
+                    hotpost_2_content.text = response.body()!!.posting_list[1].content
+                    var hotpost_2_likecount = hotpost_2.findViewById<TextView>(R.id.hotpost_2_likecount)
+                    hotpost_2_likecount.text = response.body()!!.posting_list[1].like_num.toString()
+                    var hotpost_2_commentcount = hotpost_2.findViewById<TextView>(R.id.hotpost_2_commentcount)
+                    hotpost_2_commentcount.text = response.body()!!.posting_list[1].comment_num.toString()
+                }
             }
         })
     }
