@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/androidtag.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/androidtag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/app_logo_xml.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/app_title_xml.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/bashtag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/bashtag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/cpptag.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/cpptag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/csharptag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/csharptag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/csstag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/csstag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/darttag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/darttag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/djangotag.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/djangotag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/gotag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/gotag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/hashtagshape.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/htmltag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/htmltag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/javatag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/javatag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/jstag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/jstag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/kotlintag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/kotlintag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/languageshape.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/login_text_stroke.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/menu_selector_color.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/phptag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/phptag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/profilepage_background_shape.xml" value="0.1685" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/pythontag.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/pythontag_selected.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/pythontag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/pythontag_unselected.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/rtag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/rtag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/scalatag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/scalatag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/selector_radio_button.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/selector_radio_text.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/sqltag.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/sqltag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/swifttag.xml" value="0.166" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/swifttag_selected_background.xml" value="0.14" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/topstroke.xml" value="0.136" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/askpage_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/blogpage_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/cardview.xml" value="0.17274569402228976" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/communitypage_fragment.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/loginpage_fragment.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/layout/myprofilepage_fragment.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26481481481481484" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/menu/toolbar_menu.xml" value="0.26481481481481484" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/androidtag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/androidtag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/app_logo_xml.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/bashtag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/bashtag_selected_background.xml" value="0.2085" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/bottomstroke.xml" value="0.2085" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/circle.xml" value="0.1935" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/cpptag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/cpptag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/csharptag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/csharptag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/csstag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/csstag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/darttag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/darttag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/djangotag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/djangotag_selected_background.xml" value="0.1" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/gotag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/gotag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/hashtagshape.xml" value="0.346" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/htmltag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/htmltag_selected_background.xml" value="0.1" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/javatag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/javatag_selected_background.xml" value="0.1" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/jstag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/kotlintag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/kotlintag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/languageshape.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/login_text_stroke.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/phptag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/postshape.xml" value="0.346" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/profilepage_background.xml" value="0.323" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/profilepage_edittext_btn.xml" value="0.3635" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/profilepage_setting_btn.xml" value="0.27" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/profilepage_setting_btn_shape.xml" value="0.3635" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/pythontag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/pythontag_selected_background.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/radiobutton_selector_colors.xml" value="0.27" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/rtag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/scalatag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/selector_radio_button.xml" value="0.3635" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/setting_bottom_drawer_topbar.xml" value="0.311" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/setting_bottomstroke.xml" value="0.3635" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/setting_top_shape.xml" value="0.311" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/sqltag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/swifttag.xml" value="0.2155" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/swifttag_selected_background.xml" value="0.175" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/top_bottom_stroke.xml" value="0.323" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/drawable/topstroke.xml" value="0.2085" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/activity_login.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/activity_main.xml" value="0.42040185471406494" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/activity_search_result.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/answer_cardview.xml" value="0.5" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/answer_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/appinfo_page_fragment.xml" value="0.6407119021134594" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/ask_allpost_cardview.xml" value="0.5" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/ask_default_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/ask_head_fragment.xml" value="0.27157561361836896" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/ask_post_cardview.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/ask_post_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/askpage_fragment.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/askpage_head_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/askpage_headfragment.xml" value="0.15220179563916203" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/askpage_viewall_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/best_user_cardview.xml" value="1.0" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/blog_cardview.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/blogpage_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/bottomslider.xml" value="0.15220179563916203" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/cardview.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/comment_cardview.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/communitypage_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/empty_activity_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/empty_layout.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/findaccount_dialog_layout.xml" value="0.30570652173913043" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/findid_fragment_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/fragment_register_complete.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/fragment_register_terms.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/hashtag_button.xml" value="0.6666666666666666" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/hashtag_radiobutton.xml" value="1.0" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/hashtagbutton.xml" value="0.29528985507246375" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/layout_blog_item.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/layout_button_search.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/login_activity_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/loginpage_fragment.xml" value="0.29528985507246375" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/myprofilepage_fragment.xml" value="0.4269938650306748" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/notice_cardview.xml" value="0.5494994438264739" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/noticepage_activity.xml" value="0.22" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/other_profile_activity.xml" value="0.22" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/post_cardview.xml" value="0.6" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/post_comment_cardview.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/profile_allmyblog_fragment.xml" value="0.30978260869565216" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/profile_allmycomment_fragment.xml" value="0.30978260869565216" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/profile_allmypost_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/profilepage_bottom_drawer.xml" value="0.7281921618204804" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/recomment_cardview.xml" value="0.6666666666666666" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/registerpage_fragment.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/search_activity_layout.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/security_page_fragment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/setting_account_page_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/setting_appinfo_page_fragment.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/setting_page_fragment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/setting_security_page_fragment.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/setting_setting_page_fragment.xml" value="0.6666666666666666" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/spinner_item.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/menu/toolbar_menu.xml" value="0.2814814814814815" />
+        <entry key="app/src/main/res/drawable/app_logo_xml.xml" value="0.2205" />
+        <entry key="app/src/main/res/drawable/app_title_xml.xml" value="0.2205" />
+        <entry key="app/src/main/res/drawable/hashtagclicked.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/login_text_stroke.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.196" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/askpage_fragment.xml" value="0.3836578369140625" />
+        <entry key="app/src/main/res/layout/blogpage_fragment.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/communitypage_fragment.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/loginpage_fragment.xml" value="0.27442413330078125" />
+        <entry key="app/src/main/res/layout/myprofilepage_fragment.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/noticepage_activity.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/registerpage_fragment.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.25833333333333336" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.16666666666666666" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

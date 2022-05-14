@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item
+                android:drawable="@drawable/profilepage_setting_btn_shape"
+                android:width="120dp"
+                android:height="40dp"/>
+
+            <item
+                android:drawable="@drawable/edit_icon"
+                android:width="15dp"
+                android:height="15dp"
+                android:left="12.5dp"
+                android:top="12.5dp"/>
+        </layer-list>
+    </item>
+
+</selector>
+
+
+

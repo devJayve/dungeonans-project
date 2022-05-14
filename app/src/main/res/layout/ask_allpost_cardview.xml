@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#00ff0000"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/askUserProfileImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/profile_base_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/askUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="김주영"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/askUserProfileImage"
+            app:layout_constraintStart_toEndOf="@+id/askUserProfileImage"
+            app:layout_constraintTop_toTopOf="@+id/askUserProfileImage" />
+
+        <TextView
+            android:id="@+id/askUserNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(@love_u_주영)"
+            android:textColor="@color/gray"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/askUserName"
+            app:layout_constraintStart_toEndOf="@+id/askUserName"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00ff0000"
+            android:elevation="3dp"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/askUserProfileImage">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/askPostTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:text="sharedPreference 사용 질문"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/askStatusImage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/askStatusImage"
+                    android:layout_width="50dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/unanswered_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/askPostTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/askPostTitle" />
+
+                <TextView
+                    android:id="@+id/askPostBody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="sharedPreference 이번 과제 "
+                    app:layout_constraintStart_toStartOf="@+id/askStatusImage"
+                    app:layout_constraintTop_toBottomOf="@+id/askStatusImage" />
+
+                <ImageView
+                    android:id="@+id/adfadfs"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/thumbs_up"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/askPostLikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="101"
+                    android:textColor="@color/DarkBlue"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/adfadfs"
+                    app:layout_constraintStart_toEndOf="@+id/adfadfs"
+                    app:layout_constraintTop_toTopOf="@+id/adfadfs" />
+
+                <ImageView
+                    android:id="@+id/imageViewadfadfdasf5"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/comment_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/askPostLikeCount"
+                    app:layout_constraintStart_toEndOf="@+id/askPostLikeCount"
+                    app:layout_constraintTop_toTopOf="@+id/askPostLikeCount" />
+
+                <TextView
+                    android:id="@+id/askCommentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="101"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/askPostLikeCount"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewadfadfdasf5"
+                    app:layout_constraintTop_toTopOf="@+id/askPostLikeCount" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

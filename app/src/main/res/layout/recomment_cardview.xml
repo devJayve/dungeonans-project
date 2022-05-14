@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="25dp"
+            android:layout_height="15dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/direction_right_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView18"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/reCommentWriterProfile"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="22.5dp"
+                android:src="@drawable/profile_base_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="45dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/lightGrey"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/reCommentWriterProfile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/reCommentWriterProfile">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/reCommentThumbsUp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="5dp"
+                        android:src="@drawable/thumbs_up"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_marginStart="5dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/option_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/reCommentThumbsUp"
+                        app:layout_constraintStart_toEndOf="@+id/reCommentThumbsUp"
+                        app:layout_constraintTop_toTopOf="@+id/reCommentThumbsUp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/reCommentWriterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="김용준"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/reCommentWriterProfile"
+                app:layout_constraintStart_toEndOf="@+id/reCommentWriterProfile" />
+
+            <TextView
+                android:id="@+id/reCommentWriterNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="1.5dp"
+                android:text="(@kimyj)"
+                android:textColor="@color/black"
+                android:textSize="7sp"
+                app:layout_constraintBottom_toBottomOf="@+id/reCommentWriterName"
+                app:layout_constraintStart_toEndOf="@+id/reCommentWriterName" />
+
+            <TextView
+                android:id="@+id/reCommentWriteTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:paddingStart="5dp"
+                android:text="03/31 12:35"
+                android:textColor="@color/black"
+                android:textSize="7sp"
+                app:layout_constraintStart_toStartOf="@+id/reCommentBody"
+                app:layout_constraintTop_toBottomOf="@+id/reCommentBody" />
+
+            <ImageView
+                android:id="@+id/likeThumbsUp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginRight="3dp"
+                android:src="@drawable/thumbs_up"
+                app:layout_constraintBottom_toBottomOf="@+id/reLikeCount"
+                app:layout_constraintEnd_toStartOf="@+id/reLikeCount"
+                app:layout_constraintTop_toTopOf="@+id/reLikeCount" />
+
+            <TextView
+                android:id="@+id/reLikeCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="0"
+                android:textColor="@color/neoBlue"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@+id/reCommentWriteTime"
+                app:layout_constraintStart_toEndOf="@+id/reCommentWriteTime" />
+
+            <TextView
+                android:id="@+id/reCommentBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:text="이거 나도 몰랐던건데 ㄹㅇ 개 헷갈리긴 해"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/reCommentWriterProfile"
+                app:layout_constraintTop_toBottomOf="@+id/reCommentWriterProfile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

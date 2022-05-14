@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hashtaglist">
+        <item>#개발</item>
+        <item>#유머</item>
+        <item>#모임</item>
+        <item>#삽질</item>
+        <item>#게임</item>
+        <item>#과제</item>
+        <item>#학교</item>
+    </string-array>
+
+    <string-array name="setPostType">
+        <item>최신순</item>
+        <item>인기순</item>
+    </string-array>
+</resources>

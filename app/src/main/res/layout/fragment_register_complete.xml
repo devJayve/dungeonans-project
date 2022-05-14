@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/success_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="회원가입 성공! 로그인해주세요 ~~"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.9"/>
+
+    <Button
+        android:id="@+id/nextPageBtn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/register_next_page_btn"
+        android:text="확인"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/success_txt"
+        app:layout_constraintHeight_percent="0.1"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item
+                android:drawable="@drawable/profilepage_setting_btn_shape"
+                android:width="60dp"
+
+                android:height="40dp"/>
+
+            <item
+                android:drawable="@drawable/option_horizantal_icon"
+                android:width="30dp"
+                android:left="15dp"
+                android:top="16.5dp"
+                android:height="7dp" />
+        </layer-list>
+    </item>
+
+</selector>
+
+
+

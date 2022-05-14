@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-1.5dp"
+        android:background="@drawable/top_bottom_stroke"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/commentWriterProfile"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="22.5dp"
+            android:src="@drawable/profile_base_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="65dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/lightGrey"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/commentWriterProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/commentWriterProfile">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/replyCommentBtn"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/comment_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/commentThumbsUp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/thumbs_up"
+                    app:layout_constraintBottom_toBottomOf="@+id/replyCommentBtn"
+                    app:layout_constraintStart_toEndOf="@+id/replyCommentBtn"
+                    app:layout_constraintTop_toTopOf="@+id/replyCommentBtn" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/option_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/commentThumbsUp"
+                    app:layout_constraintStart_toEndOf="@+id/commentThumbsUp"
+                    app:layout_constraintTop_toTopOf="@+id/commentThumbsUp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/commentWriterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="김용준"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/commentWriterProfile"
+            app:layout_constraintStart_toEndOf="@+id/commentWriterProfile" />
+
+        <TextView
+            android:id="@+id/commentWriterNickName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="1.5dp"
+            android:text="(@kimyj)"
+            android:textColor="@color/black"
+            android:textSize="7sp"
+            app:layout_constraintBottom_toBottomOf="@+id/commentWriterName"
+            app:layout_constraintStart_toEndOf="@+id/commentWriterName" />
+
+        <TextView
+            android:id="@+id/commentWriteTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:paddingStart="5dp"
+            android:text="03/31 12:35"
+            android:textColor="@color/black"
+            android:textSize="7sp"
+            app:layout_constraintStart_toStartOf="@+id/commentBody"
+            app:layout_constraintTop_toBottomOf="@+id/commentBody" />
+
+        <ImageView
+            android:id="@+id/likeThumbsUp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/thumbs_up"
+            app:layout_constraintBottom_toBottomOf="@+id/likeCount"
+            app:layout_constraintEnd_toStartOf="@+id/likeCount"
+            app:layout_constraintTop_toTopOf="@+id/likeCount" />
+
+        <TextView
+            android:id="@+id/likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="0"
+            android:textColor="@color/neoBlue"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/commentWriteTime"
+            app:layout_constraintStart_toEndOf="@+id/commentWriteTime" />
+        <TextView
+            android:id="@+id/commentBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:text="이거 나도 몰랐던건데 ㄹㅇ 개 헷갈리긴 해"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/commentWriterProfile"
+            app:layout_constraintTop_toBottomOf="@+id/commentWriterProfile" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
