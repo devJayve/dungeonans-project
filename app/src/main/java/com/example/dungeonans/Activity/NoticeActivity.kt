@@ -2,7 +2,6 @@ package com.example.dungeonans.Activity
 
 import android.os.Bundle
 import android.view.Menu
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity

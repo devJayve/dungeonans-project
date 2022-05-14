@@ -16,6 +16,7 @@ import com.example.dungeonans.Adapter.PostCommentCardViewAdapter
 import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
+import com.example.dungeonans.Utils.PrefManager
 import kotlinx.android.synthetic.main.myprofilepage_fragment.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -28,10 +29,7 @@ import retrofit2.Retrofit
 
 class PostActivity : AppCompatActivity() {
     var commentData : MutableList<PostCommentData> = mutableListOf()
-    var reCommentData : MutableList<PostReCommentData> = mutableListOf()
     var answerData : MutableList<AnswerData> = mutableListOf()
-
-    var inputMode : Int = 0
 
     private var doubleBackToExitPressedOnce = false
 
@@ -62,7 +60,6 @@ class PostActivity : AppCompatActivity() {
             if (commentEditText.text.toString() == "") {
                 Toast.makeText(this,"댓글을 입력하세요",Toast.LENGTH_SHORT).show()
             } else {
-                Log.d("tag",commentEditText.text.toString())
                 var bodyValue = commentEditText.text.toString()
                 putComment(bodyValue,commentEditText)
                 commentEditText.text.clear()
@@ -75,12 +72,10 @@ class PostActivity : AppCompatActivity() {
                 var retrofit = RetrofitClient.initClient()
 
                 var putComment = retrofit.create(RetrofitClient.PostCommentApi::class.java)
-                putComment.postComment("sdfsdfsdfdfsdfsdfdsf",put_comment_req("1","커피우유맛있다")).enqueue(object : retrofit2.Callback<NoneData> {
+                putComment.postComment(PrefManager.getUserToken(),put_comment_req("1","커피우유맛있다")).enqueue(object : retrofit2.Callback<NoneData> {
                     override fun onFailure(call: Call<NoneData>, t: Throwable) {
-                        Log.d("tag","fail")
                     }
                     override fun onResponse(call: Call<NoneData>, response: Response<NoneData>) {
-                        Log.d("onresoponse",response.message())
                     }
                 })
             }
@@ -88,11 +83,16 @@ class PostActivity : AppCompatActivity() {
 
         var answerBtn : Button = findViewById(R.id.answerBtn)
         answerBtn.setOnClickListener{
+            val answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
+            startActivity(answerActivity)
+
             commentEditText.hint = "답변을 입력하세요"
             commentEditText.requestFocus()
             var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             manager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT)
             setRecyclerView = 1
+
+
         }
 
         var writerProfileImageView : ImageView = findViewById(R.id.writerProfileImageView)
