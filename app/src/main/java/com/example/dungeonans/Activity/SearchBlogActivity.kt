@@ -1,5 +1,6 @@
 package com.example.dungeonans.Activity
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.graphics.Color
@@ -12,38 +13,32 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dungeonans.BlogData
+import com.example.dungeonans.DataClass.SearchData
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitManager
 import com.example.dungeonans.Utils.Constants.TAG
-import com.example.dungeonans.recylcerview.BlogGridViewRecyclerViewAdapter
+import com.example.dungeonans.Utils.PrefManager
+import com.example.dungeonans.Utils.RESPONSE_STATUS
+import com.example.dungeonans.Adapter.BlogGridViewRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_search_result.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-class SearchResultActivity: AppCompatActivity(), androidx.appcompat.widget.SearchView.OnQueryTextListener{
+class SearchBlogActivity: AppCompatActivity(),
+    androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     // 데이터
     var photoList = ArrayList<BlogData>()
-    // 어뎁터
+
+    private var searchHistoryList = ArrayList<SearchData>()
+
     private lateinit var blogGridRecyclerViewAdapter: BlogGridViewRecyclerViewAdapter
-
-    // 서치뷰
-    private lateinit var mSearchView: androidx.appcompat.widget.SearchView
-
-    // 서치뷰 ET
     private lateinit var mSearchViewET : EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_result)
-
-        Log.d(TAG, "searchResultActivity" )
-
-        val bundle = intent.getBundleExtra("array_bundle")
-        val searchTerm = intent.getStringExtra("search_term")
-
-        photoList = bundle?.getSerializable("blog_array_list") as ArrayList<BlogData>
-
-        Log.d(TAG, "searchTerm : $searchTerm, photoList.count(): ${photoList.count()}" )
-
-        top_tool_bar.title = searchTerm
 
         // 액티비티 내의 액션바 설정
         setSupportActionBar(top_tool_bar)
@@ -53,22 +48,35 @@ class SearchResultActivity: AppCompatActivity(), androidx.appcompat.widget.Searc
 
         search_recycler_view.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         search_recycler_view.adapter = this.blogGridRecyclerViewAdapter
+
+        // 저장된 검색 기록 가져오기
+        this.searchHistoryList = PrefManager.getSearchHistoryList() as ArrayList<SearchData>
+
+        this.searchHistoryList.forEach {
+            Log.d("TAG", "저장된 검색 기록 ${it.term}, ${it.timestamp}")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-        val inflater = menuInflater
-
-        inflater.inflate(R.menu.toolbar_menu, menu)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-        this.mSearchView = menu?.findItem(R.id.action_search)?.actionView as androidx.appcompat.widget.SearchView
+        val searchItem =  menu?.findItem(R.id.action_search)
+        val mSearchView = searchItem?.actionView as androidx.appcompat.widget.SearchView
 
-        this.mSearchView.apply {
+        searchItem.expandActionView()
+
+        //this.mSearchView = menu?.findItem(R.id.action_search)?.actionView as androidx.appcompat.widget.SearchView
+
+        mSearchView.apply {
             this.queryHint = "검색어를 입력해주세요."
+//            this.isIconified = false
+//            this.isFocusable = true
+            this.requestFocusFromTouch()
 
-            this.setOnQueryTextListener(this@SearchResultActivity)
+            this.setOnQueryTextListener(this@SearchBlogActivity)
 
             this.setOnQueryTextFocusChangeListener { _, hasExpanded ->
                 when(hasExpanded) {
@@ -82,6 +90,7 @@ class SearchResultActivity: AppCompatActivity(), androidx.appcompat.widget.Searc
             }
             mSearchViewET = this.findViewById(androidx.appcompat.R.id.search_src_text)
         }
+
         this.mSearchViewET.apply {
             this.filters = arrayOf(InputFilter.LengthFilter(12))
             this.setTextColor(Color.BLACK)
@@ -92,12 +101,40 @@ class SearchResultActivity: AppCompatActivity(), androidx.appcompat.widget.Searc
     }
 
     // 서치뷰 검색어 입력
+    @SuppressLint("NotifyDataSetChanged")
     override fun onQueryTextSubmit(query: String?): Boolean {
 
         if(!query.isNullOrEmpty()) {
             this.top_tool_bar.title = query
 
-            // 검색어 저장
+            var newSearchData = SearchData(term = query, timestamp = Date().toString())
+
+            this.searchHistoryList.add(newSearchData)
+
+            //PrefManager.storeSearchHistoryList(this.searchHistoryList)
+
+
+            RetrofitManager.instance.searchBlogs(searchTerm = query, completion = {
+                    responseState, responseDataArrayList ->
+
+                when(responseState) {
+                    RESPONSE_STATUS.OKAY -> {
+                        Log.d(TAG, "api 호출 성공")
+                        this.blogGridRecyclerViewAdapter.submitList(responseDataArrayList as ArrayList<BlogData>)
+                        blogGridRecyclerViewAdapter.notifyDataSetChanged()
+
+                    }
+                    RESPONSE_STATUS.FAIL -> {
+                        Toast.makeText(this, "api 호출 에러입니다.", Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "api 호출 실패 : $responseDataArrayList")
+                    }
+
+                    RESPONSE_STATUS.NO_CONTENT -> {
+                        Toast.makeText(this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            })
         }
 //
 //        this.mSearchView.setQuery("", false)

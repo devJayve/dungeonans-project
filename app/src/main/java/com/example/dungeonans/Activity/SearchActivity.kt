@@ -71,7 +71,7 @@ class SearchActivity : AppCompatActivity() {
                     RESPONSE_STATUS.OKAY -> {
                         Log.d(TAG, "api 호출 성공")
 
-                        val intent = Intent(this, SearchResultActivity::class.java)
+                        val intent = Intent(this, SearchBlogActivity::class.java)
                         val bundle = Bundle()
                         bundle.putSerializable("blog_array_list",responseDataArrayList)
                         intent.putExtra("array_bundle", bundle)

@@ -30,7 +30,7 @@
 
         <activity android:name=".Activity.SearchActivity"/>
 
-        <activity android:name=".Activity.SearchResultActivity"/>
+        <activity android:name=".Activity.SearchBlogActivity"/>
 
         <activity android:name=".Activity.PostActivity"
             android:windowSoftInputMode="adjustPan"/>

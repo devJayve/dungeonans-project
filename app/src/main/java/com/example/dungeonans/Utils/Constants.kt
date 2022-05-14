@@ -15,6 +15,11 @@ enum class RESPONSE_STATUS {
     NO_CONTENT
 }
 
+enum class COMMENT_TYPE {
+    TYPE_1,
+    TYPE_2
+}
+
 
 object API {
     const val BASE_URL : String = "https://api.unsplash.com/"
