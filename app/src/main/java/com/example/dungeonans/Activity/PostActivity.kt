@@ -106,17 +106,6 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun renderAnswerUi() {
-        var retrofit = RetrofitClient.initClient()
-        var getComment = retrofit.create(RetrofitClient.GetCommentApi::class.java)
-        getComment.getComment(1).enqueue(object : retrofit2.Callback<Comment> {
-            override fun onFailure(call: Call<Comment>, t: Throwable) {
-                Log.d("tag",t.toString())
-            }
-            override fun onResponse(call: Call<Comment>, response: Response<Comment>) {
-                Log.d("tag",response.body().toString())
-            }
-        })
-
         recyclerView = findViewById(R.id.postAnswerRecyclerView)
         var data : MutableList<AnswerData> = setAnswerData()
         var adapter = PostAnswerCardViewAdapter()
@@ -151,6 +140,17 @@ class PostActivity : AppCompatActivity() {
         return answerData
     }
     private fun renderCommentUi() {
+        var retrofit = RetrofitClient.initClient()
+        var getComment = retrofit.create(RetrofitClient.GetCommentApi::class.java)
+        getComment.getComment(1).enqueue(object : retrofit2.Callback<Comment> {
+            override fun onFailure(call: Call<Comment>, t: Throwable) {
+                Log.d("tag",t.toString())
+            }
+            override fun onResponse(call: Call<Comment>, response: Response<Comment>) {
+                Log.d("tag",response.body().toString())
+            }
+        })
+
         recyclerView = findViewById(R.id.postCommentRecyclerView)
         var data : MutableList<PostCommentData> = setCommentData()
         var adapter = PostCommentCardViewAdapter()

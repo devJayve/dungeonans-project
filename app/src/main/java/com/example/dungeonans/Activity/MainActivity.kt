@@ -27,6 +27,14 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         super.onCreate(savedInstanceState)
         startbinding()
         connectToolbar()
+
+        var postBtn = findViewById<ConstraintLayout>(R.id.mainActivityPostingLayout)
+        postBtn.setOnClickListener{
+            Log.d("tag","clicked")
+            var intent = Intent(this, AskPostActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

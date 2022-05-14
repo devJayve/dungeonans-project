@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/zxcvzxcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="글 쓰기"></TextView>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"></View>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:background="@color/black"
+                android:text="저장하기"
+                android:textColor="@color/white"></androidx.appcompat.widget.AppCompatButton>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="#F2F2F2"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+        <ScrollView
+            android:id="@+id/postEditScrollView"
+            android:layout_width="match_parent"
+            android:background="#F2F2F2"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:id="@+id/body_box"
+                android:background="@drawable/body_box"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/test"
+                    android:layout_height="wrap_content"
+                    android:text="제목"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="5dp"
+                    android:text="구체적으로 어떤 질문을 할 것인지 적어주세요">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/title_edittext"
+                    android:background="@drawable/edittext_drawer"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="15dp"
+                    android:hint="  ex) 이중 for 문 어떻게 사용하는거에요?">
+                </EditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="글 내용"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp">
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="10dp"
+                        android:text="당신의 질문에 답하기 위해 필요한 모든 정보를 적어주세요.">
+                    </TextView>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"></View>
+
+
+                </LinearLayout>
+
+
+
+
+                <!--                여기를 webview 로 완전히 감싸고 게시물을 html 로 짜야할듯-->
+                <WebView
+                    android:id="@+id/body_webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp">
+                </WebView>
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/linearLayout2"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:background="#F2F2F2"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent">-->
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginLeft="10dp"-->
+        <!--                android:src="@drawable/image_icon"></ImageView>-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/codeblock"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginLeft="20dp"-->
+        <!--                android:src="@drawable/codeblock"></ImageView>-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/bold"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginLeft="20dp"-->
+        <!--                android:src="@drawable/codeblock"></ImageView>-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/italic"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginLeft="20dp"-->
+        <!--                android:src="@drawable/codeblock"></ImageView>-->
+
+
+
+        <!--        </LinearLayout>-->
+        <Button
+            android:id="@+id/askButton"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="질문하기"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>
