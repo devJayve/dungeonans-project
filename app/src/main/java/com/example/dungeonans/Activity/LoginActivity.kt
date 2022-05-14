@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener {
-            connectLoginApi()
+            loginEvent()
         }
     }
 
@@ -100,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginEvent() {
-//        val loginIntent = Intent(this, SearchActivity::class.java) // 메인 페이지로 전환
+        //connectLoginApi()
 
         val loginIntent = Intent(this, MainActivity::class.java)
         startActivity(loginIntent)

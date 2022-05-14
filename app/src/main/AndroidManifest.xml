@@ -44,6 +44,8 @@
 
         <activity android:name=".Activity.AskPostActivity"/>
 
+        <activity android:name=".Activity.SearchProfileActivity"/>
+
         <meta-data
             android:name="com.example.dungeonans.maps.v2.server.url"
             android:value="app.BuildConfig.SERVER_URL"/>
