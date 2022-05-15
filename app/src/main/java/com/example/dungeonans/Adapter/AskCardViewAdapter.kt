@@ -1,5 +1,6 @@
 package com.example.dungeonans.Adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class AskCardViewAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adap
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.itemView.findViewById<CardView>(R.id.askAllPostCardView).setOnClickListener{
             itemClickListener.onClick(it,position)
+
         }
         val data = listData.get(position)
         holder.setAskPostValue(data)
