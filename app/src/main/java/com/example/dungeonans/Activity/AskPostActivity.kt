@@ -67,7 +67,7 @@ import android.R.attr.data
 import android.os.Build
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dungeonans.Adapter.CommunityCardViewAdapter
+import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient

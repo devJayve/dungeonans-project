@@ -137,7 +137,7 @@ object RetrofitClient {
 
     interface GetSpecificPostApi{
         @GET("/board")
-        fun getPost(@Header("auth") token : String, @Query("posting_index") posting_index : Int) : Call<ClickedPostData>
+        fun getPost(@Query("posting_index") posting_index : Int) : Call<ClickedPostData>
     }
 
     interface GetCommunityPostAPI{
@@ -147,18 +147,8 @@ object RetrofitClient {
 
     interface GetCommunityHotPostApi{
         @GET("/board/hot")
-        fun sendPostCount(@Query("board_req_format") board_req_format: board_req_format) : Call<CommunityHotPostData>
+        fun sendPostCount(@Query("send_post_cnt") post_cnt : send_post_cnt) : Call<CommunityHotPostData>
 
-    }
-
-    interface GetUnAnsweredQnaPostApi{
-        @GET("/board/openQna")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
-    }
-
-    interface GetAnsweredQnaPostApi{
-        @GET("/board/closedQna")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
     }
 
     interface GetQnAPostApi{
@@ -170,16 +160,20 @@ object RetrofitClient {
     interface SendQnAPostApi{
         @POST("/board")
         fun sendBoardReq(@Header("auth") token : String, @Body() board_ask_format: board_ask_format) : Call<AskPostResponse>
+//=======
+//        @POST("/board/qna")
+//        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<QnAPostData>
+//>>>>>>> 846e681d7a61416931f1de75fb9fe17ead4e0ef6
     }
 
     interface GetBlogApi{
-        @GET("/board/blog")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<BlogPostData>
+        @POST("/board/blog")
+        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<BlogPostData>
     }
 
     interface GetCommunityByTagApi{
-        @GET("/board/commTag")
-        fun getPost(@Query("board_req_format") board_req_format: board_req_format) : Call<GetCommunityPostByTag>
+        @POST("/board/commTag")
+        fun getPost(@Body() board_req_format: board_req_format) : Call<GetCommunityPostByTag>
     }
 
     interface GetCommentApi{
@@ -197,6 +191,7 @@ object RetrofitClient {
         fun deleteComment(@Path("comment_index") comment_index : Int) : Call<NoneData>
     }
 
+    /** Login Api (worked by KJY) **/
     interface LoginApi {
         @POST("/account/login")
         fun postLogin(
@@ -204,8 +199,26 @@ object RetrofitClient {
         ) :Call<LoginResponse>
     }
 
-    interface GetProfileInfoApi{
-        @GET("/profile")
-        fun getProfile(@Header("auth") token: String) : Call<ProfileData>
+    /** Search Api (worked by KJY) **/
+    interface SearchApi {
+        @POST("/search/community")
+        fun postSearchCommunity(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
+
+        @POST("/search/qna")
+        fun postSearchAsk(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
+
+        @POST("/search/blog")
+        fun postSearchBlog(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
+
+        @POST("/search/profile")
+        fun postSearchProfile(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
     }
 }

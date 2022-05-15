@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
-import com.example.dungeonans.Adapter.AskCardViewAdapter
-import com.example.dungeonans.Adapter.CommunityCardViewAdapter
+import com.example.dungeonans.Adapter.AskRVAdapter
+import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
@@ -48,7 +48,7 @@ class AskShowAllPostFragment : Fragment() {
                 var postingList = response.body()!!.posting_list
                 var setData : MutableList<AskData> = setData2(6,postingList)
                 var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
-                var adapter = AskCardViewAdapter()
+                var adapter = AskRVAdapter()
                 adapter.listData = setData
                 recyclerView.adapter = adapter
                 recyclerView.layoutManager = LinearLayoutManager(context)

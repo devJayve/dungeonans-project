@@ -46,7 +46,15 @@ data class send_post_cnt(
 data class CommunityPostData(
     var success : Boolean,
     var errmsg : String,
-    var posting_list : List<posting_format_res>,
+    var posting_list : ArrayList<posting_format_res>,
+    var end_index : Int,
+    var board_tag_list : List<TagTextData>
+)
+
+data class CommunityPostData3(
+    var success : Boolean,
+    var errmsg : String,
+    var posting_list : ArrayList<posting_format_res>,
     var end_index : Int,
     var board_tag_list : List<TagTextData>
 )
@@ -57,6 +65,7 @@ data class CommunityHotPostData(
     var posting_list: ArrayList<posting_format_res>,
     var end_index: Int
 )
+
 data class Comment(
     var success: Boolean,
     var errmsg: String,
