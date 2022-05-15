@@ -521,12 +521,12 @@
         window.onload = function showAndroidToast() {
             var mywidth = Android.getwidth();
             var px = Android.getwidth(mywidth);
-            var mypx = px - 29;
-            var mypx_codeblcok = px - 32;
+            var mypx = px - 7;
+            var mypx_codeblcok = px - 40;
             var transe = document.getElementById("editing-code");
-            var code_block = document.getElementById("highlighting-code")
+            var code_block = document.getElementById("count1")
             transe.style.width = mypx+"px";
-            submitbutton.style.left = mypx/2 +"px";
+            code_block.style.width = mypx_codeblcok +"px";
             document.getElementById(id).width = newContent;
         }
 
@@ -537,7 +537,8 @@
         function uploadPost(){
             var transe = document.getElementById("count1");
             var str = transe.innerHTML;
-            Android.showToast(str);
+            var mytitle = Android.getTitle()
+            Android.SendPostToApi(mytitle,str);
         }
 
 

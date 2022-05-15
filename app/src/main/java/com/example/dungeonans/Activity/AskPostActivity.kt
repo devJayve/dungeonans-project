@@ -65,10 +65,18 @@ import android.provider.DocumentsContract
 import android.R.attr.data
 
 import android.os.Build
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.dungeonans.Adapter.CommunityCardViewAdapter
+import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitClient
+import com.example.dungeonans.Space.LinearSpacingItemDecoration
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.POST
 import kotlin.collections.HashMap
 
 
@@ -138,6 +146,39 @@ class AskPostActivity : AppCompatActivity() {
             @JavascriptInterface
             fun gettest() {
                 Toast.makeText(mContext, "Asdfasdf", Toast.LENGTH_SHORT).show()
+            }
+
+            @JavascriptInterface
+            fun getTitle() : String{
+                var getedit = findViewById<EditText>(R.id.title_edittext)
+                var mytext = getedit.text.toString()
+                return getedit.text.toString()
+            }
+
+            @JavascriptInterface
+            fun SendPostToApi(title : String ,content : String){
+                Toast.makeText(mContext, "API 시작!", Toast.LENGTH_SHORT).show()
+                var retrofit = RetrofitClient.initClient()
+                var data = board_ask_format("2",title,content,"",
+                    language_tag = listOf(
+                        language_tag(true,true,true,true,
+                            true,true,true,true,true,true)
+                    ))
+                var sendPostToApi = retrofit.create(RetrofitClient.SendQnAPostApi::class.java)
+                sendPostToApi.sendBoardReq(data).enqueue(object : Callback<AskPostResponse>{
+                    override fun onFailure(call: Call<AskPostResponse>, t: Throwable) {
+                        Toast.makeText(this@AskPostActivity,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onResponse(
+                        call: Call<AskPostResponse>,
+                        response: Response<AskPostResponse>
+                    ) {
+                        Log.d("TAG" , "response success : ${response.body()?.success}")
+                        Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
+                    }
+                })
+
             }
 
         }
@@ -255,6 +296,14 @@ class AskPostActivity : AppCompatActivity() {
 
 
     }
+
+
+
+
+//    interface GetQnAPostApi{
+//        @POST("/board/qna")
+//        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<QnAPostData>
+//    }
 
 
 }

@@ -7,6 +7,9 @@ data class NoneData(
     @SerializedName("errmsg") var errmsg: String
 )
 
+//조수민 실험
+
+
 data class ClickedPostData(
     @SerializedName("success") var success : Boolean,
     @SerializedName("errmsg") var errmsg : String,
@@ -23,6 +26,15 @@ data class ProfileData(
 data class board_req_format(
     @SerializedName("start_index") var start_index  : Int,
     @SerializedName("post_cnt") var post_cnt : Int,
+)
+
+//조수민 수정
+data class board_ask_format(
+    @SerializedName("board_index") var board_index: String,
+    @SerializedName("title") var title:String,
+    @SerializedName("content") var content: String,
+    @SerializedName("board_tag") var board_tag: String,
+    @SerializedName("language_tag") var language_tag: List<language_tag>
 )
 
 data class send_post_cnt(
@@ -60,6 +72,13 @@ data class BlogPostData(
     var errmsg: String,
     var posting_list: List<posting_format_res>,
     var end_index: Int
+)
+
+//조수민 실험
+
+data class AskPostResponse(
+    var success : Boolean,
+    var errmsg : String
 )
 
 data class GetCommunityPostByTag(

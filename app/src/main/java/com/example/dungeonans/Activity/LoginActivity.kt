@@ -162,21 +162,21 @@ class LoginActivity : AppCompatActivity() {
                 Log.d("TAG" , "response success : ${response.body()?.success}")
                 Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
                 Log.d("TAG", "id ${response.body()?.token}")
+//                if (response.body()?.success == true) {
+//                    val loginIntent =
+//                        Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
+////                    loginIntent.putExtra("token",response.body()?.token)
                 if (response.body()?.success == true) {
                     val loginIntent =
                         Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
-//                    loginIntent.putExtra("token",response.body()?.token)
-                    if (response.body()?.success == true) {
-                        val loginIntent =
-                            Intent(this@LoginActivity, MainActivity::class.java) // 메인 페이지로 전환
-                        if (PrefManager.getUserToken().isNotEmpty()) {
-                            PrefManager.deleteUserToken()
-                        }
-                        PrefManager.storeUserToken(response.body()!!.token)
-
-                        startActivity(loginIntent)
+                    if (PrefManager.getUserToken().isNotEmpty()) {
+                        PrefManager.deleteUserToken()
                     }
+                    PrefManager.storeUserToken(response.body()!!.token)
+
+                    startActivity(loginIntent)
                 }
+//                }
             }
         })
 

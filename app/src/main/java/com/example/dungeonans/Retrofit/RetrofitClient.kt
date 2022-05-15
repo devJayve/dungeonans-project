@@ -156,6 +156,12 @@ object RetrofitClient {
         fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<QnAPostData>
     }
 
+    //조수민
+    interface SendQnAPostApi{
+        @POST("/board/qna")
+        fun sendBoardReq(@Body() board_ask_format: board_ask_format) : Call<AskPostResponse>
+    }
+
     interface GetBlogApi{
         @POST("/board/blog")
         fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<BlogPostData>
