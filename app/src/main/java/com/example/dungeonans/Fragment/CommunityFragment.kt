@@ -108,6 +108,7 @@ class CommunityFragment : Fragment() {
                 adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
                     override fun postClick(v: View, position: Int) {
                         var mainActivity = context as MainActivity
+                        Log.d("클릭됨!",this.toString())
                         mainActivity.showPost()
                     }
                 })

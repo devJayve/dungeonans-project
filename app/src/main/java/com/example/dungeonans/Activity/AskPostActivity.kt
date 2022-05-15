@@ -181,27 +181,27 @@ class AskPostActivity : AppCompatActivity() {
 
             }
 
-            @JavascriptInterface
-            fun GetPostFromApi(){
-                Toast.makeText(mContext, "API 받기 시작!", Toast.LENGTH_SHORT).show()
-                var retrofit = RetrofitClient.initClient()
-                var getPost = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
-                getPost.getPost(1).enqueue(object : Callback<ClickedPostData>{
-                    override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
-                        Toast.makeText(this@AskPostActivity,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
-                    }
-
-                    override fun onResponse(
-                        call: Call<ClickedPostData>,
-                        response: Response<ClickedPostData>
-                    ) {
-                        Log.d("TAG" , "response success : ${response.body()?.success}")
-                        Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
-                        Log.d("TAG", "${response.body()?.posting}")
-                    }
-                })
-
-            }
+//            @JavascriptInterface
+//            fun GetPostFromApi(){
+//                Toast.makeText(mContext, "API 받기 시작!", Toast.LENGTH_SHORT).show()
+//                var retrofit = RetrofitClient.initClient()
+//                var getPost = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
+//                getPost.getPost(1).enqueue(object : Callback<ClickedPostData>{
+//                    override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
+//                        Toast.makeText(this@AskPostActivity,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
+//                    }
+//
+//                    override fun onResponse(
+//                        call: Call<ClickedPostData>,
+//                        response: Response<ClickedPostData>
+//                    ) {
+//                        Log.d("TAG" , "response success : ${response.body()?.success}")
+//                        Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
+//                        Log.d("TAG", "${response.body()?.posting}")
+//                    }
+//                })
+//
+//            }
 
         }
 
