@@ -12,11 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.AskCardViewAdapter
+import com.example.dungeonans.Adapter.CommunityCardViewAdapter
 import com.example.dungeonans.DataClass.AskData
+import com.example.dungeonans.DataClass.CommunityData
+import com.example.dungeonans.DataClass.CommunityPostData
 import com.example.dungeonans.DataClass.board_req_format
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class AskShowAllPostFragment : Fragment() {
@@ -50,6 +56,53 @@ class AskShowAllPostFragment : Fragment() {
         var space = LinearSpacingItemDecoration(20)
         recyclerView.addItemDecoration(space)
     }
+
+//    private fun renderPost(view: View, start_index : Int) {
+//        var mainLayout : LinearLayout = view.findViewById(R.id.mainLayout)
+//        var communityPageRecyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
+//        communityPageRecyclerView.visibility = View.GONE
+//
+//        var retrofit = RetrofitClient.initClient()
+//        var data = board_req_format(start_index,6)
+//        var getCommunityPostApi = retrofit.create(RetrofitClient.GetCommunityPostAPI::class.java)
+//        getCommunityPostApi.sendBoardReq(data).enqueue(object : Callback<CommunityPostData> {
+//            override fun onFailure(call: Call<CommunityPostData>, t: Throwable) {
+//                Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
+//            }
+//            override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
+//                var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
+//                var postingList = response.body()!!.posting_list
+//
+//                //조수민 수정 : 전체 posting_format_res 를 받고, for 문 돌려서 index 가 1인것 찾고, 저 위 선언해놓았던 배열에 넣어주기
+//                for (i in 0..response.body()!!.posting_list.size-1){
+//                    var (board_index, posting_index, name, id, nickname,
+//                        title, content,data,like_num,comment_num, board_tag,row_number) = response.body()!!.posting_list[i]
+//                    if (board_index == 1){
+//                        communityPostingList.add(response.body()!!.posting_list[i])
+//                    }
+//                }
+//                //
+//
+//                //조수민 수정 : setData 에 위에 배열 삽입
+//                var sendData : MutableList<CommunityData> = setData(6,communityPostingList)
+//                //
+//                var adapter = CommunityCardViewAdapter()
+//                adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
+//                    override fun postClick(v: View, position: Int) {
+//                        var mainActivity = context as MainActivity
+//                        Log.d("클릭됨!",this.toString())
+//                        mainActivity.showPost()
+//                    }
+//                })
+//                adapter.listData = sendData
+//                recyclerView.adapter = adapter
+//                LinearLayoutManager(context).also { recyclerView.layoutManager = it }
+//                var space = LinearSpacingItemDecoration(10)
+//                recyclerView.addItemDecoration(space)
+//                mainLayout.visibility = View.VISIBLE
+//                communityPageRecyclerView.visibility = View.VISIBLE
+//            }
+//        })
 
     private fun setSpinner(view:View) {
         val spinner = view.findViewById<Spinner>(R.id.setPostTypeSpinner)

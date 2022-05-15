@@ -3,20 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-=======
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/activity_login.xml" value="0.1762917933130699" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/activity_search_result.xml" value="0.17274569402228976" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/answer_cardview.xml" value="0.17274569402228976" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_allpost_cardview.xml" value="0.5" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/blog_cardview.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/blogpage_fragment.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/comment_cardview.xml" value="0.17274569402228976" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/communitypage_fragment.xml" value="0.22" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/hashtag_radiobutton.xml" value="0.17274569402228976" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/item_search_user.xml" value="0.3076923076923077" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/post_cardview.xml" value="0.5131195335276968" />
->>>>>>> 105630cd956076d1e6fbe0572d29c616a12361c8
         <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/androidtag.xml" value="0.166" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/androidtag_selected_background.xml" value="0.14" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/app_logo_xml.xml" value="0.166" />
@@ -181,9 +167,12 @@
         <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/layout/spinner_item.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/dydwn/Desktop/stageus_dungeonans_mypart-master/app/src/main/res/menu/toolbar_menu.xml" value="0.2814814814814815" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/activity_login.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_allpost_cardview.xml" value="0.4" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_apply_fragment.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_head_fragment.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_post_fragment.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_fragment.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_viewall_fragment.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/fragment_ask_post.xml" value="0.264" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/item_search_user.xml" value="0.10989583333333333" />
         <entry key="app/src/main/res/drawable/app_logo_xml.xml" value="0.2205" />

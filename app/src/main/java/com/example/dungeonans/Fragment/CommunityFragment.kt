@@ -14,7 +14,6 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.CommunityCardViewAdapter
 import com.example.dungeonans.DataClass.*
@@ -24,12 +23,21 @@ import com.example.dungeonans.Space.LinearSpacingItemDecoration
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import org.json.JSONObject
+import org.json.JSONTokener
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CommunityFragment : Fragment() {
+
+    //조수민 수정 : boarding_index 가 1인 posting_format_res 를 담는 리스트
+    var communityPostingList = ArrayList<posting_format_res>()
+    //조수민 수정 : boarding_index 가 1인 ... api 가 달라서 따로 배열을 만들어야 할듯
+    var communityHotPostList = ArrayList<posting_format_res>()
+    //
+
     var selectedBtn : Int? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.communitypage_fragment,container,false)
@@ -99,7 +107,20 @@ class CommunityFragment : Fragment() {
             override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
                 var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
                 var postingList = response.body()!!.posting_list
-                var sendData : MutableList<CommunityData> = setData(6,postingList)
+
+                //조수민 수정 : 전체 posting_format_res 를 받고, for 문 돌려서 index 가 1인것 찾고, 저 위 선언해놓았던 배열에 넣어주기
+                for (i in 0..response.body()!!.posting_list.size-1){
+                    var (board_index, posting_index, name, id, nickname,
+                        title, content,data,like_num,comment_num, board_tag,row_number) = response.body()!!.posting_list[i]
+                    if (board_index == 1){
+                        communityPostingList.add(response.body()!!.posting_list[i])
+                    }
+                }
+                //
+
+                //조수민 수정 : setData 에 위에 배열 삽입
+                var sendData : MutableList<CommunityData> = setData(6,communityPostingList)
+                //
                 var adapter = CommunityCardViewAdapter()
                 adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
                     override fun postClick(v: View, position: Int) {
@@ -126,7 +147,19 @@ class CommunityFragment : Fragment() {
             override fun onResponse(call: Call<CommunityHotPostData>,response: Response<CommunityHotPostData>) {
                 var recyclerView : RecyclerView = view.findViewById(R.id.communityPageHotPostRecyclerView)
                 var postingList = response.body()!!.posting_list
-                var sendData : MutableList<CommunityData> = setData(2,postingList)
+
+                //조수민 수정 : communityHotPoistList 에 저장
+                for (i in 0..response.body()!!.posting_list.size-1){
+                    var (board_index, posting_index, name, id, nickname,
+                        title, content,data,like_num,comment_num, board_tag,row_number) = response.body()!!.posting_list[i]
+                    if (board_index == 1){
+                        communityHotPostList.add(response.body()!!.posting_list[i])
+                    }
+                }
+                //ㅓ
+                //조수민 수정 : setData 에 위에 배열 삽입
+                var sendData : MutableList<CommunityData> = setData(2,communityHotPostList)
+                //
                 var adapter = CommunityCardViewAdapter()
                 adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
                     override fun postClick(v: View, position: Int) {
@@ -145,7 +178,7 @@ class CommunityFragment : Fragment() {
         })
     }
 
-    private fun setData(postCount: Int,postingData : List<posting_format_res>) : MutableList<CommunityData> {
+    private fun setData(postCount: Int,postingData : ArrayList<posting_format_res>) : MutableList<CommunityData> {
         var data : MutableList<CommunityData>  = mutableListOf()
         for (index in 0 until postCount) {
             var postTitle = postingData[index].title

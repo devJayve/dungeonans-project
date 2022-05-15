@@ -35,7 +35,7 @@ data class board_ask_format(
     @SerializedName("title") var title:String,
     @SerializedName("content") var content: String,
     @SerializedName("board_tag") var board_tag: String,
-    @SerializedName("language_tag") var language_tag: List<language_tag>
+    @SerializedName("language_tag") var language_tag: language_tag
 )
 
 data class send_post_cnt(
@@ -54,7 +54,7 @@ data class CommunityPostData(
 data class CommunityHotPostData(
     var success : Boolean,
     var errmsg: String,
-    var posting_list: List<posting_format_res>,
+    var posting_list: ArrayList<posting_format_res>,
     var end_index: Int
 )
 data class Comment(

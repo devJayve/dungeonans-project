@@ -72,6 +72,7 @@ import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
+import com.example.dungeonans.Utils.PrefManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -157,15 +158,14 @@ class AskPostActivity : AppCompatActivity() {
 
             @JavascriptInterface
             fun SendPostToApi(title : String ,content : String){
-                Toast.makeText(mContext, "API 시작!", Toast.LENGTH_SHORT).show()
+
                 var retrofit = RetrofitClient.initClient()
                 var data = board_ask_format("2",title,content,"",
-                    language_tag = listOf(
-                        language_tag(true,true,true,true,
+                    language_tag(true,true,true,true,
                             true,true,true,true,true,true)
-                    ))
+                    )
                 var sendPostToApi = retrofit.create(RetrofitClient.SendQnAPostApi::class.java)
-                sendPostToApi.sendBoardReq(data).enqueue(object : Callback<AskPostResponse>{
+                sendPostToApi.sendBoardReq(PrefManager.getUserToken(),data).enqueue(object : Callback<AskPostResponse>{
                     override fun onFailure(call: Call<AskPostResponse>, t: Throwable) {
                         Toast.makeText(this@AskPostActivity,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
                     }
@@ -174,6 +174,9 @@ class AskPostActivity : AppCompatActivity() {
                         call: Call<AskPostResponse>,
                         response: Response<AskPostResponse>
                     ) {
+                        Log.d("qwer",title)
+                        Log.d("zxcv",content)
+                        Toast.makeText(mContext, "API 시작!", Toast.LENGTH_SHORT).show()
                         Log.d("TAG" , "response success : ${response.body()?.success}")
                         Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
                     }
