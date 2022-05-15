@@ -23,9 +23,15 @@ import retrofit2.Response
 
 
 class AskShowAllPostFragment : Fragment() {
+
+    //조수민 수정 - 파라미터를 저장할 공간 생성
+    lateinit var parameter : String
+    //
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.askpage_viewall_fragment,container,false)
         var postSetMode = requireArguments().getString("Value")
+        Log.d("tag",postSetMode.toString())
+        parameter = postSetMode.toString()
 
         renderUi(view,0)
         setSpinner(view)
@@ -37,25 +43,98 @@ class AskShowAllPostFragment : Fragment() {
     private fun renderUi(view: View , start_index : Int) {
         var retrofit = RetrofitClient.initClient()
         var data = board_req_format(start_index,6)
-        var sendData = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
 
-        sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData>{
-            override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
-                Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
-            }
 
-            override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
-                var postingList = response.body()!!.posting_list
-                var setData : MutableList<AskData> = setData2(6,postingList)
-                var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
-                var adapter = AskRVAdapter()
-                adapter.listData = setData
-                recyclerView.adapter = adapter
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                var space = LinearSpacingItemDecoration(20)
-                recyclerView.addItemDecoration(space)
-            }
-        })
+        //조수민 수정 : 만약 parameter 가 0 즉 전체 질문 보기라면
+        if (parameter == "0") {
+
+            var sendData = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
+
+            sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
+                override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+                    Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                    var postingList = response.body()!!.posting_list
+                    // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
+                    try {
+                        var setData: MutableList<AskData> = setData2(6, postingList)
+                        var recyclerView: RecyclerView =
+                            view.findViewById(R.id.askAllPostPageRecyclerView)
+                        var adapter = AskRVAdapter()
+                        adapter.listData = setData
+                        recyclerView.adapter = adapter
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        var space = LinearSpacingItemDecoration(20)
+                        recyclerView.addItemDecoration(space)
+                    }
+                    catch (e:IndexOutOfBoundsException){
+
+                    }
+                }
+            })
+        }
+
+        else if (parameter == "1") {
+
+            var sendData = retrofit.create(RetrofitClient.GetUnAnsweredApi::class.java)
+
+            sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
+                override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+                    Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                    var postingList = response.body()!!.posting_list
+                    // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
+                    try {
+                        var setData: MutableList<AskData> = setData2(6, postingList)
+                        var recyclerView: RecyclerView =
+                            view.findViewById(R.id.askAllPostPageRecyclerView)
+                        var adapter = AskRVAdapter()
+                        adapter.listData = setData
+                        recyclerView.adapter = adapter
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        var space = LinearSpacingItemDecoration(20)
+                        recyclerView.addItemDecoration(space)
+                    }
+                    catch (e:IndexOutOfBoundsException){
+
+                    }
+                }
+            })
+        }
+
+        else if (parameter == "2") {
+
+            var sendData = retrofit.create(RetrofitClient.GetClosedApi::class.java)
+
+            sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
+                override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+                    Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                    var postingList = response.body()!!.posting_list
+                    // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨ㅓ
+                    try {
+                        var setData: MutableList<AskData> = setData2(6, postingList)
+                        var recyclerView: RecyclerView =
+                            view.findViewById(R.id.askAllPostPageRecyclerView)
+                        var adapter = AskRVAdapter()
+                        adapter.listData = setData
+                        recyclerView.adapter = adapter
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        var space = LinearSpacingItemDecoration(20)
+                        recyclerView.addItemDecoration(space)
+                    }
+                    catch (e:IndexOutOfBoundsException){
+
+                    }
+                }
+            })
+        }
     }
 
 //        var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)

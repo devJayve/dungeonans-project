@@ -1,11 +1,16 @@
 package com.example.dungeonans.Adapter
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dungeonans.Activity.AnswerActivity
+import com.example.dungeonans.Activity.FindAccountActivity
 import com.example.dungeonans.DataClass.AskData
 import com.example.dungeonans.DataClass.BlogData
 import com.example.dungeonans.DataClass.CommunityData
@@ -35,9 +40,10 @@ class AskRVAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adapter를
         holder.itemView.findViewById<CardView>(R.id.askAllPostCardView).setOnClickListener{
             Log.d("dkssud!",it.toString())
             Log.d("dkssud!",listData.toString())
-//            itemClickListener.onClick(it,position)
-
+//            val intent = Intent(Context, AnswerActivity::class.java)
+//            startActivity(intent)
         }
+
         val data = listData.get(position)
         holder.setAskPostValue(data)
     }

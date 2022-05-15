@@ -148,11 +148,20 @@ object RetrofitClient {
     interface GetCommunityHotPostApi{
         @GET("/board/hot")
         fun sendPostCount(@Query("send_post_cnt") post_cnt : send_post_cnt) : Call<CommunityHotPostData>
-
     }
 
     interface GetQnAPostApi{
         @GET("/board/qna")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
+    }
+
+    interface GetUnAnsweredApi{
+        @GET("/board/openQna")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
+    }
+
+    interface GetClosedApi{
+        @GET("/board/closedQna")
         fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
     }
 
