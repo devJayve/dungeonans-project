@@ -18,6 +18,7 @@ import com.navercorp.nid.oauth.NidOAuthLogin
 import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
+import kotlinx.coroutines.GlobalScope
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -168,7 +169,7 @@ class LoginActivity : AppCompatActivity() {
 ////                    loginIntent.putExtra("token",response.body()?.token)
                 if (response.body()?.success == true) {
                     val loginIntent =
-                        Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
+                        Intent(this@LoginActivity, MainActivity::class.java) // 메인 페이지로 전환
                     if (PrefManager.getUserToken().isNotEmpty()) {
                         PrefManager.deleteUserToken()
                     }
