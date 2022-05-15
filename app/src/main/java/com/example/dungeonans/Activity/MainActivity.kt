@@ -123,16 +123,21 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
 
     fun showPost() {
-        var retrofit = RetrofitClient.initClient()
-        var getCommunityPost = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
-        getCommunityPost.getPost(1).enqueue(object : retrofit2.Callback<ClickedPostData> {
-            override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
-                Log.d("tag","!")
-                Log.d("tag",t.toString())
-            }
-            override fun onResponse(call: Call<ClickedPostData>, response: Response<ClickedPostData>) {
-                Log.d("tag","${response.body()}")
-            }
-        })
+        Log.d("tag","postclicked")
+//        var retrofit = RetrofitClient.initClient()
+//        var getCommunityPost = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
+//        getCommunityPost.getPost(1).enqueue(object : retrofit2.Callback<ClickedPostData> {
+//            override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
+//                Log.d("tag","!")
+//                Log.d("tag",t.toString())
+//            }
+//            override fun onResponse(call: Call<ClickedPostData>, response: Response<ClickedPostData>) {
+//                Log.d("tag","${response.body()}")
+//            }
+//        })
+    }
+
+    fun showAskPost(postition : Int) {
+        var boarder_index = 2
     }
 }

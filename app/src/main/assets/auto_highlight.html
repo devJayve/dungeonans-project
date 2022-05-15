@@ -521,17 +521,28 @@
         window.onload = function showAndroidToast() {
             var mywidth = Android.getwidth();
             var px = Android.getwidth(mywidth);
-            var mypx = px - 29;
+            var mypx = px - 7;
             var mypx_codeblcok = px - 40;
             var transe = document.getElementById("editing-code");
             var code_block = document.getElementById("count1")
             transe.style.width = mypx+"px";
-            code_block.style.width = mypx_codeblcok+"px";
+            code_block.style.width = mypx_codeblcok +"px";
             document.getElementById(id).width = newContent;
         }
 
         function loadImage(){
             document.getElementById("loadfile").click();
+        }
+
+        function uploadPost(){
+            var transe = document.getElementById("count1");
+            var str = transe.innerHTML;
+            var mytitle = Android.getTitle()
+            Android.SendPostToApi(mytitle,str);
+        }
+
+        function getPost(){
+            Android.GetPostFromApi();
         }
 
 
@@ -567,14 +578,16 @@
                 <span></span>
             </li> -->
 
-            <li class="wmd-spacer wmd-spacer2" id="wmd-spacer2">
-            </li>
-
             <li class="wmd-button" id="wmd-quote-button" title="Blockquote <blockquote> Ctrl+Q">
                 <span id = "preView" onclick="setOpacity()" style="background-position: -260px center;"></span>
             </li>
 
-            <!-- <li class="wmd-button" id="wmd-olist-button" title="Numbered List <ol> Ctrl+O">
+            <li class="wmd-spacer wmd-spacer2" id="wmd-spacer2">
+            </li>
+
+
+
+            <li class="wmd-button" id="wmd-olist-button" title="Numbered List <ol> Ctrl+O">
                 <span style="background-position: -120px 0px;"></span>
             </li>
 
@@ -588,7 +601,7 @@
 
             <li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule <hr> Ctrl+R">
                 <span style="background-position: -180px 0px;"></span>
-            </li> -->
+            </li>
 
             <li class="wmd-spacer wmd-spacer3" id="wmd-spacer3"></li>
             <li class="wmd-button" id="wmd-undo-button" >
@@ -644,6 +657,9 @@
 
 <pre class = "hljs" style=" position: absolute; display: none; left: 1px; top: 70.5px; margin: 0; word-break: break-all; white-space: pre-wrap; height:390px; width:388px; background-color: white; color: black" id = "count1">
     </pre>
+
+<button onclick="uploadPost()" style="font-size: 10px; margin-top:30px; margin-bottom:30px; padding: 5px; box-shadow:inset 0 1px 0 0 hsl(0deg 0% 100% / 40%); border:none; border-radius:3px; background-color: hsl(206,100%,52%); color: white;">질문하기</button>
+<button onclick="getPost()" style="font-size: 10px; margin-left:100px; margin-top:30px; margin-bottom:30px; padding: 5px; box-shadow:inset 0 1px 0 0 hsl(0deg 0% 100% / 40%); border:none; border-radius:3px; background-color: hsl(206,100%,52%); color: white;">질문 받기</button>
 
 
 

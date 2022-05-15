@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_dungeonans_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="false"
         android:theme="@style/Theme.Dungeonans.Material">
+
 
         <activity
             android:name=".Activity.SplashActivity"
@@ -33,7 +35,6 @@
         <activity android:name=".Activity.SearchBlogActivity"/>
 
         <activity android:name=".Activity.PostActivity"/>
-
         <activity android:name=".Activity.AskApplyActivity"/>
 
         <activity android:name=".Activity.FindAccountActivity"/>
