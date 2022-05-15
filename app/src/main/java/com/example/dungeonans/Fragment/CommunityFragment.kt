@@ -1,6 +1,7 @@
 package com.example.dungeonans.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -103,23 +104,27 @@ class CommunityFragment : Fragment() {
                 Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
             }
             override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
-                var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
-                var postingList = response.body()!!.posting_list
-                var sendData : MutableList<CommunityData> = setData(postingList)
-                var adapter = CommunityRVAdapter()
-                adapter.setItemClickListener(object : CommunityRVAdapter.OnItemClickListener {
-                    override fun postClick(v: View, position: Int) {
-                        var mainActivity = context as MainActivity
-                        mainActivity.showPost()
-                    }
-                })
-                adapter.communityList = sendData
-                recyclerView.adapter = adapter
-                LinearLayoutManager(context).also { recyclerView.layoutManager = it }
+                if (response.body()!!.success) {
+                    var recyclerView: RecyclerView =
+                        view.findViewById(R.id.communityPageRecyclerView)
+                    var postingList = response.body()!!.posting_list
+                    var sendData: MutableList<CommunityData> = setData(postingList)
+                    var adapter = CommunityRVAdapter()
+                    adapter.setItemClickListener(object : CommunityRVAdapter.OnItemClickListener {
+                        override fun postClick(v: View, position: Int) {
+                            var mainActivity = context as MainActivity
+                            mainActivity.showPost()
+                        }
+                    })
+                    adapter.communityList = sendData
+                    recyclerView.adapter = adapter
+                    LinearLayoutManager(context).also { recyclerView.layoutManager = it }
 
-                var space = LinearSpacingItemDecoration(10)
-                recyclerView.addItemDecoration(space)
-
+                    var space = LinearSpacingItemDecoration(10)
+                    recyclerView.addItemDecoration(space)
+                } else {
+                    Log.d("TAG","errmsg = ${response.body()!!.errmsg}")
+                }
             }
         })
     }

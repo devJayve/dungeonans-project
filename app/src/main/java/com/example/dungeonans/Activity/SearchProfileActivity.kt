@@ -1,6 +1,7 @@
 package com.example.dungeonans.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputFilter
@@ -18,18 +19,20 @@ import com.example.dungeonans.Adapter.BlogGridViewRecyclerViewAdapter
 import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.Adapter.SearchProfileRVAdapter
 import com.example.dungeonans.BlogData
-import com.example.dungeonans.DataClass.AskData
-import com.example.dungeonans.DataClass.CommunityData
-import com.example.dungeonans.DataClass.SearchData
-import com.example.dungeonans.DataClass.SearchProfileData
+import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Retrofit.RetrofitManager
 import com.example.dungeonans.Utils.Constants
+import com.example.dungeonans.Utils.PrefManager
 import com.example.dungeonans.Utils.RESPONSE_STATUS
 import kotlinx.android.synthetic.main.activity_search_result.*
 import kotlinx.android.synthetic.main.answer_fragment.view.*
 import kotlinx.android.synthetic.main.ask_allpost_cardview.*
 import kotlinx.android.synthetic.main.blogpage_fragment.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -207,9 +210,32 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
 
     @SuppressLint("NotifyDataSetChanged")
     fun hostSearchApi(query: String?) {
+        val retrofit = RetrofitClient.initClient()
+
+
         when (content) {
             0 -> { // 커뮤니티 게시글 불러오기
                 communityPostList.clear()
+
+
+                val requestSearchApi = retrofit.create(RetrofitClient.SearchApi::class.java)
+                requestSearchApi.postSearchCommunity(word = query.toString()).enqueue(object : Callback<CommunityHotPostData> {
+                    override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
+                    }
+                    override fun onResponse(call: Call<CommunityHotPostData>, response: Response<CommunityHotPostData>) {
+                        if (response.body()?.success == true) {
+                            setData(response.body()!!.posting_list)
+
+                            communityRVAdapter.submitList(communityPostList)
+                            communityRVAdapter.notifyDataSetChanged()
+                        }
+                        else {
+                            Log.d("community - errmsg : ", response.body()!!.errmsg)
+                        }
+                    }
+                })
+
+
 
 
                 for (i in 0 until 10) {
@@ -278,6 +304,20 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                 this.searchProfileRVAdapter.submitList(profilePostList)
                 searchProfileRVAdapter.notifyDataSetChanged()
             }
+        }
+    }
+
+    private fun setData(postingData : List<posting_format_res>) {
+
+        for (index in 0 until 6) {
+            val postTitle = postingData[index].title
+            val postBody = postingData[index].content
+            val hashtag = postingData[index].board_tag.toString()
+            val likeCount = postingData[index].like_num.toString()
+            val commentCount = postingData[index].comment_num.toString()
+            val listData = CommunityData(postTitle,postBody,hashtag,likeCount,commentCount)
+
+            communityPostList.add(listData)
         }
     }
 }

@@ -101,10 +101,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginEvent() {
-        //connectLoginApi()
+        connectLoginApi()
 
-        val loginIntent = Intent(this, PostActivity::class.java)
-        startActivity(loginIntent)
+//        val loginIntent = Intent(this, MainActivity::class.java)
+//        startActivity(loginIntent)
     }
 
     private fun findExistingAccountEvent() {

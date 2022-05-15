@@ -74,7 +74,7 @@ class MyAllPostShowFragment : Fragment() {
         var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
         var data : MutableList<CommunityData> = setData()
         var adapter = CommunityRVAdapter()
-        adapter.listData = data
+        adapter.communityList = data
         recyclerView.adapter = adapter
         LinearLayoutManager(context).also { recyclerView.layoutManager = it }
 

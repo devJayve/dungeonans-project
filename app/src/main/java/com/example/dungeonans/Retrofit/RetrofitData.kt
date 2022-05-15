@@ -35,6 +35,7 @@ data class CommunityHotPostData(
     var errmsg: String,
     var posting_list: List<posting_format_res>
 )
+
 data class Comment(
     var success: Boolean,
     var errmsg: String,

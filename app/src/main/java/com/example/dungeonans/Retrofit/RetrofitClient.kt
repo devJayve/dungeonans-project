@@ -181,10 +181,34 @@ object RetrofitClient {
         fun deleteComment(@Path("comment_index") comment_index : Int) : Call<NoneData>
     }
 
+    /** Login Api (worked by KJY) **/
     interface LoginApi {
         @POST("/account/login")
         fun postLogin(
             @Body loginData : LoginData
         ) :Call<LoginResponse>
+    }
+
+    /** Search Api (worked by KJY) **/
+    interface SearchApi {
+        @POST("/search/community")
+        fun postSearchCommunity(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
+
+        @POST("/search/qna")
+        fun postSearchAsk(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
+
+        @POST("/search/blog")
+        fun postSearchBlog(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
+
+        @POST("/search/profile")
+        fun postSearchProfile(
+            @Body word : String
+        ) : Call<CommunityHotPostData>
     }
 }
