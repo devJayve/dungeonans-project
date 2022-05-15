@@ -137,23 +137,33 @@ object RetrofitClient {
 
     interface GetSpecificPostApi{
         @GET("/board")
-        fun getPost(@Query("posting_index") posting_index : Int) : Call<ClickedPostData>
+        fun getPost(@Header("auth") token : String, @Query("posting_index") posting_index : Int) : Call<ClickedPostData>
     }
 
     interface GetCommunityPostAPI{
-        @POST("/board/community")
-        fun sendBoardReq(@Body() board_req_format : board_req_format) : Call<CommunityPostData>
+        @GET("/board/community")
+        fun sendBoardReq(@Query("board_req_format") board_req_format : board_req_format) : Call<CommunityPostData>
     }
 
     interface GetCommunityHotPostApi{
-        @POST("/board/hot")
-        fun sendPostCount(@Body() post_cnt : send_post_cnt) : Call<CommunityHotPostData>
+        @GET("/board/hot")
+        fun sendPostCount(@Query("board_req_format") board_req_format: board_req_format) : Call<CommunityHotPostData>
 
     }
 
+    interface GetUnAnsweredQnaPostApi{
+        @GET("/board/openQna")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
+    }
+
+    interface GetAnsweredQnaPostApi{
+        @GET("/board/closedQna")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
+    }
+
     interface GetQnAPostApi{
-        @POST("/board/qna")
-        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<QnAPostData>
+        @GET("/board/qna")
+        fun sendBoardReq(@Query("board+req_format") board_req_format: board_req_format) : Call<QnAPostData>
     }
 
     //조수민
@@ -163,13 +173,13 @@ object RetrofitClient {
     }
 
     interface GetBlogApi{
-        @POST("/board/blog")
-        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<BlogPostData>
+        @GET("/board/blog")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<BlogPostData>
     }
 
     interface GetCommunityByTagApi{
-        @POST("/board/commTag")
-        fun getPost(@Body() board_req_format: board_req_format) : Call<GetCommunityPostByTag>
+        @GET("/board/commTag")
+        fun getPost(@Query("board_req_format") board_req_format: board_req_format) : Call<GetCommunityPostByTag>
     }
 
     interface GetCommentApi{
@@ -196,6 +206,6 @@ object RetrofitClient {
 
     interface GetProfileInfoApi{
         @GET("/profile")
-        fun getProfile(@Query("auth") token: String) : Call<ProfileData>
+        fun getProfile(@Header("auth") token: String) : Call<ProfileData>
     }
 }

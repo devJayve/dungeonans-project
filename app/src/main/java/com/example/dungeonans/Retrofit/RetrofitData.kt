@@ -13,7 +13,8 @@ data class NoneData(
 data class ClickedPostData(
     @SerializedName("success") var success : Boolean,
     @SerializedName("errmsg") var errmsg : String,
-    @SerializedName("posting") var posting: List<posting_format_res>
+    @SerializedName("posting") var posting: List<posting_format_res>,
+    @SerializedName("own") var own : Boolean
 )
 
 
@@ -53,7 +54,8 @@ data class CommunityPostData(
 data class CommunityHotPostData(
     var success : Boolean,
     var errmsg: String,
-    var posting_list: List<posting_format_res>
+    var posting_list: List<posting_format_res>,
+    var end_index: Int
 )
 data class Comment(
     var success: Boolean,

@@ -72,7 +72,7 @@ class PostActivity : AppCompatActivity() {
                 var retrofit = RetrofitClient.initClient()
 
                 var putComment = retrofit.create(RetrofitClient.PostCommentApi::class.java)
-                putComment.postComment(PrefManager.getUserToken(),put_comment_req("1","커피우유맛있다")).enqueue(object : retrofit2.Callback<NoneData> {
+                putComment.postComment(PrefManager.getUserToken(),put_comment_req("1","${commentEditText.text}")).enqueue(object : retrofit2.Callback<NoneData> {
                     override fun onFailure(call: Call<NoneData>, t: Throwable) {
                     }
                     override fun onResponse(call: Call<NoneData>, response: Response<NoneData>) {
@@ -85,14 +85,11 @@ class PostActivity : AppCompatActivity() {
         answerBtn.setOnClickListener{
             val answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
             startActivity(answerActivity)
-
             commentEditText.hint = "답변을 입력하세요"
             commentEditText.requestFocus()
             var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             manager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT)
             setRecyclerView = 1
-
-
         }
 
         var writerProfileImageView : ImageView = findViewById(R.id.writerProfileImageView)
