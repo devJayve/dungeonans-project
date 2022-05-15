@@ -168,7 +168,7 @@ class LoginActivity : AppCompatActivity() {
 ////                    loginIntent.putExtra("token",response.body()?.token)
                 if (response.body()?.success == true) {
                     val loginIntent =
-                        Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
+                        Intent(this@LoginActivity, MainActivity::class.java) // 메인 페이지로 전환
                     if (PrefManager.getUserToken().isNotEmpty()) {
                         PrefManager.deleteUserToken()
                     }
