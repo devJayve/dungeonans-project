@@ -157,7 +157,7 @@
                 <WebView
                     android:id="@+id/body_webview"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp">
+                    android:layout_height="wrap_content">
                 </WebView>
 
 
@@ -211,14 +211,7 @@
 
 
         <!--        </LinearLayout>-->
-        <Button
-            android:id="@+id/askButton"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:text="질문하기"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></Button>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

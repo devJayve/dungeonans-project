@@ -91,7 +91,6 @@ class AskPostActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_ask_post)
 
         var body_webview = findViewById<WebView>(R.id.body_webview)
-        var askBtm = findViewById<Button>(R.id.askButton)
         body_webview.settings.javaScriptEnabled = true
         body_webview.settings.domStorageEnabled = true
         body_webview.settings.allowContentAccess = true
@@ -142,7 +141,6 @@ class AskPostActivity : AppCompatActivity() {
             fun gettest() {
                 Toast.makeText(mContext, "Asdfasdf", Toast.LENGTH_SHORT).show()
             }
-
 
         }
 

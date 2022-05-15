@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener {
-            loginEvent()
+            connectLoginApi()
         }
     }
 
@@ -164,7 +164,7 @@ class LoginActivity : AppCompatActivity() {
                 Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
                 Log.d("TAG", "id ${response.body()?.token}")
                 if (response.body()?.success == true) {
-                    val loginIntent = Intent(this@LoginActivity, PostActivity::class.java) // 메인 페이지로 전환
+                    val loginIntent = Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
 //                    loginIntent.putExtra("token",response.body()?.token)
                     startActivity(loginIntent)
                 }

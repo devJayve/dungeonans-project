@@ -1,36 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="deploymentTargetDropDown">
-    <targetSelectedWithDropDown>
+    <runningDeviceTargetSelectedWithDropDown>
       <Target>
-        <type value="QUICK_BOOT_TARGET" />
+        <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-<<<<<<< HEAD
-            <value value="C:\Users\dydwn\.android\avd\Pixel_4_XL_API_27.avd" />
-=======
-            <value value="C:\Users\dydwn\.android\avd\Pixel_XL_API_27_1.avd" />
->>>>>>> ba5ae12efaa18f00244c1b74ff5e37f507bd55e4
+            <type value="SERIAL_NUMBER" />
+            <value value="R3CN909AVYB" />
           </Key>
         </deviceKey>
       </Target>
-    </targetSelectedWithDropDown>
-<<<<<<< HEAD
-    <timeTargetWasSelectedWithDropDown value="2022-05-02T13:55:41.136205500Z" />
-    <targetsSelectedWithDialog>
-      <Target>
-        <type value="QUICK_BOOT_TARGET" />
-        <deviceKey>
-          <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\dydwn\.android\avd\Nexus_9_API_27.avd" />
-          </Key>
-        </deviceKey>
-      </Target>
-    </targetsSelectedWithDialog>
-=======
-    <timeTargetWasSelectedWithDropDown value="2022-04-04T14:23:39.586086300Z" />
->>>>>>> ba5ae12efaa18f00244c1b74ff5e37f507bd55e4
+    </runningDeviceTargetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2022-05-15T04:00:32.352812100Z" />
   </component>
 </project>
