@@ -113,7 +113,7 @@ class CommunityFragment : Fragment() {
                         mainActivity.showPost()
                     }
                 })
-                adapter.listData = sendData
+                adapter.communityList = sendData
                 recyclerView.adapter = adapter
                 LinearLayoutManager(context).also { recyclerView.layoutManager = it }
 

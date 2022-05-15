@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dungeonans.BlogData
 import com.example.dungeonans.DataClass.CommunityData
 import com.example.dungeonans.Holder.Holder
 import com.example.dungeonans.R
 
 
 class CommunityRVAdapter : RecyclerView.Adapter<Holder>() {
-    var listData = mutableListOf<CommunityData>()
+
+    var communityList = mutableListOf<CommunityData>()
+
     override fun getItemCount(): Int {
-        return listData.size
+        return communityList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -26,9 +29,14 @@ class CommunityRVAdapter : RecyclerView.Adapter<Holder>() {
         holder.itemView.findViewById<ConstraintLayout>(R.id.postLayout).setOnClickListener{
             itemClickListener.postClick(it,position)
         }
-        val data = listData.get(position)
+        val data = communityList.get(position)
         holder.setCommunityPostValue(data)
     }
+
+    fun submitList(communityList : ArrayList<CommunityData>) {
+        this.communityList = communityList
+    }
+
 
     interface OnItemClickListener {
         fun postClick(v: View, position: Int)

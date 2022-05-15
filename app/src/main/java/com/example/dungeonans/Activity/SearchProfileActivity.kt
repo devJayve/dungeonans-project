@@ -13,9 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.Adapter.BlogGridViewRecyclerViewAdapter
+import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.Adapter.SearchProfileRVAdapter
 import com.example.dungeonans.BlogData
+import com.example.dungeonans.DataClass.AskData
+import com.example.dungeonans.DataClass.CommunityData
 import com.example.dungeonans.DataClass.SearchData
 import com.example.dungeonans.DataClass.SearchProfileData
 import com.example.dungeonans.R
@@ -24,22 +28,33 @@ import com.example.dungeonans.Utils.Constants
 import com.example.dungeonans.Utils.RESPONSE_STATUS
 import kotlinx.android.synthetic.main.activity_search_result.*
 import kotlinx.android.synthetic.main.answer_fragment.view.*
+import kotlinx.android.synthetic.main.ask_allpost_cardview.*
+import kotlinx.android.synthetic.main.blogpage_fragment.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
-    var photoList = ArrayList<BlogData>()
-    var profileList = ArrayList<SearchProfileData>()
+
     var content = 100
 
-    private var searchHistoryList = ArrayList<SearchData>()
 
+    /** RecyclerView Adapter **/
+    private lateinit var communityRVAdapter: CommunityRVAdapter
+    private lateinit var askRVAdapter: AskRVAdapter
     private lateinit var searchProfileRVAdapter: SearchProfileRVAdapter
     private lateinit var blogGridRecyclerViewAdapter: BlogGridViewRecyclerViewAdapter
+
+    /** Search 관련 View **/
     private lateinit var mSearchView: SearchView
     private lateinit var mSearchViewET : EditText
 
+    /** DataList **/
+    private lateinit var communityPostList : ArrayList<CommunityData>
+    private lateinit var  askPostList : ArrayList<AskData>
+    private lateinit var  blogPostList : ArrayList<BlogData>
+    private lateinit var  profilePostList : ArrayList<SearchProfileData>
+    private var searchHistoryList = ArrayList<SearchData>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,9 +68,44 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
         setSupportActionBar(top_tool_bar)
 
         when (content) {
-            2 -> {
+            0 -> { // Community 검색
+                Log.d("TAG", "SEARCH - community")
+                communityPostList = ArrayList()
+                this.communityRVAdapter = CommunityRVAdapter()
+                this.communityRVAdapter.submitList(communityPostList)
+
+                search_recycler_view.apply {
+                    layoutManager = LinearLayoutManager(
+                        SearchProfileActivity(),
+                        LinearLayoutManager.VERTICAL,
+                        false
+                    )
+
+                    adapter = communityRVAdapter
+                }
+            }
+
+            1 -> { // Ask 검색
+                Log.d("TAG", "SEARCH - Ask")
+                askPostList = ArrayList()
+                this.askRVAdapter = AskRVAdapter()
+                this.askRVAdapter.submitList(askPostList)
+
+                search_recycler_view.apply {
+                     layoutManager = LinearLayoutManager(
+                         SearchProfileActivity(),
+                         LinearLayoutManager.VERTICAL,
+                         false
+                    )
+                    adapter = askRVAdapter
+                }
+            }
+
+            2 -> { // Blog 검색
+                Log.d("TAG", "SEARCH - blog")
+                blogPostList = ArrayList()
                 this.blogGridRecyclerViewAdapter = BlogGridViewRecyclerViewAdapter()
-                this.blogGridRecyclerViewAdapter.submitList(photoList)
+                this.blogGridRecyclerViewAdapter.submitList(blogPostList)
 
                 search_recycler_view.apply {
                     layoutManager = GridLayoutManager(
@@ -67,9 +117,11 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                     adapter = blogGridRecyclerViewAdapter
                 }
             }
-            3 -> {
+
+            3 -> { // Profile 검색
+                profilePostList = ArrayList()
                 this.searchProfileRVAdapter = SearchProfileRVAdapter()
-                this.searchProfileRVAdapter.submitList(profileList)
+                this.searchProfileRVAdapter.submitList(profilePostList)
 
                 search_recycler_view.apply {
                     layoutManager = LinearLayoutManager(
@@ -156,7 +208,40 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
     @SuppressLint("NotifyDataSetChanged")
     fun hostSearchApi(query: String?) {
         when (content) {
-            2 -> { // 블로그 화면일 때
+            0 -> { // 커뮤니티 게시글 불러오기
+                communityPostList.clear()
+
+
+                for (i in 0 until 10) {
+                    val communityData = CommunityData(postTitle = "", postBody = "", hashtag = "", likeCount = "",commentCount = "")
+                    communityPostList.add(communityData)
+                }
+                this.communityRVAdapter.submitList(communityPostList)
+                communityRVAdapter.notifyDataSetChanged()
+            }
+
+            1 -> { // 질문 게시글 불러오기
+                askPostList.clear()
+
+
+                for (i in 0 until 10) {
+                    val askData = AskData(
+                        askUserImage = 1,
+                        askUserName = "",
+                        askUserNickname = "",
+                        askPostTitle = "",
+                        askPostBody = "",
+                        askStatusImage = 1,
+                        askPostLikeCount = "",
+                        askCommentCount = "",
+                    )
+                    askPostList.add(askData)
+                }
+                this.askRVAdapter.submitList(askPostList)
+                askRVAdapter.notifyDataSetChanged()
+            }
+
+            2 -> { // 블로그 게시글 불러오기
                 RetrofitManager.instance.searchBlogs(searchTerm = query, completion = {
                         responseState, responseDataArrayList ->
 
@@ -178,23 +263,21 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                 })
             }
 
-            3 -> { // 프로필 화면일 때
-                val profileInfoList = ArrayList<SearchProfileData>()
+            3 -> { // 프로필 게시글 불러오기
+                profilePostList.clear()
 
                 val userNameList = arrayListOf("김주영","문승재","김용준","김주영","김해성","신정민")
                 val userNickNameList = arrayListOf("aa12","adfs12","dsmd12","1dsf11","wnddudu1","12131dd")
                 val profileImgList = arrayListOf("","","","","","")
+
                 for (i in 0 until userNameList.size) {
                     val profileData = SearchProfileData(userName = userNameList[i],userNickName = userNickNameList[i],profileImg = profileImgList[i])
-                    profileInfoList.add(profileData)
+                    profilePostList.add(profileData)
                 }
-                this.searchProfileRVAdapter.submitList(profileInfoList)
+
+                this.searchProfileRVAdapter.submitList(profilePostList)
+                searchProfileRVAdapter.notifyDataSetChanged()
             }
         }
-
-
-
     }
-
-
 }

@@ -36,7 +36,6 @@ class BlogGridViewRecyclerViewAdapter : RecyclerView.Adapter<BlogItemViewHolder>
     }
 
 
-
     // 보여줄 목록의 개수
     override fun getItemCount(): Int {
         return blogList.size

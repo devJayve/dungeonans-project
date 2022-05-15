@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.DataClass.AskData
 import com.example.dungeonans.DataClass.BlogData
+import com.example.dungeonans.DataClass.CommunityData
 import com.example.dungeonans.Holder.Holder
 import com.example.dungeonans.R
 
@@ -20,6 +21,10 @@ class AskRVAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adapter를
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ask_allpost_cardview,parent,false)
         return Holder(view)
+    }
+
+    fun submitList(askList : ArrayList<AskData>) {
+        this.listData = askList
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
