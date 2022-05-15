@@ -1,7 +1,9 @@
 package com.example.dungeonans.Adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.DataClass.AskData
 import com.example.dungeonans.DataClass.BlogData
@@ -19,7 +21,22 @@ class AskCardViewAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adap
         return Holder(view)
     }
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.itemView.findViewById<CardView>(R.id.askAllPostCardView).setOnClickListener{
+            itemClickListener.onClick(it,position)
+        }
         val data = listData.get(position)
         holder.setAskPostValue(data)
     }
+
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+    // (3) 외부에서 클릭 시 이벤트 설정
+    fun setItemClickListener(onItemClickListener: AskCardViewAdapter.OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+    // (4) setItemClickListener로 설정한 함수 실행
+    private lateinit var itemClickListener : AskCardViewAdapter.OnItemClickListener
+
+
 }

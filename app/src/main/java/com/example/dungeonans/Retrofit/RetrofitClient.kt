@@ -145,6 +145,12 @@ object RetrofitClient {
         fun sendBoardReq(@Body() board_req_format : board_req_format) : Call<CommunityPostData>
     }
 
+    interface GetCommunityHotPostApi{
+        @POST("/board/hot")
+        fun sendPostCount(@Body() post_cnt : send_post_cnt) : Call<CommunityHotPostData>
+
+    }
+
     interface GetQnAPostApi{
         @POST("/board/qna")
         fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<QnAPostData>
@@ -167,7 +173,7 @@ object RetrofitClient {
 
     interface PostCommentApi{
         @POST("/comment")
-        fun postComment(@Header("token") token: String?, @Body() comment_format_req : put_comment_req) : Call<NoneData>
+        fun postComment(@Header("auth") token: String?, @Body() comment_format_req : put_comment_req) : Call<NoneData>
     }
 
     interface DeleteCommentApi{
@@ -177,9 +183,13 @@ object RetrofitClient {
 
     interface LoginApi {
         @POST("/account/login")
-
         fun postLogin(
             @Body loginData : LoginData
         ) :Call<LoginResponse>
+    }
+
+    interface GetProfileInfoApi{
+        @GET("/profile")
+        fun getProfile(@Query("auth") token: String) : Call<ProfileData>
     }
 }

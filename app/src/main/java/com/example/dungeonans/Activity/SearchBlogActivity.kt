@@ -133,7 +133,6 @@ class SearchBlogActivity: AppCompatActivity(),
                         Toast.makeText(this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
-
             })
         }
 //

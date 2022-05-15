@@ -43,7 +43,7 @@
             app:layout_constraintStart_toEndOf="@+id/askUserName"/>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/askAllPostCardView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"

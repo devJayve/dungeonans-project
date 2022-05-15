@@ -1,6 +1,5 @@
 package com.example.dungeonans.Fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -10,19 +9,22 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dungeonans.Activity.AskPostActivity
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.CommunityCardViewAdapter
 import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
+import org.w3c.dom.Text
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class CommunityFragment : Fragment() {
@@ -30,32 +32,14 @@ class CommunityFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.communitypage_fragment,container,false)
 
-
-
         setHashTag(view)
-        renderUi(view)
+        renderPost(view)
+        renderHotPost(view)
         connectScrollListener(view)
         return view
     }
 
     private fun setHashTag(view:View) {
-        var retrofit = RetrofitClient.initClient()
-
-        var languageTag = language_tag(false,false,false,false,false,false,false,false,false,false)
-        var data = board_req_format(0,4,0,languageTag)
-        Log.d("hashtag",data.toString())
-
-        var getTagApi = retrofit.create(RetrofitClient.GetCommunityPostAPI::class.java)
-
-        getTagApi.sendBoardReq(data).enqueue(object : retrofit2.Callback<CommunityPostData>{
-            override fun onFailure(call: Call<CommunityPostData>, t: Throwable) {
-                Log.d("hashtag",t.toString())
-            }
-            override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
-                Log.d("hashtag",response.body()!!.success.toString())
-                Log.d("hashtag",response.body()!!.toString())
-            }
-        })
         var radioGroup : RadioGroup = view.findViewById(R.id.radioGroup)
         var radioButtonText = resources.getStringArray(R.array.hashtaglist)
 
@@ -84,6 +68,7 @@ class CommunityFragment : Fragment() {
                 selectedBtn = index
             }
         }
+
         // 라디오 버튼 선택 해제 로직
         radioGroup.setOnCheckedChangeListener{ _, checkedId ->
             if (selectedBtn != null) {
@@ -98,32 +83,77 @@ class CommunityFragment : Fragment() {
         }
     }
 
-    private fun renderUi(view: View) {
-        var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
-        var data : MutableList<CommunityData> = setData()
-        var adapter = CommunityCardViewAdapter()
-        adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
-            override fun postClick(v: View, position: Int) {
-                var mainActivity = context as MainActivity
-                mainActivity.showPost()
+    private fun renderHotPost(view : View) {
+        var retrofit = RetrofitClient.initClient()
+        var getCommunityHotPostApi = retrofit.create(RetrofitClient.GetCommunityHotPostApi::class.java)
+        var data = send_post_cnt(2)
+        getCommunityHotPostApi.sendPostCount(data).enqueue(object : Callback<CommunityHotPostData> {
+            override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
+            }
+            override fun onResponse(call: Call<CommunityHotPostData>,response: Response<CommunityHotPostData>) {
+                if(response.body()!!.success == true) {
+                    var hotpost_1 = view.findViewById<ConstraintLayout>(R.id.hotpost_1)
+                    var hotpost_1_title = hotpost_1.findViewById<TextView>(R.id.hotpost_1_title)
+                    hotpost_1_title.text = response.body()!!.posting_list[0].title
+                    var hotpost_1_content = hotpost_1.findViewById<TextView>(R.id.hotpost_1_content)
+                    hotpost_1_content.text = response.body()!!.posting_list[0].content
+                    var hotpost_1_likecount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_likecount)
+                    hotpost_1_likecount.text = response.body()!!.posting_list[0].like_num.toString()
+                    var hotpost_1_commentcount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_commentcount)
+                    hotpost_1_commentcount.text = response.body()!!.posting_list[0].comment_num.toString()
+
+                    var hotpost_2 = view.findViewById<ConstraintLayout>(R.id.hotpost_2)
+                    var hotpost_2_title = hotpost_2.findViewById<TextView>(R.id.hotpost_2_title)
+                    hotpost_2_title.text = response.body()!!.posting_list[1].title
+                    var hotpost_2_content = hotpost_2.findViewById<TextView>(R.id.hotpost_2_content)
+                    hotpost_2_content.text = response.body()!!.posting_list[1].content
+                    var hotpost_2_likecount = hotpost_2.findViewById<TextView>(R.id.hotpost_2_likecount)
+                    hotpost_2_likecount.text = response.body()!!.posting_list[1].like_num.toString()
+                    var hotpost_2_commentcount = hotpost_2.findViewById<TextView>(R.id.hotpost_2_commentcount)
+                    hotpost_2_commentcount.text = response.body()!!.posting_list[1].comment_num.toString()
+                }
             }
         })
-        adapter.listData = data
-        recyclerView.adapter = adapter
-        LinearLayoutManager(context).also { recyclerView.layoutManager = it }
-
-        var space = LinearSpacingItemDecoration(10)
-        recyclerView.addItemDecoration(space)
     }
 
-    private fun setData() : MutableList<CommunityData> {
+    private fun renderPost(view: View) {
+        var retrofit = RetrofitClient.initClient()
+        var data = board_req_format(0,6)
+        var getCommunityPostApi = retrofit.create(RetrofitClient.GetCommunityPostAPI::class.java)
+        getCommunityPostApi.sendBoardReq(data).enqueue(object : Callback<CommunityPostData>{
+            override fun onFailure(call: Call<CommunityPostData>, t: Throwable) {
+                Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
+            }
+            override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
+                var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
+                var postingList = response.body()!!.posting_list
+                var sendData : MutableList<CommunityData> = setData(postingList)
+                var adapter = CommunityCardViewAdapter()
+                adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
+                    override fun postClick(v: View, position: Int) {
+                        var mainActivity = context as MainActivity
+                        mainActivity.showPost()
+                    }
+                })
+                adapter.listData = sendData
+                recyclerView.adapter = adapter
+                LinearLayoutManager(context).also { recyclerView.layoutManager = it }
+
+                var space = LinearSpacingItemDecoration(10)
+                recyclerView.addItemDecoration(space)
+
+            }
+        })
+    }
+
+    private fun setData(postingData : List<posting_format_res>) : MutableList<CommunityData> {
         var data : MutableList<CommunityData>  = mutableListOf()
         for (index in 0 until 6) {
-            var postTitle = "제목제목"
-            var postBody = "안녕하세요. 김주영입니다. 오늘은 노션 배우기 세 번째 시간인데"
-            var hashtag = "$index 번째 작성자"
-            var likeCount = "101"
-            var commentCount = "2"
+            var postTitle = postingData[index].title
+            var postBody = postingData[index].content
+            var hashtag = postingData[index].board_tag.toString()
+            var likeCount = postingData[index].like_num.toString()
+            var commentCount = postingData[index].comment_num.toString()
             var listData = CommunityData(postTitle,postBody,hashtag,likeCount,commentCount)
             data.add(listData)
         }
@@ -138,7 +168,5 @@ class CommunityFragment : Fragment() {
             }
         })
     }
-
-
 }
 

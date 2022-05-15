@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         var postBtn = findViewById<ConstraintLayout>(R.id.mainActivityPostingLayout)
         postBtn.setOnClickListener{
-            Log.d("tag","clicked")
             var intent = Intent(this, AskPostActivity::class.java)
             startActivity(intent)
         }
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        menuInflater.inflate(R.menu.toolbar_main_menu,menu)
         return true
     }
 
@@ -75,6 +74,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_search -> {
+                val intent = Intent(this,SearchProfileActivity::class.java)
+                intent.putExtra("content",binding.pager.currentItem)
+                startActivity(intent)
                 true
             }
             R.id.action_share -> {
@@ -121,16 +123,21 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
 
     fun showPost() {
-        var retrofit = RetrofitClient.initClient()
-        var getCommunityPost = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
-        getCommunityPost.getPost(1).enqueue(object : retrofit2.Callback<ClickedPostData> {
-            override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
-                Log.d("tag","!")
-                Log.d("tag",t.toString())
-            }
-            override fun onResponse(call: Call<ClickedPostData>, response: Response<ClickedPostData>) {
-                Log.d("tag","${response.body()}")
-            }
-        })
+        Log.d("tag","postclicked")
+//        var retrofit = RetrofitClient.initClient()
+//        var getCommunityPost = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
+//        getCommunityPost.getPost(1).enqueue(object : retrofit2.Callback<ClickedPostData> {
+//            override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
+//                Log.d("tag","!")
+//                Log.d("tag",t.toString())
+//            }
+//            override fun onResponse(call: Call<ClickedPostData>, response: Response<ClickedPostData>) {
+//                Log.d("tag","${response.body()}")
+//            }
+//        })
+    }
+
+    fun showAskPost() {
+        Log.d("tag","askpostclicked")
     }
 }

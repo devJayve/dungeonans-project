@@ -13,12 +13,22 @@ data class ClickedPostData(
     @SerializedName("posting") var posting: List<posting_format_res>
 )
 
+
+data class ProfileData(
+    @SerializedName("success") var success: Boolean,
+    @SerializedName("errmsg") var errmsg : String,
+    @SerializedName("profile_list") var profile_list : profile_format_res
+)
+
 data class board_req_format(
     @SerializedName("start_index") var start_index  : Int,
     @SerializedName("post_cnt") var post_cnt : Int,
-    @SerializedName("board_tag") var board_tag : Int,
-    @SerializedName("language_tag") var language_tag : language_tag
 )
+
+data class send_post_cnt(
+    @SerializedName("post_cnt") var post_cnt : Int
+)
+
 
 data class CommunityPostData(
     var success : Boolean,
@@ -28,6 +38,11 @@ data class CommunityPostData(
     var board_tag_list : List<TagTextData>
 )
 
+data class CommunityHotPostData(
+    var success : Boolean,
+    var errmsg: String,
+    var posting_list: List<posting_format_res>
+)
 data class Comment(
     var success: Boolean,
     var errmsg: String,
@@ -58,15 +73,38 @@ data class posting_format_res(
     var board_index : Int,
     var posting_index : Int,
     var name : String,
+    var id : String,
     var nickname : String,
     var title : String,
     var content : String,
     var date : String,
     var like_num : Int,
     var comment_num : Int,
-    var board_tag : Int
+    var board_tag : Int,
+    var row_number : String
 )
 
+data class profile_format_res(
+    var profile_index : Int,
+    var id : String,
+    var name : String,
+    var nickname : String,
+    var score : Int,
+    var dev_stack : DevStack
+)
+
+data class DevStack(
+    var cpp : Boolean,
+    var sql : Boolean,
+    var html : Boolean,
+    var java: Boolean,
+    var clang : Boolean,
+    var shell : Boolean,
+    var swift : Boolean,
+    var kotlin: Boolean,
+    var python: Boolean,
+    var javascript: Boolean
+)
 data class TagTextData(
     var tagText : String
 )
@@ -83,6 +121,9 @@ data class language_tag(
     var sql : Boolean,
     var shell : Boolean
 )
+// profile_photo
+// github_link
+// insta_link
 
 data class comment_format_req(
     var board_index: Int,

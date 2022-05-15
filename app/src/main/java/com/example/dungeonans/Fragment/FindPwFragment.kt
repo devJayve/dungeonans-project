@@ -4,21 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.UiThread
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.dungeonans.Activity.FindAccountActivity
-import com.example.dungeonans.Activity.LoginActivity
 import com.example.dungeonans.R
 import com.raycoarana.codeinputview.CodeInputView
-import com.raycoarana.codeinputview.OnCodeCompleteListener
-import java.util.*
-import kotlin.concurrent.timer
 
 
 class FindPwFragment : Fragment() {

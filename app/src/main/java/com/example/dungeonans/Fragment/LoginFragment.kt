@@ -1,42 +1,22 @@
 package com.example.dungeonans.Fragment
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.dungeonans.Activity.LoginActivity
-import com.example.dungeonans.Activity.RegisterActivity
 import com.example.dungeonans.R
-import com.example.dungeonans.Utils.Constants.TAG
-import com.navercorp.nid.NaverIdLoginSDK
-import com.navercorp.nid.oauth.OAuthLoginCallback
-import com.nhn.android.naverlogin.OAuthLogin
 
 class LoginFragment : Fragment() {
-
-    //private lateinit var loginActivity : LoginActivity
-
-
+//    private lateinit var loginActivity : LoginActivity
 //    override fun onAttach(context: Context) {
 //        super.onAttach(context)
 //
 //        loginActivity = activity as LoginActivity
 //    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.login_activity_layout, container, false)
 
         // Button
@@ -55,7 +35,6 @@ class LoginFragment : Fragment() {
         var clientName = R.string.app_name.toString()
 
         //NaverIdLoginSDK.initialize(loginActivity, "i5ZfZ60c1qMiGOnHcYtF", "_Yd130jp5Z", clientName)
-
 
 //        // 로그인 버튼 클릭
 //        loginBtn?.setOnClickListener {
@@ -118,5 +97,4 @@ class LoginFragment : Fragment() {
 //
 //    }
 //
-
 }

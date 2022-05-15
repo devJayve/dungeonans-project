@@ -11,6 +11,7 @@ import com.example.dungeonans.DataClass.LoginResponse
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Utils.Constants.TAG
+import com.example.dungeonans.Utils.PrefManager
 import com.example.dungeonans.databinding.ActivityLoginBinding
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.NidOAuthLogin
@@ -102,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
     private fun loginEvent() {
         //connectLoginApi()
 
-        val loginIntent = Intent(this, PostActivity::class.java)
+        val loginIntent = Intent(this, MainActivity::class.java)
         startActivity(loginIntent)
     }
 
@@ -145,7 +146,6 @@ class LoginActivity : AppCompatActivity() {
         val idValue = binding.etId.text.toString()
         val pwValue = binding.etPw.text.toString()
 
-        Log.d("TAG", "$idValue , $pwValue")
 
         val loginInfo = LoginData(
             id = idValue,
@@ -157,19 +157,29 @@ class LoginActivity : AppCompatActivity() {
         val requestLoginApi = retrofit.create(RetrofitClient.LoginApi::class.java)
         requestLoginApi.postLogin(loginInfo).enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.d("TAG","$t")
             }
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 Log.d("TAG" , "response success : ${response.body()?.success}")
                 Log.d("TAG" , "errmsg : ${response.body()?.errmsg}")
                 Log.d("TAG", "id ${response.body()?.token}")
                 if (response.body()?.success == true) {
-                    val loginIntent = Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
+                    val loginIntent =
+                        Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
 //                    loginIntent.putExtra("token",response.body()?.token)
-                    startActivity(loginIntent)
+                    if (response.body()?.success == true) {
+                        val loginIntent =
+                            Intent(this@LoginActivity, MainActivity::class.java) // 메인 페이지로 전환
+                        if (PrefManager.getUserToken().isNotEmpty()) {
+                            PrefManager.deleteUserToken()
+                        }
+                        PrefManager.storeUserToken(response.body()!!.token)
+
+                        startActivity(loginIntent)
+                    }
                 }
             }
         })
+
     }
 
     // 네이버 로그아웃
