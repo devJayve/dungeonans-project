@@ -6,13 +6,12 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dungeonans.Adapter.CommunityCardViewAdapter
+import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.CommunityData
 import com.example.dungeonans.R
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
@@ -74,7 +73,7 @@ class MyAllPostShowFragment : Fragment() {
     private fun renderUi(view: View) {
         var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
         var data : MutableList<CommunityData> = setData()
-        var adapter = CommunityCardViewAdapter()
+        var adapter = CommunityRVAdapter()
         adapter.listData = data
         recyclerView.adapter = adapter
         LinearLayoutManager(context).also { recyclerView.layoutManager = it }

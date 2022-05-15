@@ -156,7 +156,7 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
     @SuppressLint("NotifyDataSetChanged")
     fun hostSearchApi(query: String?) {
         when (content) {
-            2 -> {
+            2 -> { // 블로그 화면일 때
                 RetrofitManager.instance.searchBlogs(searchTerm = query, completion = {
                         responseState, responseDataArrayList ->
 
@@ -178,7 +178,7 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                 })
             }
 
-            3 -> {
+            3 -> { // 프로필 화면일 때
                 val profileInfoList = ArrayList<SearchProfileData>()
 
                 val userNameList = arrayListOf("김주영","문승재","김용준","김주영","김해성","신정민")

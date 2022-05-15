@@ -11,7 +11,7 @@ import com.example.dungeonans.Holder.Holder
 import com.example.dungeonans.R
 
 
-class CommunityCardViewAdapter : RecyclerView.Adapter<Holder>() {
+class CommunityRVAdapter : RecyclerView.Adapter<Holder>() {
     var listData = mutableListOf<CommunityData>()
     override fun getItemCount(): Int {
         return listData.size

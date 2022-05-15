@@ -9,7 +9,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dungeonans.Adapter.AskCardViewAdapter
+import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.DataClass.AskData
 import com.example.dungeonans.R
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
@@ -28,7 +28,7 @@ class AskShowAllPostFragment : Fragment() {
     private fun renderUi(view: View) {
         var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
         var data : MutableList<AskData> = setData()
-        var adapter = AskCardViewAdapter()
+        var adapter = AskRVAdapter()
         adapter.listData = data
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)

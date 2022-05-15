@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
-import com.example.dungeonans.Adapter.CommunityCardViewAdapter
+import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
@@ -106,8 +106,8 @@ class CommunityFragment : Fragment() {
                 var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
                 var postingList = response.body()!!.posting_list
                 var sendData : MutableList<CommunityData> = setData(postingList)
-                var adapter = CommunityCardViewAdapter()
-                adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
+                var adapter = CommunityRVAdapter()
+                adapter.setItemClickListener(object : CommunityRVAdapter.OnItemClickListener {
                     override fun postClick(v: View, position: Int) {
                         var mainActivity = context as MainActivity
                         mainActivity.showPost()
