@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 //        })
     }
 
-    fun showAskPost() {
-        Log.d("tag","askpostclicked")
+    fun showAskPost(postition : Int) {
+        var boarder_index = 2
     }
 }

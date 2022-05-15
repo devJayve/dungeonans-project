@@ -1,6 +1,7 @@
 package com.example.dungeonans.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.AskCardViewAdapter
 import com.example.dungeonans.DataClass.AskData
+import com.example.dungeonans.DataClass.board_req_format
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
 
 
@@ -20,6 +23,7 @@ class AskShowAllPostFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.askpage_viewall_fragment,container,false)
         var postSetMode = requireArguments().getString("Value")
+
         renderUi(view)
         setSpinner(view)
 
@@ -27,13 +31,17 @@ class AskShowAllPostFragment : Fragment() {
     }
 
     private fun renderUi(view: View) {
+        var retrofit = RetrofitClient.initClient()
+        var sendData = retrofit.create(RetrofitClient.GetUnAnsweredQnaPostApi::class.java)
+
         var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
         var data : MutableList<AskData> = setData()
         var adapter = AskCardViewAdapter()
         adapter.setItemClickListener(object : AskCardViewAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
                 var mainActivity = context as MainActivity
-                mainActivity.showAskPost()
+                mainActivity.showAskPost(position)
+                Log.d("tag",position.toString())
             }
         })
         adapter.listData = data

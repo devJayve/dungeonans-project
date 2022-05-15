@@ -70,7 +70,6 @@ class PostActivity : AppCompatActivity() {
                 commentEditText.hint = "댓글을 입력하세요"
 
                 var retrofit = RetrofitClient.initClient()
-
                 var putComment = retrofit.create(RetrofitClient.PostCommentApi::class.java)
                 putComment.postComment(PrefManager.getUserToken(),put_comment_req("1","${commentEditText.text}")).enqueue(object : retrofit2.Callback<NoneData> {
                     override fun onFailure(call: Call<NoneData>, t: Throwable) {

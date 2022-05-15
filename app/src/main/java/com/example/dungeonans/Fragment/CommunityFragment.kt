@@ -14,6 +14,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.CommunityCardViewAdapter
 import com.example.dungeonans.DataClass.*
@@ -85,12 +86,7 @@ class CommunityFragment : Fragment() {
 
     private fun renderPost(view: View, start_index : Int) {
         var mainLayout : LinearLayout = view.findViewById(R.id.mainLayout)
-        var loading : ProgressBar = view.findViewById(R.id.topProgressBar)
-        var hotpost_1 = view.findViewById<ConstraintLayout>(R.id.hotpost_1)
-        var hotpost_2 = view.findViewById<ConstraintLayout>(R.id.hotpost_2)
         var communityPageRecyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
-        hotpost_1.visibility = View.GONE
-        hotpost_2.visibility = View.GONE
         communityPageRecyclerView.visibility = View.GONE
 
         var retrofit = RetrofitClient.initClient()
@@ -103,7 +99,7 @@ class CommunityFragment : Fragment() {
             override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
                 var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
                 var postingList = response.body()!!.posting_list
-                var sendData : MutableList<CommunityData> = setData(postingList)
+                var sendData : MutableList<CommunityData> = setData(6,postingList)
                 var adapter = CommunityCardViewAdapter()
                 adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
                     override fun postClick(v: View, position: Int) {
@@ -118,10 +114,7 @@ class CommunityFragment : Fragment() {
                 var space = LinearSpacingItemDecoration(10)
                 recyclerView.addItemDecoration(space)
                 mainLayout.visibility = View.VISIBLE
-                hotpost_1.visibility = View.VISIBLE
-                hotpost_2.visibility = View.VISIBLE
                 communityPageRecyclerView.visibility = View.VISIBLE
-                loading.visibility = View.GONE
             }
         })
 
@@ -131,32 +124,30 @@ class CommunityFragment : Fragment() {
             override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
             }
             override fun onResponse(call: Call<CommunityHotPostData>,response: Response<CommunityHotPostData>) {
-                if(response.body()!!.success) {
-                    var hotpost_1_title = hotpost_1.findViewById<TextView>(R.id.hotpost_1_title)
-                    hotpost_1_title.text = response.body()!!.posting_list[0].title
-                    var hotpost_1_content = hotpost_1.findViewById<TextView>(R.id.hotpost_1_content)
-                    hotpost_1_content.text = response.body()!!.posting_list[0].content
-                    var hotpost_1_likecount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_likecount)
-                    hotpost_1_likecount.text = response.body()!!.posting_list[0].like_num.toString()
-                    var hotpost_1_commentcount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_commentcount)
-                    hotpost_1_commentcount.text = response.body()!!.posting_list[0].comment_num.toString()
-
-                    var hotpost_2_title = hotpost_2.findViewById<TextView>(R.id.hotpost_2_title)
-                    hotpost_2_title.text = response.body()!!.posting_list[1].title
-                    var hotpost_2_content = hotpost_2.findViewById<TextView>(R.id.hotpost_2_content)
-                    hotpost_2_content.text = response.body()!!.posting_list[1].content
-                    var hotpost_2_likecount = hotpost_2.findViewById<TextView>(R.id.hotpost_2_likecount)
-                    hotpost_2_likecount.text = response.body()!!.posting_list[1].like_num.toString()
-                    var hotpost_2_commentcount = hotpost_2.findViewById<TextView>(R.id.hotpost_2_commentcount)
-                    hotpost_2_commentcount.text = response.body()!!.posting_list[1].comment_num.toString()
-                }
+                var recyclerView : RecyclerView = view.findViewById(R.id.communityPageHotPostRecyclerView)
+                var postingList = response.body()!!.posting_list
+                var sendData : MutableList<CommunityData> = setData(2,postingList)
+                var adapter = CommunityCardViewAdapter()
+                adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
+                    override fun postClick(v: View, position: Int) {
+                        var mainActivity = context as MainActivity
+                        mainActivity.showPost()
+                    }
+                })
+                adapter.listData = sendData
+                recyclerView.adapter = adapter
+                LinearLayoutManager(context).also { recyclerView.layoutManager = it }
+                var space = LinearSpacingItemDecoration(10)
+                recyclerView.addItemDecoration(space)
+                mainLayout.visibility = View.VISIBLE
+                communityPageRecyclerView.visibility = View.VISIBLE
             }
         })
     }
 
-    private fun setData(postingData : List<posting_format_res>) : MutableList<CommunityData> {
+    private fun setData(postCount: Int,postingData : List<posting_format_res>) : MutableList<CommunityData> {
         var data : MutableList<CommunityData>  = mutableListOf()
-        for (index in 0 until 6) {
+        for (index in 0 until postCount) {
             var postTitle = postingData[index].title
             var postBody = postingData[index].content
             var hashtag = postingData[index].board_tag.toString()
@@ -172,9 +163,12 @@ class CommunityFragment : Fragment() {
         var bottomProgressBar = view.findViewById<ProgressBar>(R.id.bottomProgressBar)
         bottomProgressBar.visibility = View.GONE
         var parentScrollView = view.findViewById<NestedScrollView>(R.id.communityPageScrollView)
-        parentScrollView.viewTreeObserver.addOnScrollChangedListener(object : OnScrollChangedListener {
-            override fun onScrollChanged() {
-                Log.d("tag",parentScrollView.rootView.scaleY.toString())
+        parentScrollView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener {
+            val scrollY: Int = parentScrollView.scrollY
+            if(parentScrollView.getChildAt(0).bottom <= parentScrollView.height + scrollY) {
+                bottomProgressBar.visibility = View.VISIBLE
+            } else {
+                bottomProgressBar.visibility = View.GONE
             }
         })
 
