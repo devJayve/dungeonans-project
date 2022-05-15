@@ -158,6 +158,8 @@ class LoginActivity : AppCompatActivity() {
         val requestLoginApi = retrofit.create(RetrofitClient.LoginApi::class.java)
         requestLoginApi.postLogin(loginInfo).enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
+                startActivity(loginIntent)
             }
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 Log.d("TAG" , "response success : ${response.body()?.success}")
@@ -168,6 +170,7 @@ class LoginActivity : AppCompatActivity() {
 //                        Intent(this@LoginActivity, AskPostActivity::class.java) // 메인 페이지로 전환
 ////                    loginIntent.putExtra("token",response.body()?.token)
                 if (response.body()?.success == true) {
+
                     val loginIntent =
                         Intent(this@LoginActivity, MainActivity::class.java) // 메인 페이지로 전환
                     if (PrefManager.getUserToken().isNotEmpty()) {

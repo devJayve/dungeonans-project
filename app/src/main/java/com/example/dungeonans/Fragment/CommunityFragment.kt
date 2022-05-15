@@ -1,5 +1,6 @@
 package com.example.dungeonans.Fragment
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -33,7 +34,7 @@ class CommunityFragment : Fragment() {
         val view = inflater.inflate(R.layout.communitypage_fragment,container,false)
 
         setHashTag(view)
-        renderPost(view)
+        renderPost(view, 0)
         connectScrollListener(view)
         return view
     }
@@ -82,12 +83,18 @@ class CommunityFragment : Fragment() {
         }
     }
 
-    private fun renderPost(view: View) {
+    private fun renderPost(view: View, start_index : Int) {
         var mainLayout : LinearLayout = view.findViewById(R.id.mainLayout)
-        var loading : ProgressBar = view.findViewById(R.id.loading)
+        var loading : ProgressBar = view.findViewById(R.id.topProgressBar)
+        var hotpost_1 = view.findViewById<ConstraintLayout>(R.id.hotpost_1)
+        var hotpost_2 = view.findViewById<ConstraintLayout>(R.id.hotpost_2)
+        var communityPageRecyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
+        hotpost_1.visibility = View.GONE
+        hotpost_2.visibility = View.GONE
+        communityPageRecyclerView.visibility = View.GONE
 
         var retrofit = RetrofitClient.initClient()
-        var data = board_req_format(0,6)
+        var data = board_req_format(start_index,6)
         var getCommunityPostApi = retrofit.create(RetrofitClient.GetCommunityPostAPI::class.java)
         getCommunityPostApi.sendBoardReq(data).enqueue(object : Callback<CommunityPostData>{
             override fun onFailure(call: Call<CommunityPostData>, t: Throwable) {
@@ -107,22 +114,23 @@ class CommunityFragment : Fragment() {
                 adapter.listData = sendData
                 recyclerView.adapter = adapter
                 LinearLayoutManager(context).also { recyclerView.layoutManager = it }
-
                 var space = LinearSpacingItemDecoration(10)
                 recyclerView.addItemDecoration(space)
                 mainLayout.visibility = View.VISIBLE
+                hotpost_1.visibility = View.VISIBLE
+                hotpost_2.visibility = View.VISIBLE
+                communityPageRecyclerView.visibility = View.VISIBLE
                 loading.visibility = View.GONE
             }
         })
 
         var getCommunityHotPostApi = retrofit.create(RetrofitClient.GetCommunityHotPostApi::class.java)
-        var hotPostData = send_post_cnt(2)
+        var hotPostData = board_req_format(0,2)
         getCommunityHotPostApi.sendPostCount(hotPostData).enqueue(object : Callback<CommunityHotPostData> {
             override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
             }
             override fun onResponse(call: Call<CommunityHotPostData>,response: Response<CommunityHotPostData>) {
                 if(response.body()!!.success) {
-                    var hotpost_1 = view.findViewById<ConstraintLayout>(R.id.hotpost_1)
                     var hotpost_1_title = hotpost_1.findViewById<TextView>(R.id.hotpost_1_title)
                     hotpost_1_title.text = response.body()!!.posting_list[0].title
                     var hotpost_1_content = hotpost_1.findViewById<TextView>(R.id.hotpost_1_content)
@@ -132,7 +140,6 @@ class CommunityFragment : Fragment() {
                     var hotpost_1_commentcount = hotpost_1.findViewById<TextView>(R.id.hotpost_1_commentcount)
                     hotpost_1_commentcount.text = response.body()!!.posting_list[0].comment_num.toString()
 
-                    var hotpost_2 = view.findViewById<ConstraintLayout>(R.id.hotpost_2)
                     var hotpost_2_title = hotpost_2.findViewById<TextView>(R.id.hotpost_2_title)
                     hotpost_2_title.text = response.body()!!.posting_list[1].title
                     var hotpost_2_content = hotpost_2.findViewById<TextView>(R.id.hotpost_2_content)
@@ -161,12 +168,15 @@ class CommunityFragment : Fragment() {
     }
 
     private fun connectScrollListener(view:View) {
-        var recyclerView = view.findViewById<NestedScrollView>(R.id.communityPageScrollView)
-        recyclerView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener {
-            val scrollY: Int = recyclerView.scrollY
-            if (recyclerView.getChildAt(0).bottom <=(recyclerView.height +scrollY)) {
+        var bottomProgressBar = view.findViewById<ProgressBar>(R.id.bottomProgressBar)
+        bottomProgressBar.visibility = View.GONE
+        var parentScrollView = view.findViewById<NestedScrollView>(R.id.communityPageScrollView)
+        parentScrollView.viewTreeObserver.addOnScrollChangedListener(object : OnScrollChangedListener {
+            override fun onScrollChanged() {
+                Log.d("tag",parentScrollView.rootView.scaleY.toString())
             }
         })
+
     }
 }
 

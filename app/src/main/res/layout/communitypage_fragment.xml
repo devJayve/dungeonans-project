@@ -52,7 +52,7 @@
             android:layout_height="wrap_content">
 
             <ProgressBar
-                android:id="@+id/loading"
+                android:id="@+id/topProgressBar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:indeterminate="true"/>
@@ -319,5 +319,10 @@
             </LinearLayout>
         </FrameLayout>
 
+        <ProgressBar
+            android:id="@+id/bottomProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:indeterminate="true"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
