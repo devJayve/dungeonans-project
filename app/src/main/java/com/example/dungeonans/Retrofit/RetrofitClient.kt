@@ -163,7 +163,7 @@ object RetrofitClient {
 
     interface GetQnAPostApi{
         @GET("/board/qna")
-        fun sendBoardReq(@Query("board+req_format") board_req_format: board_req_format) : Call<QnAPostData>
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
     }
 
     //조수민

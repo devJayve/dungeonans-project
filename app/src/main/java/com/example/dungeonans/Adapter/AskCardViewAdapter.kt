@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.DataClass.AskData
 import com.example.dungeonans.DataClass.BlogData
+import com.example.dungeonans.DataClass.CommunityData
 import com.example.dungeonans.Holder.Holder
 import com.example.dungeonans.R
 

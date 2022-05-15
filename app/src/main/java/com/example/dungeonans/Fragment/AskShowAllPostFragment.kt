@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.AskCardViewAdapter
 import com.example.dungeonans.Adapter.CommunityCardViewAdapter
-import com.example.dungeonans.DataClass.AskData
-import com.example.dungeonans.DataClass.CommunityData
-import com.example.dungeonans.DataClass.CommunityPostData
-import com.example.dungeonans.DataClass.board_req_format
+import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
@@ -30,79 +27,54 @@ class AskShowAllPostFragment : Fragment() {
         val view = inflater.inflate(R.layout.askpage_viewall_fragment,container,false)
         var postSetMode = requireArguments().getString("Value")
 
-        renderUi(view)
+        renderUi(view,0)
         setSpinner(view)
 
         return view
     }
 
-    private fun renderUi(view: View) {
+    //조수민 수정 : Api 적용
+    private fun renderUi(view: View , start_index : Int) {
         var retrofit = RetrofitClient.initClient()
-        var sendData = retrofit.create(RetrofitClient.GetUnAnsweredQnaPostApi::class.java)
+        var data = board_req_format(start_index,6)
+        var sendData = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
 
-        var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
-        var data : MutableList<AskData> = setData()
-        var adapter = AskCardViewAdapter()
-        adapter.setItemClickListener(object : AskCardViewAdapter.OnItemClickListener{
-            override fun onClick(v: View, position: Int) {
-                var mainActivity = context as MainActivity
-                mainActivity.showAskPost(position)
-                Log.d("tag",position.toString())
+        sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData>{
+            override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+                Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                var postingList = response.body()!!.posting_list
+                var setData : MutableList<AskData> = setData2(6,postingList)
+                var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
+                var adapter = AskCardViewAdapter()
+                adapter.listData = setData
+                recyclerView.adapter = adapter
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                var space = LinearSpacingItemDecoration(20)
+                recyclerView.addItemDecoration(space)
             }
         })
-        adapter.listData = data
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        var space = LinearSpacingItemDecoration(20)
-        recyclerView.addItemDecoration(space)
     }
 
-//    private fun renderPost(view: View, start_index : Int) {
-//        var mainLayout : LinearLayout = view.findViewById(R.id.mainLayout)
-//        var communityPageRecyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
-//        communityPageRecyclerView.visibility = View.GONE
-//
-//        var retrofit = RetrofitClient.initClient()
-//        var data = board_req_format(start_index,6)
-//        var getCommunityPostApi = retrofit.create(RetrofitClient.GetCommunityPostAPI::class.java)
-//        getCommunityPostApi.sendBoardReq(data).enqueue(object : Callback<CommunityPostData> {
-//            override fun onFailure(call: Call<CommunityPostData>, t: Throwable) {
-//                Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
-//            }
-//            override fun onResponse(call: Call<CommunityPostData>, response: Response<CommunityPostData>) {
-//                var recyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
-//                var postingList = response.body()!!.posting_list
-//
-//                //조수민 수정 : 전체 posting_format_res 를 받고, for 문 돌려서 index 가 1인것 찾고, 저 위 선언해놓았던 배열에 넣어주기
-//                for (i in 0..response.body()!!.posting_list.size-1){
-//                    var (board_index, posting_index, name, id, nickname,
-//                        title, content,data,like_num,comment_num, board_tag,row_number) = response.body()!!.posting_list[i]
-//                    if (board_index == 1){
-//                        communityPostingList.add(response.body()!!.posting_list[i])
-//                    }
-//                }
-//                //
-//
-//                //조수민 수정 : setData 에 위에 배열 삽입
-//                var sendData : MutableList<CommunityData> = setData(6,communityPostingList)
-//                //
-//                var adapter = CommunityCardViewAdapter()
-//                adapter.setItemClickListener(object : CommunityCardViewAdapter.OnItemClickListener {
-//                    override fun postClick(v: View, position: Int) {
-//                        var mainActivity = context as MainActivity
-//                        Log.d("클릭됨!",this.toString())
-//                        mainActivity.showPost()
-//                    }
-//                })
-//                adapter.listData = sendData
-//                recyclerView.adapter = adapter
-//                LinearLayoutManager(context).also { recyclerView.layoutManager = it }
-//                var space = LinearSpacingItemDecoration(10)
-//                recyclerView.addItemDecoration(space)
-//                mainLayout.visibility = View.VISIBLE
-//                communityPageRecyclerView.visibility = View.VISIBLE
+//        var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
+////        var data : MutableList<AskData> = setData()
+//        var adapter = AskCardViewAdapter()
+//        adapter.setItemClickListener(object : AskCardViewAdapter.OnItemClickListener{
+//            override fun onClick(v: View, position: Int) {
+//                var mainActivity = context as MainActivity
+//                mainActivity.showAskPost(position)
+//                Log.d("tag",position.toString())
 //            }
 //        })
+//        adapter.listData = data
+//        recyclerView.adapter = adapter
+//        recyclerView.layoutManager = LinearLayoutManager(context)
+//        var space = LinearSpacingItemDecoration(20)
+//        recyclerView.addItemDecoration(space)
+
+
 
     private fun setSpinner(view:View) {
         val spinner = view.findViewById<Spinner>(R.id.setPostTypeSpinner)
@@ -149,4 +121,24 @@ class AskShowAllPostFragment : Fragment() {
         }
         return data
     }
+
+    //조수민 수정 api 에서 들어온 데이터에 맞춰서 작성. 이미지는 어떻게 할 건지 고민해봐야할듯?
+    private fun setData2(postCount: Int,postingData : List<posting_format_res>) : MutableList<AskData> {
+        var data : MutableList<AskData>  = mutableListOf()
+        for (index in 0 until postCount) {
+            var askUserImage = index
+            var askUserName = postingData[index].name
+            var userNickName = postingData[index].nickname
+            var postTitle = postingData[index].title
+            var postBody = postingData[index].content
+            var askStatusImage = index;
+            var likeCount = postingData[index].like_num.toString()
+            var commentCount = postingData[index].comment_num.toString()
+            var listData = AskData(askUserImage,askUserName,userNickName,postTitle,postBody,askStatusImage
+            ,likeCount,commentCount)
+            data.add(listData)
+        }
+        return data
+    }
+    //
 }

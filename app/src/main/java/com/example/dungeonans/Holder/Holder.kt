@@ -35,12 +35,12 @@ class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var askCommentCount = itemView?.findViewById<TextView>(R.id.askCommentCount)
 
     fun setAskPostValue(listData : AskData) {
-        askUserImage.setBackgroundResource(listData.askUserImage)
+//        askUserImage.setBackgroundResource(listData.askUserImage)
         askUserName.text = listData.askUserName
         askUserNickname.text = listData.askUserNickname
         askPostTitle.text = listData.askPostTitle
         askPostBody.text = listData.askPostBody
-        askStatusImage.setBackgroundResource(listData.askStatusImage)
+//        askStatusImage.setBackgroundResource(listData.askStatusImage)
         askPostLikeCount.text = listData.askPostLikeCount
         askCommentCount.text = listData.askCommentCount
     }
