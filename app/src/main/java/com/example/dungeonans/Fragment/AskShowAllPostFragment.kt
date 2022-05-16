@@ -1,5 +1,7 @@
 package com.example.dungeonans.Fragment
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -11,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.dungeonans.Activity.AnswerActivity
+import com.example.dungeonans.Activity.FindAccountActivity
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.Adapter.CommunityRVAdapter
@@ -76,7 +80,14 @@ class AskShowAllPostFragment : Fragment() {
                         var adapter = AskRVAdapter()
                         adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
                             override fun onClick(v: View, position: Int) {
-                                Log.d("tag", "$parameter $position")
+                                Log.d("tag", postingList[position].toString())
+                                var (board_index, posting_index, name, id, nickname,
+                                    title, content, data, like_num, comment_num,
+                                    board_tag, row_number) = postingList[position]
+                                Log.d("이거다!!!!!!!", posting_index.toString())
+                                val intent = Intent(context, AnswerActivity::class.java)
+                                intent.putExtra("posting_index",posting_index.toString())
+                                startActivity(intent)
                             }
                         })
                         adapter.listData = setData
