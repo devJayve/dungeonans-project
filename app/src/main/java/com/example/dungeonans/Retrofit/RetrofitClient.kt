@@ -172,8 +172,8 @@ object RetrofitClient {
     }
 
     interface GetBlogApi{
-        @POST("/board/blog")
-        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<BlogPostData>
+        @GET("/board/blog")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<BlogPostData>
     }
 
     interface GetCommunityByTagApi{

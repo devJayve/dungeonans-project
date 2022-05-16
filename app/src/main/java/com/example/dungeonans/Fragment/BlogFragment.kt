@@ -2,6 +2,7 @@ package com.example.dungeonans.Fragment
 
 import GridSpacingItemDecoration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.BlogCardViewAdapter
 import com.example.dungeonans.DataClass.BlogData
+import com.example.dungeonans.DataClass.BlogPostData
+import com.example.dungeonans.DataClass.board_req_format
+import com.example.dungeonans.DataClass.posting_format_res
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitClient
+import retrofit2.Response
 
 class BlogFragment : Fragment() {
+    lateinit var setData : MutableList<BlogData>
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.blogpage_fragment,container,false)
         renderUi(view)
@@ -21,39 +28,48 @@ class BlogFragment : Fragment() {
     }
 
     private fun renderUi(view: View) {
-        var recyclerView : RecyclerView = view.findViewById(R.id.recyclerview)
-        var data : MutableList<BlogData> = setData()
-        var adapter = BlogCardViewAdapter()
-        adapter.setItemClickListener(object : BlogCardViewAdapter.OnItemClickListener {
-            override fun onClick(v: View, position: Int) {
-                var mainActivity = context as MainActivity
-                mainActivity.showProfile()
+        var postDefaultCount = 6
+        var retrofit = RetrofitClient.initClient()
+        var reqData = board_req_format(0,postDefaultCount)
+        var sendBlogData = retrofit.create(RetrofitClient.GetBlogApi::class.java)
+        sendBlogData.sendBoardReq(reqData).enqueue(object : retrofit2.Callback<BlogPostData> {
+            override fun onFailure(call: retrofit2.Call<BlogPostData>, t: Throwable) {
+            }
+            override fun onResponse(call: retrofit2.Call<BlogPostData>, response: Response<BlogPostData>) {
+                Log.d("blog",response.body()!!.success.toString())
+                var blogData = response.body()!!.posting_list
+                Log.d("blog",blogData.toString())
+                var recyclerView : RecyclerView = view.findViewById(R.id.recyclerview)
+                try {
+                    setData = setData(postDefaultCount,blogData)
+                } catch (e:IndexOutOfBoundsException) {
+                    setData = setData(blogData.count(),blogData)
+                } finally {
+                    var adapter = BlogCardViewAdapter()
+                    adapter.setItemClickListener(object : BlogCardViewAdapter.OnItemClickListener {
+                        override fun onClick(v: View, position: Int) {
+                            var mainActivity = context as MainActivity
+                            mainActivity.showProfile()
+                        }
+                    })
+                    adapter.listData = setData
+                    recyclerView.adapter = adapter
+                    recyclerView.layoutManager = GridLayoutManager(context,2)
+                    recyclerView.addItemDecoration(GridSpacingItemDecoration(2,60,false))
+                }
             }
         })
-
-        adapter.listData = data
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(context,2)
-        recyclerView.addItemDecoration(GridSpacingItemDecoration(2,60,false))
     }
 
-    private fun setData() : MutableList<BlogData> {
+    private fun setData(postCount : Int, blogData : List<posting_format_res>) : MutableList<BlogData> {
         var data : MutableList<BlogData>  = mutableListOf()
-        for (index in 0 until 20) {
-            var cardViewTitle = "$index"
-            var cardViewBody = "김주영 진짜 사랑해 김주영 진짜" +
-                    " 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 " +
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해"+
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해"+
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해"+
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해"+
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해" +
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해" +
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해" +
-                    "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해"
-            var cardViewWriter = "$index 번째 작성자"
+        for (index in 0 until postCount) {
+            var cardViewTitle = blogData[index].title
+            var cardViewBody = blogData[index].content
+            var cardViewWriter = "by " + blogData[index].name
             var cardViewProfile = R.drawable.profile_base_icon
-            var listData = BlogData(cardViewTitle,cardViewBody,cardViewWriter,cardViewProfile)
+            var cardViewLanguageTag = "Notion"
+            var listData = BlogData(cardViewTitle,cardViewBody,cardViewWriter,cardViewProfile,cardViewLanguageTag)
             data.add(listData)
         }
         return data

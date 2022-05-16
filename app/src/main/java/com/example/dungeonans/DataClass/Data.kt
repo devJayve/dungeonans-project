@@ -3,7 +3,7 @@ package com.example.dungeonans.DataClass
 import com.google.gson.JsonArray
 import com.google.gson.annotations.SerializedName
 
-data class BlogData(var cardViewTitle : String, var cardViewBody : String, var cardViewWriter : String, var cardViewProfile : Int)
+data class BlogData(var cardViewTitle : String, var cardViewBody : String, var cardViewWriter : String, var cardViewProfile : Int, var languageTag : String)
 data class CommunityData(var postTitle : String, var postBody : String, var hashtag : String, var likeCount : String, var commentCount : String)
 data class CommentData(var commentBody : String)
 data class AnswerData(var writerProfile : Int, var writerName : String, var writerNickName : String, var writeTime : String, var postBody : String)

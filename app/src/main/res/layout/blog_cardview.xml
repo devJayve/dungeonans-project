@@ -36,6 +36,9 @@
             android:id="@+id/cardViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="100dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:layout_marginLeft="65dp"
             android:layout_marginTop="5dp"
             android:text="노션 배우기(3)"
@@ -70,9 +73,9 @@
 
 
         <TextView
+            android:id="@+id/cardViewLanguageTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notion"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
             app:layout_constraintEnd_toEndOf="@+id/imageView4"

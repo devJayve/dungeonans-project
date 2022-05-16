@@ -53,7 +53,8 @@ class MyAllBlogShowFragment : Fragment() {
                     "김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해 김주영 진짜 사랑해"
             var cardViewWriter = "$index 번째 작성자"
             var cardViewProfile = R.drawable.profile_base_icon
-            var listData = BlogData(cardViewTitle,cardViewBody,cardViewWriter,cardViewProfile)
+            var cardViewLanguageTag = "Notion"
+            var listData = BlogData(cardViewTitle,cardViewBody,cardViewWriter,cardViewProfile,cardViewLanguageTag)
             data.add(listData)
         }
         return data
