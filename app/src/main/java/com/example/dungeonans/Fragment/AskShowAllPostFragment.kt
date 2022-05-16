@@ -16,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dungeonans.Activity.AnswerActivity
 import com.example.dungeonans.Activity.FindAccountActivity
 import com.example.dungeonans.Activity.MainActivity
+import com.example.dungeonans.Activity.PostActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.*
@@ -85,7 +86,7 @@ class AskShowAllPostFragment : Fragment() {
                                     title, content, data, like_num, comment_num,
                                     board_tag, row_number) = postingList[position]
                                 Log.d("이거다!!!!!!!", posting_index.toString())
-                                val intent = Intent(context, AnswerActivity::class.java)
+                                val intent = Intent(context, PostActivity::class.java)
                                 intent.putExtra("posting_index",posting_index.toString())
                                 startActivity(intent)
                             }

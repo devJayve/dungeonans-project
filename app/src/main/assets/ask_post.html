@@ -5,23 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
+    <script type="text/javascript">
 
-        function getPost(content){
-            Android.showToast(content);
+
+        function myupdate(){
+            var mywidth = Android2.getmywidth();
+            var px = Android2.getwidth(mywidth);
+            var mypx = px - 29;
+            var mypx_codeblcok = px - 20;
+            Android2.showToast("Asdfsef");
+            var code_block = document.getElementById("count1")
+            code_block.style.width = mypx_codeblcok+"px";
+          }
+
+        function mygetPost(content){
             var code_block = document.getElementById("count1")
             code_block.innerHTML = content;
         }
 
-        window.onload = function showAndroidToast() {
-            var mywidth = Android.getwidth();
-            var px = Android.getwidth(mywidth);
-            var mypx = px - 29;
-            var mypx_codeblcok = px - 40;
-            Android.showToast(String(mypx));
-            var code_block = document.getElementById("count1")
-            code_block.style.width = mypx_codeblcok+"px";
-        }
     </script>
 </head>
 <body>

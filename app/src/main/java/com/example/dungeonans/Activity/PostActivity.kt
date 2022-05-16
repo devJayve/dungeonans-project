@@ -1,12 +1,17 @@
 package com.example.dungeonans.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.webkit.JavascriptInterface
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +23,8 @@ import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Utils.PrefManager
 import kotlinx.android.synthetic.main.myprofilepage_fragment.*
-import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 
 // 답변은 답변만 보여주고, 답변의 점점점을 누르면 답변 밑에 달린 모든 댓글들 다 볼 수 있게 처리,,
@@ -41,15 +43,51 @@ class PostActivity : AppCompatActivity() {
     var commentItemCount = 0
     lateinit var recyclerView : RecyclerView
     lateinit var commentEditText: EditText
+    lateinit var askPostWebView : WebView
+    var askWebViewUrl = "file:///android_asset/ask_post.html"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ask_post_fragment)
+        val posting_list: String? = intent.getStringExtra("posting_index")
+
+
+        askPostWebView = findViewById(R.id.askPostWebView)
+        askPostWebView.settings.javaScriptEnabled = true
+        askPostWebView.settings.domStorageEnabled = true
+        askPostWebView.settings.allowContentAccess = true
+        askPostWebView.settings.allowFileAccess = true
 
         commentEditText = findViewById(R.id.commentEditText)
+        renderWebView(posting_list!!.toInt())
         commentEditText.setOnClickListener{
             commentEditText.requestFocus()
         }
+
+        class WebBrideg(private val mContext: Context) {
+            @JavascriptInterface
+            fun getmywidth(): Float {
+                var width: Float = 0.0f
+                var linear = findViewById<LinearLayout>(R.id.mywidth)
+                width = linear.width.toFloat()
+                return width
+            }
+
+            @JavascriptInterface
+            fun showToast(code: String) {
+                Toast.makeText(mContext, code, Toast.LENGTH_SHORT).show()
+            }
+
+            @JavascriptInterface
+            fun getwidth(px: Float): Float {
+                var resources = resources
+                val metrics: DisplayMetrics = resources.getDisplayMetrics()
+                val dp = px * (DisplayMetrics.DENSITY_DEFAULT / metrics.densityDpi.toFloat())
+                return dp
+            }
+        }
+        askPostWebView.addJavascriptInterface(WebBrideg(this), "Android2")
+        askPostWebView.setWebViewClient(WebViewClient())
 
         var backBtn : ImageView = findViewById(R.id.backBtn)
         backBtn.setOnClickListener{
@@ -100,6 +138,42 @@ class PostActivity : AppCompatActivity() {
         renderCommentUi()
         renderAnswerUi()
     }
+
+    private fun renderWebView(posting_index : Int){
+        var retrofit = RetrofitClient.initClient()
+        var sendData = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
+        sendData.getPost(posting_index).enqueue(object : retrofit2.Callback<ClickedPostData>{
+            override fun onFailure(call: Call<ClickedPostData>, t: Throwable) {
+                Toast.makeText(this@PostActivity, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(
+                call: Call<ClickedPostData>,
+                response: Response<ClickedPostData>
+            ) {
+                Log.d("이거입니당", response.body()!!.own.toString())
+                Log.d("이거입니당", response.body()!!.posting.toString())
+
+                var (board_index, posting_index, name, id, nickname,
+                    title, content, data, like_num, comment_num,
+                    board_tag, row_number) = response.body()!!.posting[0]
+
+                askPostWebView.setWebViewClient(object : WebViewClient() {
+                    override fun onPageFinished(view: WebView, weburl: String) {
+                        Log.d("실험", content)
+                        askPostWebView.loadUrl("javascript:mygetPost("+ '"' + content.toString() +'"'+")")
+                        askPostWebView.loadUrl("javascript:myupdate()")
+                    }
+                })
+
+                askPostWebView.loadUrl(askWebViewUrl)
+
+
+            }
+
+        })
+    }
+
 
     private fun renderAnswerUi() {
         recyclerView = findViewById(R.id.postAnswerRecyclerView)

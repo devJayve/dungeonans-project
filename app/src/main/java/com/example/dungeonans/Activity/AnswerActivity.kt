@@ -38,6 +38,7 @@ class AnswerActivity : AppCompatActivity() {
     lateinit var recyclerView : RecyclerView
     lateinit var commentEditText: EditText
     lateinit var askPostWebView : WebView
+    lateinit var Button : Button
     var askWebViewUrl = "file:///android_asset/ask_post.html"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +48,7 @@ class AnswerActivity : AppCompatActivity() {
         renderWebView(posting_list!!.toInt())
 
         askPostWebView = findViewById(R.id.askPostWebView)
+        Button = findViewById(R.id.acceptBtn)
         askPostWebView.settings.javaScriptEnabled = true
         askPostWebView.settings.domStorageEnabled = true
         askPostWebView.settings.allowContentAccess = true
