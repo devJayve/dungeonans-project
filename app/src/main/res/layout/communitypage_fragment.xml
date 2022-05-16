@@ -12,9 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
-
         <HorizontalScrollView
             android:id="@+id/hashtagHorizontalScrollView"
             android:layout_width="match_parent"

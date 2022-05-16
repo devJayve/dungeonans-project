@@ -21,6 +21,5 @@ class ViewPagerAdapter(fm : FragmentActivity) : FragmentStateAdapter(fm) {
             2 -> BlogFragment()
             else -> MyProfileFragment()
         }
-        Log.d("tag","$position")
     }
 }
