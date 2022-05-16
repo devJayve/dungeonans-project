@@ -537,8 +537,11 @@
         function uploadPost(){
             var transe = document.getElementById("editing-code");
             var str = transe.value;
+            var mycontent;
+            mycontent = str.replace(new RegExp("\"","g"),"\\"+"\"")
+            var mycontent2 = mycontent.replace(new RegExp("\n","g"),"<p></p>")
             var mytitle = Android.getTitle()
-            Android.SendPostToApi(mytitle,str);
+            Android.SendPostToApi(mytitle,mycontent2);
         }
 
         function getPost(){
