@@ -3,21 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/activity_login.xml" value="0.1762917933130699" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/answer_cardview.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/answer_fragment.xml" value="0.17604166666666668" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_allpost_cardview.xml" value="0.22" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_default_fragment.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/askpage_fragment.xml" value="0.15942028985507245" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/askpage_viewall_fragment.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/best_user_cardview.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/blog_cardview.xml" value="0.1762917933130699" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/comment_cardview.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/communitypage_fragment.xml" value="0.15942028985507245" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/notice_cardview.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/noticepage_activity.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/post_cardview.xml" value="0.4466666666666667" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/post_comment_cardview.xml" value="0.3625" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/androidtag.xml" value="0.166" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/androidtag_selected_background.xml" value="0.14" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans/app/src/main/res/drawable/app_logo_xml.xml" value="0.166" />
@@ -188,6 +173,10 @@
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_post_fragment.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_fragment.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_viewall_fragment.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_viewall_fragment2.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_viewall_fragment3.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/communitypage_fragment.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/communitypage_fragment2.xml" value="0.19791666666666666" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/fragment_ask_post.xml" value="0.264" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/item_search_user.xml" value="0.10989583333333333" />
         <entry key="app/src/main/res/drawable/app_logo_xml.xml" value="0.2205" />

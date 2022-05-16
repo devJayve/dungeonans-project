@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.Adapter.CommunityRVAdapter
@@ -30,12 +31,20 @@ class AskShowAllPostFragment : Fragment() {
     var dataCount = 6
     lateinit var setData: MutableList<AskData>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.askpage_viewall_fragment,container,false)
+        val view = inflater.inflate(R.layout.askpage_viewall_fragment2,container,false)
         var postSetMode = requireArguments().getString("Value")
         recyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
         parameter = postSetMode.toString()
         renderUi(0)
         setSpinner(view)
+
+
+        var swipe = view.findViewById<SwipeRefreshLayout>(R.id.askpage_swapeview)
+        swipe.setOnRefreshListener {
+            renderUi(0)
+            swipe.isRefreshing = false
+        }
+
         return view
     }
 
@@ -53,13 +62,17 @@ class AskShowAllPostFragment : Fragment() {
                 }
                 override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
                     var postingList = response.body()!!.posting_list
+                    Log.d("vassfsadf",response.body()!!.posting_list.toString())
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
+
+
                     try {
                         setData = setData(parameter,dataCount, postingList)
                     }
                     catch (e:IndexOutOfBoundsException){
                         setData = setData(parameter,postingList.count(), postingList)
                     } finally {
+
                         var adapter = AskRVAdapter()
                         adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
                             override fun onClick(v: View, position: Int) {
@@ -71,7 +84,14 @@ class AskShowAllPostFragment : Fragment() {
                         recyclerView.layoutManager = LinearLayoutManager(context)
                         var space = LinearSpacingItemDecoration(20)
                         recyclerView.addItemDecoration(space)
+
+//                    }
+//                    catch (e:IndexOutOfBoundsException){
+//
+//                    }
+
                     }
+
                 }
             })
         } else if (parameter == "1") {
@@ -85,7 +105,7 @@ class AskShowAllPostFragment : Fragment() {
                     var postingList = response.body()!!.posting_list
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
                     try {
-                        setData = setData(parameter,dataCount, postingList)
+                        setData = setData(parameter, dataCount, postingList)
                     }
                     catch (e:IndexOutOfBoundsException){
                         setData = setData(parameter,postingList.count(), postingList)
@@ -102,6 +122,7 @@ class AskShowAllPostFragment : Fragment() {
                         var space = LinearSpacingItemDecoration(20)
                         recyclerView.addItemDecoration(space)
                     }
+
                 }
             })
         }

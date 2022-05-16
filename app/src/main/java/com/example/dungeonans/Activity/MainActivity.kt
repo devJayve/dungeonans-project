@@ -122,6 +122,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         startActivity(intent)
     }
 
+
     fun showPost() {
         Log.d("tag","postclicked")
 //        var retrofit = RetrofitClient.initClient()
