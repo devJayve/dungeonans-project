@@ -12,6 +12,12 @@ function changeBoldStyle() {
 
     }
 
+function mygetPost(content){
+    Android.showToast(content);
+    var code_block = document.getElementById("count1")
+    code_block.innerHTML = content;
+}
+
 function changeItalicStyle() {
     var sel = window.getSelection();
     var str=document.getElementById("editing-code");
