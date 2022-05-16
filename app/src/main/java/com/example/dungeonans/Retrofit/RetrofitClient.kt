@@ -169,10 +169,6 @@ object RetrofitClient {
     interface SendQnAPostApi{
         @POST("/board")
         fun sendBoardReq(@Header("auth") token : String, @Body() board_ask_format: board_ask_format) : Call<AskPostResponse>
-//=======
-//        @POST("/board/qna")
-//        fun sendBoardReq(@Body() board_req_format: board_req_format) : Call<QnAPostData>
-//>>>>>>> 846e681d7a61416931f1de75fb9fe17ead4e0ef6
     }
 
     interface GetBlogApi{
