@@ -6,24 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+
+        function getPost(content){
+            Android.showToast(content);
+            var code_block = document.getElementById("count1")
+            code_block.innerHTML = content;
+        }
+
         window.onload = function showAndroidToast() {
             var mywidth = Android.getwidth();
             var px = Android.getwidth(mywidth);
             var mypx = px - 29;
-
             var mypx_codeblcok = px - 40;
             Android.showToast(String(mypx));
             var code_block = document.getElementById("count1")
-            transe.style.width = mypx+"px";
             code_block.style.width = mypx_codeblcok+"px";
-            document.getElementById(id).width = newContent;
         }
     </script>
 </head>
 <body>
 
-<pre class = "hljs" style=" position: absolute; display: none; left: 1px; top: 70.5px; margin: 0; word-break: break-all; white-space: pre-wrap; height:390px; width:388px; background-color: white; color: black" id = "count1">
-    </pre>
+<body style="margin: 0;" >
+<pre class = "hljs" style="border : 2px solid black; position: absolute;  left: 1px;  margin: 0; word-break: break-all; white-space: pre-wrap; height:390px; width:388px; background-color: white; color: black" id = "count1">
+d=안녕 나는 조수민이야!!
+</pre>
+
+</body>
 
 </body>
 </html>
