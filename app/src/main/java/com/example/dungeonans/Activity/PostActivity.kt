@@ -161,7 +161,7 @@ class PostActivity : AppCompatActivity() {
                 askPostWebView.setWebViewClient(object : WebViewClient() {
                     override fun onPageFinished(view: WebView, weburl: String) {
                         Log.d("실험", content)
-                        askPostWebView.loadUrl("javascript:mygetPost("+ '"' + content.toString() +'"'+")")
+                        askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content.toString() +'"'+")")
                         askPostWebView.loadUrl("javascript:myupdate()")
                     }
                 })

@@ -535,8 +535,8 @@
         }
 
         function uploadPost(){
-            var transe = document.getElementById("count1");
-            var str = transe.innerHTML;
+            var transe = document.getElementById("editing-code");
+            var str = transe.value;
             var mytitle = Android.getTitle()
             Android.SendPostToApi(mytitle,str);
         }

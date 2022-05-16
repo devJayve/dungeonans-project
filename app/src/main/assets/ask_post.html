@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/solarized-light.min.css">
+    <script>hljs.highlightAll();</script>
     <script type="text/javascript">
 
 
@@ -21,7 +24,159 @@
         function mygetPost(content){
             var real = content.replace(new RegExp("\"","g"),"‘");
             var code_block = document.getElementById("count1")
-            code_block.innerHTML = content;
+            code_block.innerHTML = real;
+        }
+
+        function update_mycode(content){
+            var asdf = 0;
+            var textcound = 0 ;
+            var checkTagRequired = true;
+            var first = 0;
+            var final = 0;
+<!--            【(이미지입니다)\n" + imagePath + "】-->
+
+
+            var boldfirst = 0 ;
+            var boldfinal = 0;
+            var boldcount = 0;
+
+            var italicfirst = 0 ;
+            var italicfinal = 0;
+            var italiccount = 0;
+
+            var imagefirst = 0;
+            var imagefinal = 0;
+            var imagecount = 0;
+
+            var result_elem = document.getElementById("count1");
+
+
+
+            var lines = content.split("\n");
+            var resultString = "";
+
+
+            for (var i = 0; i < lines.length; i++) {
+                 resultString += "<p>"+ lines[i] + "</p>";
+            }
+
+            for (var i = 0 ; i <resultString.length; i++){
+
+                if (resultString[i] == "『"){
+                    if (boldcount == 0){
+                        boldfirst = i;
+                        boldcount += 1;
+                    }
+                }
+                else if (resultString[i] == "』"){
+                    if (boldcount == 1){
+                        boldfinal = i;
+                        boldcount += 1;
+                    }
+                }
+                if (boldcount == 2){
+                    var boldtext = resultString.slice(boldfirst,boldfinal + 1);
+                    var boldinnertext = resultString.slice(boldfirst+1,boldfinal);
+                    console.log(boldtext)
+                    resultString = resultString.replace(new RegExp(boldtext, "g"),"<span style=" + "font-weight:bold;"+">"+boldinnertext+"</span>");
+                    boldcount = 0;
+                }
+
+                else if (resultString[i] == "「"){
+                    if (italiccount == 0){
+                        italicfirst = i;
+                        italiccount += 1;
+                    }
+                }
+                else if (resultString[i] == "」"){
+                    if (italiccount == 1){
+                        italicfinal = i;
+                        italiccount += 1;
+                    }
+                }
+                if (italiccount == 2){
+                    var italictext = resultString.slice(italicfirst,italicfinal + 1);
+                    var italicinnertext = resultString.slice(italicfirst+1,italicfinal);
+                    console.log(italicfirst,italicfinal)
+                    resultString = resultString.replace(new RegExp(italictext, "g"),"<span style=" + "font-style:italic;"+">"+italicinnertext+"</span>");
+                    italiccount = 0;
+                }
+
+                else if (resultString[i] == "【"){
+                    if (imagecount == 0){
+                        imagefirst = i;
+                        imagecount += 1;
+                    }
+                }
+                else if (resultString[i] == "】"){
+                    if (imagecount == 1){
+                        imagefinal = i;
+                        imagecount += 1;
+                    }
+                }
+
+                if (imagecount == 2){
+                    var imagetext = resultString.slice(imagefirst,imagefinal + 1);
+                    var imageinnertext = resultString.slice(imagefirst+1,imagefinal);
+                    resultString = resultString.replace(new RegExp(imagetext, "g"),"<img src="+'"'+imageinnertext+'"'+" style = " + "width:100%;"+">")
+                    imagecount = 0;
+                }
+
+                else if (resultString[i] == "‛"){
+                    if (textcound == 0){
+                            first = i;
+                            textcound += 1;
+                        }
+                        else if (textcound == 1){
+                            final = i;
+                            textcound += 1;
+                        }
+                }
+                if (textcound == 2){
+
+                    String.prototype.replaceAt = function(index, replacement) {
+                        return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+                    }
+
+                    var mytext = resultString.slice(first+1,final);
+                    var mytext2 = mytext
+                    console.log(mytext)
+                    var mytext3 = mytext.replace(new RegExp("</p><p>", "g"), "<br>");
+                    console.log(mytext3)
+                    let html = hljs.highlightAuto(mytext3).value;
+
+
+                    for (i = 0 ; i <html.length ; i ++){
+                        try{
+                            if (html[i] == " "){
+                                if (html[i-1] && html[i+1] == " "){
+                                    console.log(i)
+                                    html = html.slice(0,i) + "&nbsp;" + html.slice(i+1)
+                                    console.log(html)
+                                }
+                            }
+                        }
+                        catch(err){
+                            //pass
+                        }
+                    }
+
+                    console.log(html)
+                    var html3 = html.replace(new RegExp('&lt;br&gt;', "g"),'<br>')
+                    var html4 = html3.replace(new RegExp('<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>', "g"),'<br>')
+
+
+                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + "style = width:fit-content;" +"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
+                    textcound = 0;
+                }
+
+            }
+
+
+
+
+            result_elem.innerHTML = resultString;
+
         }
 
     </script>
