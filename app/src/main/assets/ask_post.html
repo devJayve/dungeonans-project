@@ -47,10 +47,10 @@
             var imagecount = 0;
 
             var result_elem = document.getElementById("count1");
+            Android2.showToast2(content)
 
-            var mycontent;
-            mycontent = content.replace(new RegExp("\"","g"),"\\"+"\"")
-            var lines = mycontent.split("\n");
+            Android2.showToast2(mycontent)
+            var lines = content.split("\n");
             var resultString = "";
 
 
