@@ -27,68 +27,71 @@ class AskShowAllPostFragment : Fragment() {
 
     //조수민 수정 - 파라미터를 저장할 공간 생성
     lateinit var parameter : String
+    lateinit var recyclerView : RecyclerView
     //
+    var dataCount = 6
+    lateinit var setData: MutableList<AskData>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.askpage_viewall_fragment2,container,false)
+        val view = inflater.inflate(R.layout.askpage_viewall_fragment,container,false)
         var postSetMode = requireArguments().getString("Value")
-        Log.d("tag",postSetMode.toString())
+        recyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
         parameter = postSetMode.toString()
 
-        renderUi(view,0)
+        renderUi(0)
         setSpinner(view)
 
-        var swipe = view.findViewById<SwipeRefreshLayout>(R.id.ask_all_swapeview)
-        swipe.setOnRefreshListener {
-            renderUi(view,0)
-            swipe.isRefreshing = false
-        }
+//        var swipe = view.findViewById<SwipeRefreshLayout>(R.id.ask_all_swapeview)
+//        swipe.setOnRefreshListener {
+//            renderUi(view,0)
+//            swipe.isRefreshing = false
+//        }
 
         return view
     }
 
     //조수민 수정 : Api 적용
-    private fun renderUi(view: View , start_index : Int) {
+    private fun renderUi(start_index : Int) {
         var retrofit = RetrofitClient.initClient()
         var data = board_req_format(start_index,6)
 
-
         //조수민 수정 : 만약 parameter 가 0 즉 전체 질문 보기라면
         if (parameter == "0") {
-
             var sendData = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
-
             sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
                 override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
                     Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
                 }
-
                 override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
                     var postingList = response.body()!!.posting_list
                     Log.d("vassfsadf",response.body()!!.posting_list.toString())
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
-//                    try {
-                        var setData: MutableList<AskData> = setData2(6, postingList)
-                        var recyclerView: RecyclerView =
-                            view.findViewById(R.id.myaskAllPostPageRecyclerView)
-                        Log.d("안녕하세요",recyclerView.toString())
+
+
+                    try {
+                        setData = setData(parameter,dataCount, postingList)
+                    }
+                    catch (e:IndexOutOfBoundsException){
+                        setData = setData(parameter,postingList.count(), postingList)
+                    } finally {
+
                         var adapter = AskRVAdapter()
                         adapter.listData = setData
                         recyclerView.adapter = adapter
                         recyclerView.layoutManager = LinearLayoutManager(context)
                         var space = LinearSpacingItemDecoration(20)
                         recyclerView.addItemDecoration(space)
+
 //                    }
 //                    catch (e:IndexOutOfBoundsException){
 //
 //                    }
+
+                    }
+
                 }
             })
-        }
-
-        else if (parameter == "1") {
-
+        } else if (parameter == "1") {
             var sendData = retrofit.create(RetrofitClient.GetUnAnsweredApi::class.java)
-
             sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
                 override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
                     Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
@@ -98,10 +101,11 @@ class AskShowAllPostFragment : Fragment() {
                     var postingList = response.body()!!.posting_list
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
                     try {
-                        var setData: MutableList<AskData> = setData2(6, postingList)
-                        var recyclerView: RecyclerView =
-                            view.findViewById(R.id.askAllPostPageRecyclerView)
-                            Log.d("안녕하세요",recyclerView.toString())
+                        setData = setData(parameter, dataCount, postingList)
+                    }
+                    catch (e:IndexOutOfBoundsException){
+                        setData = setData(parameter,postingList.count(), postingList)
+                    } finally {
                         var adapter = AskRVAdapter()
                         adapter.listData = setData
                         recyclerView.adapter = adapter
@@ -109,29 +113,26 @@ class AskShowAllPostFragment : Fragment() {
                         var space = LinearSpacingItemDecoration(20)
                         recyclerView.addItemDecoration(space)
                     }
-                    catch (e:IndexOutOfBoundsException){
-                        Log.d("안녕하세요","ㅋㅌㅊㅍ")
-                    }
+
                 }
             })
         }
 
         else if (parameter == "2") {
-
             var sendData = retrofit.create(RetrofitClient.GetClosedApi::class.java)
-
             sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
                 override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
                     Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
                 }
-
                 override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
                     var postingList = response.body()!!.posting_list
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨ㅓ
                     try {
-                        var setData: MutableList<AskData> = setData2(6, postingList)
-                        var recyclerView: RecyclerView =
-                            view.findViewById(R.id.askAllPostPageRecyclerView)
+                        setData = setData(parameter, dataCount, postingList)
+                    }
+                    catch (e:IndexOutOfBoundsException){
+                        setData = setData(parameter,postingList.count(), postingList)
+                    } finally {
                         var adapter = AskRVAdapter()
                         adapter.listData = setData
                         recyclerView.adapter = adapter
@@ -139,31 +140,10 @@ class AskShowAllPostFragment : Fragment() {
                         var space = LinearSpacingItemDecoration(20)
                         recyclerView.addItemDecoration(space)
                     }
-                    catch (e:IndexOutOfBoundsException){
-
-                    }
                 }
             })
         }
     }
-
-//        var recyclerView : RecyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
-////        var data : MutableList<AskData> = setData()
-//        var adapter = AskCardViewAdapter()
-//        adapter.setItemClickListener(object : AskCardViewAdapter.OnItemClickListener{
-//            override fun onClick(v: View, position: Int) {
-//                var mainActivity = context as MainActivity
-//                mainActivity.showAskPost(position)
-//                Log.d("tag",position.toString())
-//            }
-//        })
-//        adapter.listData = data
-//        recyclerView.adapter = adapter
-//        recyclerView.layoutManager = LinearLayoutManager(context)
-//        var space = LinearSpacingItemDecoration(20)
-//        recyclerView.addItemDecoration(space)
-
-
 
     private fun setSpinner(view:View) {
         val spinner = view.findViewById<Spinner>(R.id.setPostTypeSpinner)
@@ -176,7 +156,6 @@ class AskShowAllPostFragment : Fragment() {
             }
         }
         spinner.adapter = myAdapter
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>,view: View,position: Int,id: Long) {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
@@ -194,25 +173,8 @@ class AskShowAllPostFragment : Fragment() {
         }
     }
 
-    private fun setData() : MutableList<AskData> {
-        var data : MutableList<AskData>  = mutableListOf()
-        for (index in 0 until 6) {
-            var askUserImage = R.drawable.profile_base_icon
-            var askUserName = "김주영"
-            var askUserNickname = "(@김주영사랑해)"
-            var askPostTitle = "김주영사랑해리얼로"
-            var askPostBody = "안녕하세요 저는 김주영을 사랑합니다"
-            var askStatusImage = R.drawable.unanswered_icon
-            var askPostLikeCount = "999"
-            var askPostCommentCount = "999"
-            var listData = AskData(askUserImage,askUserName,askUserNickname,askPostTitle,askPostBody,askStatusImage,askPostLikeCount,askPostCommentCount)
-            data.add(listData)
-        }
-        return data
-    }
-
     //조수민 수정 api 에서 들어온 데이터에 맞춰서 작성. 이미지는 어떻게 할 건지 고민해봐야할듯?
-    private fun setData2(postCount: Int,postingData : List<posting_format_res>) : MutableList<AskData> {
+    private fun setData(parameter : String, postCount: Int, postingData : List<posting_format_res>) : MutableList<AskData> {
         var data : MutableList<AskData>  = mutableListOf()
         for (index in 0 until postCount) {
             var askUserImage = index
@@ -220,14 +182,17 @@ class AskShowAllPostFragment : Fragment() {
             var userNickName = postingData[index].nickname
             var postTitle = postingData[index].title
             var postBody = postingData[index].content
-            var askStatusImage = index;
+            var askStatusImage = index
+            if (parameter == "1") {
+                askStatusImage = R.drawable.unanswered_icon
+            } else if (parameter == "2") {
+                askStatusImage = R.drawable.answered_icon
+            }
             var likeCount = postingData[index].like_num.toString()
             var commentCount = postingData[index].comment_num.toString()
-            var listData = AskData(askUserImage,askUserName,userNickName,postTitle,postBody,askStatusImage
-            ,likeCount,commentCount)
+            var listData = AskData(askUserImage,askUserName,userNickName,postTitle,postBody,askStatusImage,likeCount,commentCount)
             data.add(listData)
         }
         return data
     }
-    //
 }

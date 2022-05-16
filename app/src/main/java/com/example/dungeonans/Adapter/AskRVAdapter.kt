@@ -18,10 +18,13 @@ import com.example.dungeonans.Holder.Holder
 import com.example.dungeonans.R
 
 
-class AskRVAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adapter를 사용하기 위해 상속
+class AskRVAdapter : RecyclerView.Adapter<Holder>() {
 
-    var listData = mutableListOf<AskData>() // 리스트 데이터를 전달받을 변수
+    var listData = mutableListOf<AskData>()
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        Log.d("listdata",listData.toString())
+    }
 
     override fun getItemCount(): Int {
         return listData.size
@@ -43,7 +46,6 @@ class AskRVAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adapter를
 //            val intent = Intent(Context, AnswerActivity::class.java)
 //            startActivity(intent)
         }
-
         val data = listData.get(position)
         holder.setAskPostValue(data)
     }
@@ -57,6 +59,4 @@ class AskRVAdapter : RecyclerView.Adapter<Holder>() { // RecyclerView.Adapter를
     }
     // (4) setItemClickListener로 설정한 함수 실행
     private lateinit var itemClickListener : AskRVAdapter.OnItemClickListener
-
-
 }

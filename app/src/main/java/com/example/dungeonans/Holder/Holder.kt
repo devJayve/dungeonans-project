@@ -40,7 +40,7 @@ class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         askUserNickname.text = listData.askUserNickname
         askPostTitle.text = listData.askPostTitle
         askPostBody.text = listData.askPostBody
-//        askStatusImage.setBackgroundResource(listData.askStatusImage)
+        askStatusImage.setBackgroundResource(listData.askStatusImage)
         askPostLikeCount.text = listData.askPostLikeCount
         askCommentCount.text = listData.askCommentCount
     }
