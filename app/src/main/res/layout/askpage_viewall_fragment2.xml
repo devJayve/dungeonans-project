@@ -2,7 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/askpage_swapeview"
-    android:layout_height="wrap_content">
+    android:layout_height="400dp">
 
     <androidx.core.widget.NestedScrollView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +35,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="-20dp"
-                android:id="@+id/myaskAllPostPageRecyclerView"
+                android:id="@+id/askAllPostPageRecyclerView"
                 android:layout_width="match_parent"
                 android:background="#00ff0000"
                 android:layout_height="wrap_content">
