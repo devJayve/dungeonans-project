@@ -11,779 +11,818 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:text="질문 전체보기"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/showAllPostBtn"
-                android:layout_width="15dp"
-                android:layout_height="20dp"
-                android:background="@drawable/direction_right_icon"
-                android:layout_marginRight="30dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-                <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:weightSum="10">
+                    android:layout_height="wrap_content">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:elevation="3dp"
-                        android:layout_weight="9.5"
-                        android:layout_height="60dp"
-                        app:cardCornerRadius="25dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/allPost_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:id="@+id/allPost_1_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="30dp"
-                                android:text="sharedPreference 사용 질문"
-                                android:layout_marginLeft="10dp"
-                                android:textColor="@color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/button2"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/button2"
-                                android:layout_width="50dp"
-                                android:layout_height="15dp"
-                                android:layout_marginLeft="20dp"
-                                android:background="@drawable/unanswered_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/allPost_1_title"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/allPost_1_title" />
-
-                            <TextView
-                                android:id="@+id/allPost_1_content"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="sharedPreference 이번 과제 "
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/button2"
-                                app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_marginRight="100dp"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="180dp"
-                                android:background="@drawable/thumbs_up"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
-
-                            <TextView
-                                android:id="@+id/allPost_1_likecount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:text="101"
-                                android:textSize="15sp"
-                                android:textColor="@color/DarkBlue"
-                                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                                app:layout_constraintTop_toTopOf="@+id/imageView2" />
-
-                            <ImageView
-                                android:id="@+id/imageView5"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_marginLeft="5dp"
-                                android:background="@drawable/comment_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
-                                app:layout_constraintStart_toEndOf="@+id/allPost_1_likecount"
-                                app:layout_constraintTop_toTopOf="@+id/allPost_1_likecount" />
-
-                            <TextView
-                                android:id="@+id/allPost_1_commentcount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="101"
-                                android:textSize="15sp"
-                                android:textColor="@color/gray"
-                                app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
-                                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                                app:layout_constraintTop_toTopOf="@+id/allPost_1_likecount" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:weightSum="10">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_width="0dp"
-                        android:elevation="3dp"
-                        android:layout_weight="9.5"
-                        android:layout_height="60dp"
-                        app:cardCornerRadius="25dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/allPost_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:id="@+id/allPost_2_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="30dp"
-                                android:text="sharedPreference 사용 질문"
-                                android:layout_marginLeft="10dp"
-                                android:textColor="@color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/button2adadf"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/button2adadf"
-                                android:layout_width="50dp"
-                                android:layout_height="15dp"
-                                android:layout_marginLeft="20dp"
-                                android:background="@drawable/unanswered_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/allPost_2_title"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/allPost_2_title" />
-
-                            <TextView
-                                android:id="@+id/allPost_2_content"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="sharedPreference 이번 과제 "
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/button2adadf"
-                                app:layout_constraintTop_toBottomOf="@+id/button2adadf" />
-
-                            <ImageView
-                                android:id="@+id/adfadfs"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_marginRight="100dp"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="180dp"
-                                android:background="@drawable/thumbs_up"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent" />
-
-                            <TextView
-                                android:id="@+id/allPost_2_commentcount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:text="101"
-                                android:textSize="15sp"
-                                android:textColor="@color/DarkBlue"
-                                app:layout_constraintBottom_toBottomOf="@+id/adfadfs"
-                                app:layout_constraintStart_toEndOf="@+id/adfadfs"
-                                app:layout_constraintTop_toTopOf="@+id/adfadfs" />
-
-                            <ImageView
-                                android:id="@+id/imageViewadfadfdasf5"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_marginLeft="5dp"
-                                android:background="@drawable/comment_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
-                                app:layout_constraintStart_toEndOf="@+id/allPost_2_commentcount"
-                                app:layout_constraintTop_toTopOf="@+id/allPost_2_commentcount" />
-
-                            <TextView
-                                android:id="@+id/allPost_2_likecount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="101"
-                                android:textSize="15sp"
-                                android:textColor="@color/gray"
-                                app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
-                                app:layout_constraintStart_toEndOf="@+id/imageViewadfadfdasf5"
-                                app:layout_constraintTop_toTopOf="@+id/allPost_2_commentcount" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
-            </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:background="@color/lightGrey"/>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="진행중인 질문"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/showUnAnsweredPostBtn"
-                    android:layout_width="15dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/direction_right_icon"
-                    android:layout_marginRight="30dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_weight="9.5"
-                            android:elevation="3dp"
-                            app:cardCornerRadius="25dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/unAnsweredPost_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_1_title"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginBottom="30dp"
-                                    android:text="sharedPreference 사용 질문"
-                                    android:textColor="@color/black"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/ADFAFSDAFSDF"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/ADFAFSDAFSDF"
-                                    android:layout_width="50dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:background="@drawable/unanswered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_title"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_title" />
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_1_content"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="sharedPreference 이번 과제 "
-                                    app:layout_constraintStart_toStartOf="@+id/ADFAFSDAFSDF"
-                                    app:layout_constraintTop_toBottomOf="@+id/ADFAFSDAFSDF" />
-
-                                <ImageView
-                                    android:id="@+id/imaADFAFSDF2"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="180dp"
-                                    android:layout_marginRight="100dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:background="@drawable/thumbs_up"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_1_likecount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="101"
-                                    android:textColor="@color/DarkBlue"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/imaADFAFSDF2"
-                                    app:layout_constraintStart_toEndOf="@+id/imaADFAFSDF2"
-                                    app:layout_constraintTop_toTopOf="@+id/imaADFAFSDF2" />
-
-                                <ImageView
-                                    android:id="@+id/ADFAFDSF"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/unAnsweredPost_1_likecount"
-                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_likecount" />
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_1_commentcount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="101"
-                                    android:textColor="@color/gray"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/ADFAFDSF"
-                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_likecount" />
-
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_weight="9.5"
-                            android:elevation="3dp"
-                            app:cardCornerRadius="25dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/unAnsweredPost_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_2_title"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginBottom="30dp"
-                                    android:text="sharedPreference 사용 질문"
-                                    android:textColor="@color/black"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/adadadafd"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/adadadafd"
-                                    android:layout_width="50dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:background="@drawable/unanswered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_title"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_title" />
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_2_content"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="sharedPreference 이번 과제 "
-                                    app:layout_constraintStart_toStartOf="@+id/adadadafd"
-                                    app:layout_constraintTop_toBottomOf="@+id/adadadafd" />
-
-                                <ImageView
-                                    android:id="@+id/AFDSFAFASFA1daSFSDF"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="180dp"
-                                    android:layout_marginRight="100dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:background="@drawable/thumbs_up"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_2_likecount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="101"
-                                    android:textColor="@color/DarkBlue"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/AFDSFAFASFA1daSFSDF"
-                                    app:layout_constraintStart_toEndOf="@+id/AFDSFAFASFA1daSFSDF"
-                                    app:layout_constraintTop_toTopOf="@+id/AFDSFAFASFA1daSFSDF" />
-
-                                <ImageView
-                                    android:id="@+id/ZNZCzczdfzZ"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/unAnsweredPost_2_likecount"
-                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_likecount" />
-
-                                <TextView
-                                    android:id="@+id/unAnsweredPost_2_commentcount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="101"
-                                    android:textColor="@color/gray"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/ZNZCzczdfzZ"
-                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_likecount" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:background="@color/lightGrey"/>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="답변된 질문"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/showAnsweredPostBtn"
-                    android:layout_width="15dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/direction_right_icon"
-                    android:layout_marginRight="30dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView12" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_weight="9.5"
-                            android:elevation="3dp"
-                            app:cardCornerRadius="25dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/answeredPost_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/answeredPost_1_title"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginBottom="30dp"
-                                    android:text="sharedPreference 사용 질문"
-                                    android:textColor="@color/black"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/adad"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/adad"
-                                    android:layout_width="50dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:background="@drawable/answered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_title"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_1_title" />
-
-                                <TextView
-                                    android:id="@+id/answeredPost_1_content"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="sharedPreference 이번 과제 "
-                                    app:layout_constraintStart_toStartOf="@+id/adad"
-                                    app:layout_constraintTop_toBottomOf="@+id/adad" />
-
-                                <ImageView
-                                    android:id="@+id/adfadzc"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="180dp"
-                                    android:layout_marginRight="100dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:background="@drawable/thumbs_up"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/answeredPost_1_likecount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="101"
-                                    android:textColor="@color/DarkBlue"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/adfadzc"
-                                    app:layout_constraintStart_toEndOf="@+id/adfadzc"
-                                    app:layout_constraintTop_toTopOf="@+id/adfadzc" />
-
-                                <ImageView
-                                    android:id="@+id/adzczdfdszf"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/answeredPost_1_likecount"
-                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_1_likecount" />
-
-                                <TextView
-                                    android:id="@+id/answeredPost_1_commentcount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="101"
-                                    android:textColor="@color/gray"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/adzczdfdszf"
-                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_1_likecount" />
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_weight="9.5"
-                            android:elevation="3dp"
-                            app:cardCornerRadius="25dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/answeredPost_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/answeredPost_2_title"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginBottom="30dp"
-                                    android:text="sharedPreference 사용 질문"
-                                    android:textColor="@color/black"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/ADAFSDFDFAF"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/ADAFSDFDFAF"
-                                    android:layout_width="50dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:background="@drawable/answered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_title"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_2_title" />
-
-                                <TextView
-                                    android:id="@+id/answeredPost_2_content"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="sharedPreference 이번 과제 "
-                                    app:layout_constraintStart_toStartOf="@+id/ADAFSDFDFAF"
-                                    app:layout_constraintTop_toBottomOf="@+id/ADAFSDFDFAF" />
-
-                                <ImageView
-                                    android:id="@+id/AFDSFAFASFASFSDF"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="180dp"
-                                    android:layout_marginRight="100dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:background="@drawable/thumbs_up"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/answeredPost_2_likecount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="101"
-                                    android:textColor="@color/DarkBlue"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/AFDSFAFASFASFSDF"
-                                    app:layout_constraintStart_toEndOf="@+id/AFDSFAFASFASFSDF"
-                                    app:layout_constraintTop_toTopOf="@+id/AFDSFAFASFASFSDF" />
-
-                                <ImageView
-                                    android:id="@+id/ZNZCZ"
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/answeredPost_2_likecount"
-                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_2_likecount" />
-
-                                <TextView
-                                    android:id="@+id/answeredPost_2_commentcount"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="101"
-                                    android:textColor="@color/gray"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
-                                    app:layout_constraintStart_toEndOf="@+id/ZNZCZ"
-                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_2_likecount" />
-
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:background="@color/lightGrey"/>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="우수 회원"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:scrollbars="none"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13">
-
-                    <LinearLayout
-                        android:id="@+id/bestUserLayout"
-                        android:layout_width="match_parent"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="10dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:text="질문 전체보기"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <Button
+                        android:id="@+id/showAllPostBtn"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/direction_right_icon"
+                        android:layout_marginRight="30dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:weightSum="10">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:elevation="3dp"
+                                    android:layout_weight="9.5"
+                                    android:layout_height="60dp"
+                                    app:cardCornerRadius="25dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/allPost_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/allPost_1_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="30dp"
+                                            android:text="sharedPreference 사용 질문"
+                                            android:layout_marginLeft="10dp"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/button2"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/button2"
+                                            android:layout_width="50dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@drawable/unanswered_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/allPost_1_title"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/allPost_1_title" />
+
+                                        <TextView
+                                            android:id="@+id/allPost_1_content"
+                                            android:layout_width="250dp"
+                                            android:layout_height="wrap_content"
+                                            android:text="sharedPreference 이번 과제"
+                                            android:maxWidth="250dp"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:layout_marginTop="10dp"
+                                            app:layout_constraintStart_toStartOf="@+id/button2"
+                                            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+                                        <ImageView
+                                            android:id="@+id/imageView2"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginRight="80dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:layout_marginLeft="180dp"
+                                            android:background="@drawable/thumbs_up"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                                        <TextView
+                                            android:id="@+id/allPost_1_likecount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="101"
+                                            android:textSize="15sp"
+                                            android:textColor="@color/DarkBlue"
+                                            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                                            app:layout_constraintStart_toEndOf="@+id/imageView2"
+                                            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+                                        <ImageView
+                                            android:id="@+id/imageView5"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="@drawable/comment_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/allPost_1_likecount"
+                                            app:layout_constraintTop_toTopOf="@+id/allPost_1_likecount" />
+
+                                        <TextView
+                                            android:id="@+id/allPost_1_commentcount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="101"
+                                            android:textSize="15sp"
+                                            android:textColor="@color/gray"
+                                            app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/imageView5"
+                                            app:layout_constraintTop_toTopOf="@+id/allPost_1_likecount" />
+
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:weightSum="10">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="0dp"
+                                    android:elevation="3dp"
+                                    android:layout_weight="9.5"
+                                    android:layout_height="60dp"
+                                    app:cardCornerRadius="25dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/allPost_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/allPost_2_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="30dp"
+                                            android:text="sharedPreference 사용 질문"
+                                            android:layout_marginLeft="10dp"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/button2adadf"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/button2adadf"
+                                            android:layout_width="50dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@drawable/unanswered_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/allPost_2_title"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/allPost_2_title" />
+
+                                        <TextView
+                                            android:id="@+id/allPost_2_content"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="sharedPreference 이번 과제 "
+                                            android:layout_marginTop="10dp"
+                                            android:maxWidth="250dp"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            app:layout_constraintStart_toStartOf="@+id/button2adadf"
+                                            app:layout_constraintTop_toBottomOf="@+id/button2adadf" />
+
+                                        <ImageView
+                                            android:id="@+id/adfadfs"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginRight="80dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:layout_marginLeft="180dp"
+                                            android:background="@drawable/thumbs_up"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/allPost_2_commentcount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="101"
+                                            android:textSize="15sp"
+                                            android:textColor="@color/DarkBlue"
+                                            app:layout_constraintBottom_toBottomOf="@+id/adfadfs"
+                                            app:layout_constraintStart_toEndOf="@+id/adfadfs"
+                                            app:layout_constraintTop_toTopOf="@+id/adfadfs" />
+
+                                        <ImageView
+                                            android:id="@+id/imageViewadfadfdasf5"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="@drawable/comment_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
+                                            app:layout_constraintStart_toEndOf="@+id/allPost_2_commentcount"
+                                            app:layout_constraintTop_toTopOf="@+id/allPost_2_commentcount" />
+
+                                        <TextView
+                                            android:id="@+id/allPost_2_likecount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="101"
+                                            android:textSize="15sp"
+                                            android:textColor="@color/gray"
+                                            app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
+                                            app:layout_constraintStart_toEndOf="@+id/imageViewadfadfdasf5"
+                                            app:layout_constraintTop_toTopOf="@+id/allPost_2_commentcount" />
+
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@color/lightGrey"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="진행중인 질문"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/showUnAnsweredPostBtn"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/direction_right_icon"
+                        android:layout_marginRight="30dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight="9.5"
+                                    android:elevation="3dp"
+                                    app:cardCornerRadius="25dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/unAnsweredPost_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_1_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginBottom="30dp"
+                                            android:text="sharedPreference 사용 질문"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/ADFAFSDAFSDF"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/ADFAFSDAFSDF"
+                                            android:layout_width="50dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@drawable/unanswered_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_title"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_title" />
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_1_content"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:maxWidth="250dp"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="sharedPreference 이번 과제 "
+                                            app:layout_constraintStart_toStartOf="@+id/ADFAFSDAFSDF"
+                                            app:layout_constraintTop_toBottomOf="@+id/ADFAFSDAFSDF" />
+
+                                        <ImageView
+                                            android:id="@+id/imaADFAFSDF2"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="180dp"
+                                            android:layout_marginRight="80dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/thumbs_up"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_1_likecount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="101"
+                                            android:textColor="@color/DarkBlue"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/imaADFAFSDF2"
+                                            app:layout_constraintStart_toEndOf="@+id/imaADFAFSDF2"
+                                            app:layout_constraintTop_toTopOf="@+id/imaADFAFSDF2" />
+
+                                        <ImageView
+                                            android:id="@+id/ADFAFDSF"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="@drawable/comment_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/unAnsweredPost_1_likecount"
+                                            app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_likecount" />
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_1_commentcount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="101"
+                                            android:textColor="@color/gray"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/ADFAFDSF"
+                                            app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_likecount" />
+
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight="9.5"
+                                    android:elevation="3dp"
+                                    app:cardCornerRadius="25dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/unAnsweredPost_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_2_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginBottom="30dp"
+                                            android:text="sharedPreference 사용 질문"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/adadadafd"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/adadadafd"
+                                            android:layout_width="50dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@drawable/unanswered_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_title"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_title" />
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_2_content"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:maxWidth="250dp"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="sharedPreference 이번 과제 "
+                                            app:layout_constraintStart_toStartOf="@+id/adadadafd"
+                                            app:layout_constraintTop_toBottomOf="@+id/adadadafd" />
+
+                                        <ImageView
+                                            android:id="@+id/AFDSFAFASFA1daSFSDF"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="180dp"
+                                            android:layout_marginRight="80dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/thumbs_up"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_2_likecount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="101"
+                                            android:textColor="@color/DarkBlue"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/AFDSFAFASFA1daSFSDF"
+                                            app:layout_constraintStart_toEndOf="@+id/AFDSFAFASFA1daSFSDF"
+                                            app:layout_constraintTop_toTopOf="@+id/AFDSFAFASFA1daSFSDF" />
+
+                                        <ImageView
+                                            android:id="@+id/ZNZCzczdfzZ"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="@drawable/comment_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/unAnsweredPost_2_likecount"
+                                            app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_likecount" />
+
+                                        <TextView
+                                            android:id="@+id/unAnsweredPost_2_commentcount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="101"
+                                            android:textColor="@color/gray"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/ZNZCzczdfzZ"
+                                            app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_likecount" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
 
                     </LinearLayout>
-                </HorizontalScrollView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@color/lightGrey"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="답변된 질문"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/showAnsweredPostBtn"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/direction_right_icon"
+                        android:layout_marginRight="30dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight="9.5"
+                                    android:elevation="3dp"
+                                    app:cardCornerRadius="25dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/answeredPost_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_1_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginBottom="30dp"
+                                            android:text="sharedPreference 사용 질문"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/adad"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/adad"
+                                            android:layout_width="50dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@drawable/answered_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_title"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/answeredPost_1_title" />
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_1_content"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:maxWidth="250dp"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="sharedPreference 이번 과제 "
+                                            app:layout_constraintStart_toStartOf="@+id/adad"
+                                            app:layout_constraintTop_toBottomOf="@+id/adad" />
+
+                                        <ImageView
+                                            android:id="@+id/adfadzc"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="180dp"
+                                            android:layout_marginRight="80dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/thumbs_up"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_1_likecount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="101"
+                                            android:textColor="@color/DarkBlue"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/adfadzc"
+                                            app:layout_constraintStart_toEndOf="@+id/adfadzc"
+                                            app:layout_constraintTop_toTopOf="@+id/adfadzc" />
+
+                                        <ImageView
+                                            android:id="@+id/adzczdfdszf"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="@drawable/comment_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/answeredPost_1_likecount"
+                                            app:layout_constraintTop_toTopOf="@+id/answeredPost_1_likecount" />
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_1_commentcount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="101"
+                                            android:textColor="@color/gray"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/adzczdfdszf"
+                                            app:layout_constraintTop_toTopOf="@+id/answeredPost_1_likecount" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="60dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_weight="9.5"
+                                    android:elevation="3dp"
+                                    app:cardCornerRadius="25dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/answeredPost_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_2_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginBottom="30dp"
+                                            android:text="sharedPreference 사용 질문"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/ADAFSDFDFAF"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/ADAFSDFDFAF"
+                                            android:layout_width="50dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@drawable/answered_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_title"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/answeredPost_2_title" />
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_2_content"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:maxWidth="250dp"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="sharedPreference 이번 과제 "
+                                            app:layout_constraintStart_toStartOf="@+id/ADAFSDFDFAF"
+                                            app:layout_constraintTop_toBottomOf="@+id/ADAFSDFDFAF" />
+
+                                        <ImageView
+                                            android:id="@+id/AFDSFAFASFASFSDF"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="180dp"
+                                            android:layout_marginRight="80dp"
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/thumbs_up"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_2_likecount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="101"
+                                            android:textColor="@color/DarkBlue"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/AFDSFAFASFASFSDF"
+                                            app:layout_constraintStart_toEndOf="@+id/AFDSFAFASFASFSDF"
+                                            app:layout_constraintTop_toTopOf="@+id/AFDSFAFASFASFSDF" />
+
+                                        <ImageView
+                                            android:id="@+id/ZNZCZ"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="@drawable/comment_icon"
+                                            app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/answeredPost_2_likecount"
+                                            app:layout_constraintTop_toTopOf="@+id/answeredPost_2_likecount" />
+
+                                        <TextView
+                                            android:id="@+id/answeredPost_2_commentcount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="101"
+                                            android:textColor="@color/gray"
+                                            android:textSize="15sp"
+                                            app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
+                                            app:layout_constraintStart_toEndOf="@+id/ZNZCZ"
+                                            app:layout_constraintTop_toTopOf="@+id/answeredPost_2_likecount" />
+
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@color/lightGrey"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="우수 회원"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:scrollbars="none"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+                        <LinearLayout
+                            android:id="@+id/bestUserLayout"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+            <ProgressBar
+                android:layout_marginTop="-100dp"
+                android:id="@+id/mainLoading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+        </FrameLayout>
+
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

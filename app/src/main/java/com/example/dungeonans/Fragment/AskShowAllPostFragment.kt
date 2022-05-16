@@ -1,6 +1,5 @@
 package com.example.dungeonans.Fragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.dungeonans.Activity.AnswerActivity
-import com.example.dungeonans.Activity.FindAccountActivity
-import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Activity.PostActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
-import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
