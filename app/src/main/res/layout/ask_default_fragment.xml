@@ -62,11 +62,12 @@
                         app:cardCornerRadius="25dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/allPost_1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/textView6"
+                                android:id="@+id/allPost_1_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="30dp"
@@ -85,11 +86,12 @@
                                 android:layout_height="15dp"
                                 android:layout_marginLeft="20dp"
                                 android:background="@drawable/unanswered_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                                app:layout_constraintBottom_toBottomOf="@+id/allPost_1_title"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/textView6" />
+                                app:layout_constraintTop_toTopOf="@+id/allPost_1_title" />
 
                             <TextView
+                                android:id="@+id/allPost_1_content"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="sharedPreference 이번 과제 "
@@ -109,7 +111,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"/>
 
                             <TextView
-                                android:id="@+id/textView7"
+                                android:id="@+id/allPost_1_likecount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
@@ -126,19 +128,20 @@
                                 android:layout_height="15dp"
                                 android:layout_marginLeft="5dp"
                                 android:background="@drawable/comment_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                                app:layout_constraintStart_toEndOf="@+id/textView7"
-                                app:layout_constraintTop_toTopOf="@+id/textView7" />
+                                app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
+                                app:layout_constraintStart_toEndOf="@+id/allPost_1_likecount"
+                                app:layout_constraintTop_toTopOf="@+id/allPost_1_likecount" />
 
                             <TextView
+                                android:id="@+id/allPost_1_commentcount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="101"
                                 android:textSize="15sp"
                                 android:textColor="@color/gray"
-                                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                                app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
                                 app:layout_constraintStart_toEndOf="@+id/imageView5"
-                                app:layout_constraintTop_toTopOf="@+id/textView7" />
+                                app:layout_constraintTop_toTopOf="@+id/allPost_1_likecount" />
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -163,11 +166,12 @@
                         app:cardCornerRadius="25dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/allPost_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/textView6ad"
+                                android:id="@+id/allPost_2_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="30dp"
@@ -186,11 +190,12 @@
                                 android:layout_height="15dp"
                                 android:layout_marginLeft="20dp"
                                 android:background="@drawable/unanswered_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/textView6ad"
+                                app:layout_constraintBottom_toBottomOf="@+id/allPost_2_title"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/textView6ad" />
+                                app:layout_constraintTop_toTopOf="@+id/allPost_2_title" />
 
                             <TextView
+                                android:id="@+id/allPost_2_content"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="sharedPreference 이번 과제 "
@@ -210,7 +215,7 @@
                                 app:layout_constraintEnd_toEndOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView7adfadf"
+                                android:id="@+id/allPost_2_commentcount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
@@ -227,26 +232,25 @@
                                 android:layout_height="15dp"
                                 android:layout_marginLeft="5dp"
                                 android:background="@drawable/comment_icon"
-                                app:layout_constraintBottom_toBottomOf="@+id/textView7adfadf"
-                                app:layout_constraintStart_toEndOf="@+id/textView7adfadf"
-                                app:layout_constraintTop_toTopOf="@+id/textView7adfadf" />
+                                app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
+                                app:layout_constraintStart_toEndOf="@+id/allPost_2_commentcount"
+                                app:layout_constraintTop_toTopOf="@+id/allPost_2_commentcount" />
 
                             <TextView
+                                android:id="@+id/allPost_2_likecount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="101"
                                 android:textSize="15sp"
                                 android:textColor="@color/gray"
-                                app:layout_constraintBottom_toBottomOf="@+id/textView7adfadf"
+                                app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
                                 app:layout_constraintStart_toEndOf="@+id/imageViewadfadfdasf5"
-                                app:layout_constraintTop_toTopOf="@+id/textView7adfadf" />
+                                app:layout_constraintTop_toTopOf="@+id/allPost_2_commentcount" />
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
-
                 </LinearLayout>
-
             </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -304,11 +308,12 @@
                             app:cardCornerRadius="25dp">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/unAnsweredPost_1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/textView612414124124"
+                                    android:id="@+id/unAnsweredPost_1_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -327,11 +332,12 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="20dp"
                                     android:background="@drawable/unanswered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/textView612414124124"
+                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_title"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/textView612414124124" />
+                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_title" />
 
                                 <TextView
+                                    android:id="@+id/unAnsweredPost_1_content"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -351,7 +357,7 @@
                                     app:layout_constraintEnd_toEndOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/texADFSFDF"
+                                    android:id="@+id/unAnsweredPost_1_likecount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
@@ -368,19 +374,20 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="5dp"
                                     android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/texADFSFDF"
-                                    app:layout_constraintStart_toEndOf="@+id/texADFSFDF"
-                                    app:layout_constraintTop_toTopOf="@+id/texADFSFDF" />
+                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
+                                    app:layout_constraintStart_toEndOf="@+id/unAnsweredPost_1_likecount"
+                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_likecount" />
 
                                 <TextView
+                                    android:id="@+id/unAnsweredPost_1_commentcount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="101"
                                     android:textColor="@color/gray"
                                     android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/texADFSFDF"
+                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
                                     app:layout_constraintStart_toEndOf="@+id/ADFAFDSF"
-                                    app:layout_constraintTop_toTopOf="@+id/texADFSFDF" />
+                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_likecount" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -405,11 +412,12 @@
                             app:cardCornerRadius="25dp">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/unAnsweredPost_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/zczczcz"
+                                    android:id="@+id/unAnsweredPost_2_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -428,11 +436,12 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="20dp"
                                     android:background="@drawable/unanswered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/zczczcz"
+                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_title"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/zczczcz" />
+                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_title" />
 
                                 <TextView
+                                    android:id="@+id/unAnsweredPost_2_content"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -452,7 +461,7 @@
                                     app:layout_constraintEnd_toEndOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/adfzdfzfddz"
+                                    android:id="@+id/unAnsweredPost_2_likecount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
@@ -469,21 +478,20 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="5dp"
                                     android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/adfzdfzfddz"
-                                    app:layout_constraintStart_toEndOf="@+id/adfzdfzfddz"
-                                    app:layout_constraintTop_toTopOf="@+id/adfzdfzfddz" />
+                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
+                                    app:layout_constraintStart_toEndOf="@+id/unAnsweredPost_2_likecount"
+                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_likecount" />
 
                                 <TextView
+                                    android:id="@+id/unAnsweredPost_2_commentcount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="101"
                                     android:textColor="@color/gray"
                                     android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/adfzdfzfddz"
+                                    app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
                                     app:layout_constraintStart_toEndOf="@+id/ZNZCzczdfzZ"
-                                    app:layout_constraintTop_toTopOf="@+id/adfzdfzfddz" />
-
-
+                                    app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_likecount" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -546,11 +554,12 @@
                             app:cardCornerRadius="25dp">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/answeredPost_1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/aaa"
+                                    android:id="@+id/answeredPost_1_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -569,11 +578,12 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="20dp"
                                     android:background="@drawable/answered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/aaa"
+                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_title"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/aaa" />
+                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_1_title" />
 
                                 <TextView
+                                    android:id="@+id/answeredPost_1_content"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -593,7 +603,7 @@
                                     app:layout_constraintEnd_toEndOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/zqdad"
+                                    android:id="@+id/answeredPost_1_likecount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
@@ -610,19 +620,20 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="5dp"
                                     android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/zqdad"
-                                    app:layout_constraintStart_toEndOf="@+id/zqdad"
-                                    app:layout_constraintTop_toTopOf="@+id/zqdad" />
+                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
+                                    app:layout_constraintStart_toEndOf="@+id/answeredPost_1_likecount"
+                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_1_likecount" />
 
                                 <TextView
+                                    android:id="@+id/answeredPost_1_commentcount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="101"
                                     android:textColor="@color/gray"
                                     android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/zqdad"
+                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
                                     app:layout_constraintStart_toEndOf="@+id/adzczdfdszf"
-                                    app:layout_constraintTop_toTopOf="@+id/zqdad" />
+                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_1_likecount" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
@@ -646,11 +657,12 @@
                             app:cardCornerRadius="25dp">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/answeredPost_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/NCJZCJ"
+                                    android:id="@+id/answeredPost_2_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -669,11 +681,12 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="20dp"
                                     android:background="@drawable/answered_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/NCJZCJ"
+                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_title"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/NCJZCJ" />
+                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_2_title" />
 
                                 <TextView
+                                    android:id="@+id/answeredPost_2_content"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -693,7 +706,7 @@
                                     app:layout_constraintEnd_toEndOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/QQQQ"
+                                    android:id="@+id/answeredPost_2_likecount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
@@ -710,19 +723,20 @@
                                     android:layout_height="15dp"
                                     android:layout_marginLeft="5dp"
                                     android:background="@drawable/comment_icon"
-                                    app:layout_constraintBottom_toBottomOf="@+id/QQQQ"
-                                    app:layout_constraintStart_toEndOf="@+id/QQQQ"
-                                    app:layout_constraintTop_toTopOf="@+id/QQQQ" />
+                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
+                                    app:layout_constraintStart_toEndOf="@+id/answeredPost_2_likecount"
+                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_2_likecount" />
 
                                 <TextView
+                                    android:id="@+id/answeredPost_2_commentcount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="101"
                                     android:textColor="@color/gray"
                                     android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/QQQQ"
+                                    app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
                                     app:layout_constraintStart_toEndOf="@+id/ZNZCZ"
-                                    app:layout_constraintTop_toTopOf="@+id/QQQQ" />
+                                    app:layout_constraintTop_toTopOf="@+id/answeredPost_2_likecount" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
