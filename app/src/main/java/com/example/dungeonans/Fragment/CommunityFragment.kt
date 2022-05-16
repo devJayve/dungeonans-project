@@ -15,6 +15,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.CommunityRVAdapter
 import com.example.dungeonans.DataClass.*
@@ -33,13 +34,25 @@ class CommunityFragment : Fragment() {
     //
     var selectedBtn : Int? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.communitypage_fragment,container,false)
+        val view = inflater.inflate(R.layout.communitypage_fragment2,container,false)
 
         setHashTag(view)
         renderPost(view,0)
         renderHotPost(view)
         connectScrollListener(view)
+
+        var swipe = view.findViewById<SwipeRefreshLayout>(R.id.swapeView)
+        swipe.setOnRefreshListener {
+
+            renderPost(view,0)
+            renderHotPost(view)
+
+            swipe.isRefreshing = false
+        }
+
         return view
+
+
     }
 
     private fun setHashTag(view:View) {
