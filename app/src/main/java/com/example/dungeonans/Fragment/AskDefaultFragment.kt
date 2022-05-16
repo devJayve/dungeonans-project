@@ -3,6 +3,9 @@ package com.example.dungeonans.Fragment
 import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,13 +23,21 @@ import com.example.dungeonans.DataClass.posting_format_res
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Space.LinearSpacingItemDecoration
+import kotlinx.android.synthetic.main.answer_fragment.view.*
 import kotlinx.android.synthetic.main.ask_default_fragment.view.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import retrofit2.*
 import java.lang.reflect.TypeVariable
 
 class AskDefaultFragment : Fragment() {
+
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.ask_default_fragment,container,false)
+
+//        var unAnsweredLoading : ProgressBar = view.findViewById(R.id.unAnsweredLoading)
+//        var allPostLoading : ProgressBar = view.findViewById(R.id.allPostLoading)
+//        var answeredLoading : ProgressBar = view.findViewById(R.id.answeredLoading)
 
         var showAllPostBtn : Button = view.findViewById(R.id.showAllPostBtn)
         showAllPostBtn.setOnClickListener{
@@ -42,8 +53,29 @@ class AskDefaultFragment : Fragment() {
         showAnsweredBtn.setOnClickListener{
             changeFragmentLogic(AskShowAllPostFragment(), "2")
         }
-
         renderUi(view)
+
+//        runBlocking {
+//            var render = launch {
+//                Log.d("tag",serverConnected.toString())
+//            }
+//            for(index in 0 until 3) {
+//                if (!(0 in serverConnected)) {
+//                    allPostLoading.visibility = View.GONE
+//                    unAnsweredLoading.visibility = View.GONE
+//                    answeredLoading.visibility = View.GONE
+//                } else {
+//                    if (serverConnected[0] == 0) {
+//                        allPostLoading.visibility = View.VISIBLE
+//                    } else if (serverConnected[1] == 0) {
+//                        unAnsweredLoading.visibility = View.VISIBLE
+//                    } else {
+//                        answeredLoading.visibility = View.VISIBLE
+//                    }
+//                }
+//            }
+//        }
+
         return view
     }
 
@@ -53,6 +85,7 @@ class AskDefaultFragment : Fragment() {
     }
 
     private fun renderUi(view: View) {
+
         var retrofit = RetrofitClient.initClient()
         var data = board_req_format(0,2)
 
@@ -146,13 +179,11 @@ class AskDefaultFragment : Fragment() {
                     var parameter = "0"
                     var position = 1
                 }
-
                 var answeredPost_2 : ConstraintLayout = view.findViewById(R.id.answeredPost_2)
                 answeredPost_2.setOnClickListener{
                     var parameter = "0"
                     var position = 2
                 }
-
                 var firstPostData = response.body()!!.posting_list[0]
                 var answeredpost_1_title : TextView = view.findViewById(R.id.answeredPost_1_title)
                 answeredpost_1_title.text = firstPostData.title
@@ -172,9 +203,11 @@ class AskDefaultFragment : Fragment() {
                 answeredpost_2_likecount.text = secondPostData.like_num.toString()
                 var answeredpost_2_commentcount : TextView = view.findViewById(R.id.answeredPost_2_commentcount)
                 answeredpost_2_commentcount.text = secondPostData.comment_num.toString()
+
+                var mainLoading : ProgressBar = view.findViewById(R.id.mainLoading)
+                mainLoading.visibility = View.GONE
             }
         })
-
 
         var bestUserLayout : LinearLayout = view.findViewById(R.id.bestUserLayout)
         for (index in 0 until 5) {
