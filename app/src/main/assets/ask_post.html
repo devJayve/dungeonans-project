@@ -19,6 +19,7 @@
           }
 
         function mygetPost(content){
+            var real = content.replace(new RegExp("\"","g"),"‘");
             var code_block = document.getElementById("count1")
             code_block.innerHTML = content;
         }
