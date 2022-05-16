@@ -18,6 +18,7 @@ class BlogHolder(itemView: View, width : Int) : RecyclerView.ViewHolder(itemView
     var writerTextView = itemView?.findViewById<TextView>(R.id.cardViewWriter)
     var bodyTextView = itemView?.findViewById<TextView>(R.id.cardViewBody)
     var profileImageView = itemView?.findViewById<ImageView>(R.id.cardViewProfile)
+    var cardViewLanguageTag = itemView?.findViewById<TextView>(R.id.cardViewLanguageTag)
 
     fun setBlogPostValue(listData : BlogData) {
         if (width < 600) {
@@ -29,5 +30,6 @@ class BlogHolder(itemView: View, width : Int) : RecyclerView.ViewHolder(itemView
         writerTextView.text = listData.cardViewWriter
         bodyTextView.text = listData.cardViewBody
         profileImageView.setBackgroundResource(listData.cardViewProfile)
+        cardViewLanguageTag.text = listData.languageTag
     }
 }
