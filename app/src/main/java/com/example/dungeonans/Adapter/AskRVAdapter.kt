@@ -1,30 +1,18 @@
 package com.example.dungeonans.Adapter
 
-import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dungeonans.Activity.AnswerActivity
-import com.example.dungeonans.Activity.FindAccountActivity
 import com.example.dungeonans.DataClass.AskData
-import com.example.dungeonans.DataClass.BlogData
-import com.example.dungeonans.DataClass.CommunityData
 import com.example.dungeonans.Holder.Holder
 import com.example.dungeonans.R
 
-
-class AskRVAdapter : RecyclerView.Adapter<Holder>() {
+class AskRVAdapter() : RecyclerView.Adapter<Holder>() {
 
     var listData = mutableListOf<AskData>()
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        Log.d("listdata",listData.toString())
-    }
 
     override fun getItemCount(): Int {
         return listData.size
@@ -41,11 +29,9 @@ class AskRVAdapter : RecyclerView.Adapter<Holder>() {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.itemView.findViewById<CardView>(R.id.askAllPostCardView).setOnClickListener{
-            Log.d("dkssud!",it.toString())
-            Log.d("dkssud!",listData.toString())
-//            val intent = Intent(Context, AnswerActivity::class.java)
-//            startActivity(intent)
+            itemClickListener.onClick(it,position)
         }
+
         val data = listData.get(position)
         holder.setAskPostValue(data)
     }

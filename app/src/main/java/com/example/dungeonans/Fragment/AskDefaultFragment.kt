@@ -1,6 +1,7 @@
 package com.example.dungeonans.Fragment
 
 import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.dungeonans.Activity.UserProfileActivity
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitClient
+import retrofit2.Retrofit
+import retrofit2.create
+import java.lang.reflect.TypeVariable
 
 class AskDefaultFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -41,6 +46,15 @@ class AskDefaultFragment : Fragment() {
     }
 
     private fun renderUi(view: View) {
+        var retrofit = RetrofitClient.initClient()
+
+        var getAllPost = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
+        var getAnsweredPost = retrofit.create(RetrofitClient.GetUnAnsweredApi::class.java)
+        var getUnAnsweredPost = retrofit.create(RetrofitClient.GetClosedApi::class.java)
+        for (index in 0 until 3) {
+
+        }
+
         var bestUserLayout : LinearLayout = view.findViewById(R.id.bestUserLayout)
         for (index in 0 until 5) {
             var userCardView = layoutInflater.inflate(R.layout.best_user_cardview,null)

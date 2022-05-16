@@ -105,7 +105,6 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
             }
 
             2 -> { // Blog 검색
-                Log.d("TAG", "SEARCH - blog")
                 blogPostList = ArrayList()
                 this.blogGridRecyclerViewAdapter = BlogGridViewRecyclerViewAdapter()
                 this.blogGridRecyclerViewAdapter.submitList(blogPostList)

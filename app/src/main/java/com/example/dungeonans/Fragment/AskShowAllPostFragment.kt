@@ -23,7 +23,6 @@ import retrofit2.Response
 
 
 class AskShowAllPostFragment : Fragment() {
-
     //조수민 수정 - 파라미터를 저장할 공간 생성
     lateinit var parameter : String
     lateinit var recyclerView : RecyclerView
@@ -35,10 +34,8 @@ class AskShowAllPostFragment : Fragment() {
         var postSetMode = requireArguments().getString("Value")
         recyclerView = view.findViewById(R.id.askAllPostPageRecyclerView)
         parameter = postSetMode.toString()
-
         renderUi(0)
         setSpinner(view)
-
         return view
     }
 
@@ -64,6 +61,11 @@ class AskShowAllPostFragment : Fragment() {
                         setData = setData(parameter,postingList.count(), postingList)
                     } finally {
                         var adapter = AskRVAdapter()
+                        adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
+                            override fun onClick(v: View, position: Int) {
+                                Log.d("tag", "$parameter $position")
+                            }
+                        })
                         adapter.listData = setData
                         recyclerView.adapter = adapter
                         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -89,6 +91,11 @@ class AskShowAllPostFragment : Fragment() {
                         setData = setData(parameter,postingList.count(), postingList)
                     } finally {
                         var adapter = AskRVAdapter()
+                        adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
+                            override fun onClick(v: View, position: Int) {
+                                Log.d("tag", "$parameter $position")
+                            }
+                        })
                         adapter.listData = setData
                         recyclerView.adapter = adapter
                         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -115,6 +122,11 @@ class AskShowAllPostFragment : Fragment() {
                         setData = setData(parameter,postingList.count(), postingList)
                     } finally {
                         var adapter = AskRVAdapter()
+                        adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
+                            override fun onClick(v: View, position: Int) {
+                                Log.d("tag", "$parameter $position")
+                            }
+                        })
                         adapter.listData = setData
                         recyclerView.adapter = adapter
                         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -167,6 +179,8 @@ class AskShowAllPostFragment : Fragment() {
             if (parameter == "1") {
                 askStatusImage = R.drawable.unanswered_icon
             } else if (parameter == "2") {
+                askStatusImage = R.drawable.answered_icon
+            } else {
                 askStatusImage = R.drawable.answered_icon
             }
             var likeCount = postingData[index].like_num.toString()
