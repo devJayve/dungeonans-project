@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.Adapter.CommunityRVAdapter
@@ -28,13 +29,19 @@ class AskShowAllPostFragment : Fragment() {
     lateinit var parameter : String
     //
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.askpage_viewall_fragment,container,false)
+        val view = inflater.inflate(R.layout.askpage_viewall_fragment2,container,false)
         var postSetMode = requireArguments().getString("Value")
         Log.d("tag",postSetMode.toString())
         parameter = postSetMode.toString()
 
         renderUi(view,0)
         setSpinner(view)
+
+        var swipe = view.findViewById<SwipeRefreshLayout>(R.id.ask_all_swapeview)
+        swipe.setOnRefreshListener {
+            renderUi(view,0)
+            swipe.isRefreshing = false
+        }
 
         return view
     }
@@ -57,21 +64,23 @@ class AskShowAllPostFragment : Fragment() {
 
                 override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
                     var postingList = response.body()!!.posting_list
+                    Log.d("vassfsadf",response.body()!!.posting_list.toString())
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
-                    try {
+//                    try {
                         var setData: MutableList<AskData> = setData2(6, postingList)
                         var recyclerView: RecyclerView =
-                            view.findViewById(R.id.askAllPostPageRecyclerView)
+                            view.findViewById(R.id.myaskAllPostPageRecyclerView)
+                        Log.d("안녕하세요",recyclerView.toString())
                         var adapter = AskRVAdapter()
                         adapter.listData = setData
                         recyclerView.adapter = adapter
                         recyclerView.layoutManager = LinearLayoutManager(context)
                         var space = LinearSpacingItemDecoration(20)
                         recyclerView.addItemDecoration(space)
-                    }
-                    catch (e:IndexOutOfBoundsException){
-
-                    }
+//                    }
+//                    catch (e:IndexOutOfBoundsException){
+//
+//                    }
                 }
             })
         }
@@ -92,6 +101,7 @@ class AskShowAllPostFragment : Fragment() {
                         var setData: MutableList<AskData> = setData2(6, postingList)
                         var recyclerView: RecyclerView =
                             view.findViewById(R.id.askAllPostPageRecyclerView)
+                            Log.d("안녕하세요",recyclerView.toString())
                         var adapter = AskRVAdapter()
                         adapter.listData = setData
                         recyclerView.adapter = adapter
@@ -100,7 +110,7 @@ class AskShowAllPostFragment : Fragment() {
                         recyclerView.addItemDecoration(space)
                     }
                     catch (e:IndexOutOfBoundsException){
-
+                        Log.d("안녕하세요","ㅋㅌㅊㅍ")
                     }
                 }
             })
