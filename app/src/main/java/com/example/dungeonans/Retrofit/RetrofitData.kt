@@ -190,3 +190,7 @@ data class LoginResponse(
     val token : String
 )
 
+data class QueryData(
+    @SerializedName("word") var query : String
+)
+

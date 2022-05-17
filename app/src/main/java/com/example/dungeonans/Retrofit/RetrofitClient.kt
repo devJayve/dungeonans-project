@@ -208,7 +208,7 @@ object RetrofitClient {
     interface SearchApi {
         @POST("/search/community")
         fun postSearchCommunity(
-            @Body word : String
+            @Body query : QueryData
         ) : Call<CommunityHotPostData>
 
         @POST("/search/qna")

@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_dungeonans_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="false"
         android:theme="@style/Theme.Dungeonans.Material">
 
 
@@ -24,6 +23,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".Activity.LoginActivity"/>
 
@@ -35,11 +35,13 @@
         <activity android:name=".Activity.SearchBlogActivity"/>
 
         <activity android:name=".Activity.PostActivity"/>
+
         <activity android:name=".Activity.AskApplyActivity"/>
 
         <activity android:name=".Activity.FindAccountActivity"/>
 
         <activity android:name=".Activity.AnswerActivity"/>
+
         <activity android:name=".Activity.MainActivity"/>
 
         <activity android:name=".Activity.UserProfileActivity"/>
@@ -47,6 +49,14 @@
         <activity android:name=".Activity.AskPostActivity"/>
 
         <activity android:name=".Activity.SearchProfileActivity"/>
+
+        <activity android:name=".Activity.UserProfileEditActivity"/>
+
+        <activity android:name=".Activity.SettingActivity"/>
+
+        <activity android:name=".Activity.ProfilePostActivity"/>
+
+        <activity android:name=".Activity.NoticeActivity"/>
 
         <meta-data
             android:name="com.example.dungeonans.maps.v2.server.url"

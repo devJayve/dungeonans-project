@@ -17,6 +17,7 @@ import com.example.dungeonans.Activity.ProfilePostActivity
 import com.example.dungeonans.Adapter.BlogCardViewAdapter
 import com.example.dungeonans.DataClass.BlogData
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.dungeonans.Activity.UserProfileEditActivity
 import com.example.dungeonans.R
 
 
@@ -70,6 +71,12 @@ class MyProfileFragment : Fragment() {
         showAllMyBlogBtn.setOnClickListener{
             var intent = Intent(context, ProfilePostActivity::class.java)
             intent.putExtra("key","3")
+            startActivity(intent)
+        }
+
+        val editProfileBtn : Button = view.findViewById(R.id.editProfileBtn)
+        editProfileBtn.setOnClickListener {
+            val intent = Intent(context, UserProfileEditActivity::class.java)
             startActivity(intent)
         }
 

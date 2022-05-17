@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activity.UserProfileEditActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/setting_bottomstroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:scaleType="fitStart"
+            android:src="@drawable/arrow_back_icon"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="프로필 편집"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/top_constraint">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="프로필 사진"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+                <TextView
+                    android:id="@+id/profile_img_add_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="추가"
+                    android:textStyle="bold"
+                    android:textColor="@color/DeepDarkBlue"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:paddingBottom="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/profile_base_icon"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="소개"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+                <TextView
+                    android:id="@+id/add_introduce_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="추가"
+                    android:textStyle="bold"
+                    android:textColor="@color/DeepDarkBlue"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/introduce_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textAlignment="center"
+                android:text="회원님에 대해 설명해주세요..."
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="기술 스택"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+                <TextView
+                    android:id="@+id/stack_add_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="추가"
+                    android:textStyle="bold"
+                    android:textColor="@color/DeepDarkBlue"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용 가능한 스택을 추가해주세요..."
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="링크"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+
+                <TextView
+                    android:id="@+id/link_add_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="추가"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/DeepDarkBlue"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
