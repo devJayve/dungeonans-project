@@ -204,8 +204,8 @@ class AskDefaultFragment : Fragment() {
                 var answeredpost_2_commentcount : TextView = view.findViewById(R.id.answeredPost_2_commentcount)
                 answeredpost_2_commentcount.text = secondPostData.comment_num.toString()
 
-                var mainLoading : ProgressBar = view.findViewById(R.id.mainLoading)
-                mainLoading.visibility = View.GONE
+//                var mainLoading : ProgressBar = view.findViewById(R.id.mainLoading)
+//                mainLoading.visibility = View.GONE
             }
         })
 
