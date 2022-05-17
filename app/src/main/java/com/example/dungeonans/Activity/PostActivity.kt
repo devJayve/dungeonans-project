@@ -251,6 +251,7 @@ class PostActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun putComment(body: String, commentEditText : EditText) {
         recyclerView = findViewById(R.id.postCommentRecyclerView)
         // 대댓글

@@ -54,28 +54,6 @@ class AskDefaultFragment : Fragment() {
             changeFragmentLogic(AskShowAllPostFragment(), "2")
         }
         renderUi(view)
-
-//        runBlocking {
-//            var render = launch {
-//                Log.d("tag",serverConnected.toString())
-//            }
-//            for(index in 0 until 3) {
-//                if (!(0 in serverConnected)) {
-//                    allPostLoading.visibility = View.GONE
-//                    unAnsweredLoading.visibility = View.GONE
-//                    answeredLoading.visibility = View.GONE
-//                } else {
-//                    if (serverConnected[0] == 0) {
-//                        allPostLoading.visibility = View.VISIBLE
-//                    } else if (serverConnected[1] == 0) {
-//                        unAnsweredLoading.visibility = View.VISIBLE
-//                    } else {
-//                        answeredLoading.visibility = View.VISIBLE
-//                    }
-//                }
-//            }
-//        }
-
         return view
     }
 
@@ -107,28 +85,18 @@ class AskDefaultFragment : Fragment() {
                 }
 
                 var firstPostData = response.body()!!.posting_list[0]
-                var allPost_1_title : TextView = view.findViewById(R.id.allPost_1_title)
-                allPost_1_title.text = firstPostData.title
-                var allPost_1_content : TextView = view.findViewById(R.id.allPost_1_content)
-                allPost_1_content.text = firstPostData.content
-                var allPost_1_likecount : TextView = view.findViewById(R.id.allPost_1_likecount)
-                allPost_1_likecount.text = firstPostData.like_num.toString()
-                var allPost_1_commentcount : TextView = view.findViewById(R.id.allPost_1_commentcount)
-                allPost_1_commentcount.text = firstPostData.comment_num.toString()
-                var allPost_1_statusimage : ImageView = view.findViewById(R.id.button2)
-                allPost_1_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
+                view.findViewById<TextView>(R.id.allPost_1_title).text = firstPostData.title
+                view.findViewById<TextView>(R.id.allPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.allPost_1_likecount).text = firstPostData.like_num.toString()
+                view.findViewById<TextView>(R.id.allPost_1_commentcount).text = firstPostData.comment_num.toString()
+                view.findViewById<ImageView>(R.id.button2).setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
-                var allPost_2_title : TextView = view.findViewById(R.id.allPost_2_title)
-                allPost_2_title.text = secondPostData.title
-                var allPost_2_content : TextView = view.findViewById(R.id.allPost_2_content)
-                allPost_2_content.text = secondPostData.content
-                var allPost_2_likecount : TextView = view.findViewById(R.id.allPost_2_likecount)
-                allPost_2_likecount.text = secondPostData.like_num.toString()
-                var allPost_2_commentcount : TextView = view.findViewById(R.id.allPost_2_commentcount)
-                allPost_2_commentcount.text = secondPostData.comment_num.toString()
-                var allPost_2_statusimage : ImageView = view.findViewById(R.id.button2adadf)
-                allPost_2_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
+                view.findViewById<TextView>(R.id.allPost_2_title).text = secondPostData.title
+                view.findViewById<TextView>(R.id.allPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.allPost_2_likecount).text = secondPostData.like_num.toString()
+                view.findViewById<TextView>(R.id.allPost_2_commentcount).text = secondPostData.comment_num.toString()
+                view.findViewById<ImageView>(R.id.button2adadf).setBackgroundResource(R.drawable.unanswered_icon)
             }
         })
 
@@ -151,29 +119,18 @@ class AskDefaultFragment : Fragment() {
                 }
 
                 var firstPostData = response.body()!!.posting_list[0]
-                var unansweredpost_1_title : TextView = view.findViewById(R.id.unAnsweredPost_1_title)
-                unansweredpost_1_title.text = firstPostData.title
-                var unansweredpost_1_content : TextView = view.findViewById(R.id.unAnsweredPost_1_content)
-                unansweredpost_1_content.text = firstPostData.content
-                var unansweredpost_1_likenum : TextView = view.findViewById(R.id.unAnsweredPost_1_likecount)
-                unansweredpost_1_likenum.text = firstPostData.like_num.toString()
-                var unansweredpost_1_commentnum : TextView = view.findViewById(R.id.unAnsweredPost_1_commentcount)
-                unansweredpost_1_commentnum.text = firstPostData.comment_num.toString()
-                var unansweredpost_1_statusimage : ImageView = view.findViewById(R.id.ADFAFSDAFSDF)
-                unansweredpost_1_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
+                view.findViewById<TextView>(R.id.unAnsweredPost_1_title).text = firstPostData.title
+                view.findViewById<TextView>(R.id.unAnsweredPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.unAnsweredPost_1_likecount).text = firstPostData.like_num.toString()
+                view.findViewById<TextView>(R.id.unAnsweredPost_1_commentcount).text = firstPostData.comment_num.toString()
+                view.findViewById<ImageView>(R.id.ADFAFSDAFSDF).setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
-                var unansweredpost_2_title : TextView = view.findViewById(R.id.unAnsweredPost_2_title)
-                unansweredpost_2_title.text = secondPostData.title
-                var unansweredpost_2_content : TextView = view.findViewById(R.id.unAnsweredPost_2_content)
-                unansweredpost_2_content.text = secondPostData.content
-                var unansweredpost_2_likecount : TextView = view.findViewById(R.id.unAnsweredPost_2_likecount)
-                unansweredpost_2_likecount.text = secondPostData.like_num.toString()
-                var unansweredpost_2_commentcount : TextView = view.findViewById(R.id.unAnsweredPost_2_commentcount)
-                unansweredpost_2_commentcount.text = secondPostData.comment_num.toString()
-                var unansweredpost_2_statusimage : ImageView = view.findViewById(R.id.adadadafd)
-                unansweredpost_2_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
-
+                view.findViewById<TextView>(R.id.unAnsweredPost_2_title).text = secondPostData.title
+                view.findViewById<TextView>(R.id.unAnsweredPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.unAnsweredPost_2_likecount).text = secondPostData.like_num.toString()
+                view.findViewById<TextView>(R.id.unAnsweredPost_2_commentcount).text = secondPostData.comment_num.toString()
+                view.findViewById<ImageView>(R.id.adadadafd).setBackgroundResource(R.drawable.unanswered_icon)
             }
         })
 
@@ -194,28 +151,18 @@ class AskDefaultFragment : Fragment() {
                     var position = 2
                 }
                 var firstPostData = response.body()!!.posting_list[0]
-                var answeredpost_1_title : TextView = view.findViewById(R.id.answeredPost_1_title)
-                answeredpost_1_title.text = firstPostData.title
-                var answeredpost_1_content : TextView = view.findViewById(R.id.answeredPost_1_content)
-                answeredpost_1_content.text = firstPostData.content
-                var answeredpost_1_likecount : TextView = view.findViewById(R.id.answeredPost_1_likecount)
-                answeredpost_1_likecount.text = firstPostData.like_num.toString()
-                var answeredpost_1_commentcount : TextView = view.findViewById(R.id.answeredPost_1_commentcount)
-                answeredpost_1_commentcount.text = firstPostData.comment_num.toString()
-                var answeredpost_1_statusimage : ImageView = view.findViewById(R.id.adad)
-                answeredpost_1_statusimage.setBackgroundResource(R.drawable.answered_icon)
+                view.findViewById<TextView>(R.id.answeredPost_1_title).text = firstPostData.title
+                view.findViewById<TextView>(R.id.answeredPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.answeredPost_1_likecount).text = firstPostData.like_num.toString()
+                view.findViewById<TextView>(R.id.answeredPost_1_commentcount).text = firstPostData.comment_num.toString()
+                view.findViewById<ImageView>(R.id.adad).setBackgroundResource(R.drawable.answered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
-                var answeredpost_2_title : TextView = view.findViewById(R.id.answeredPost_2_title)
-                answeredpost_2_title.text = secondPostData.title
-                var answeredpost_2_content : TextView = view.findViewById(R.id.answeredPost_2_content)
-                answeredpost_2_content.text = secondPostData.content
-                var answeredpost_2_likecount : TextView = view.findViewById(R.id.answeredPost_2_likecount)
-                answeredpost_2_likecount.text = secondPostData.like_num.toString()
-                var answeredpost_2_commentcount : TextView = view.findViewById(R.id.answeredPost_2_commentcount)
-                answeredpost_2_commentcount.text = secondPostData.comment_num.toString()
-                var answeredpost_2_statusimage : ImageView = view.findViewById(R.id.ADAFSDFDFAF)
-                answeredpost_2_statusimage.setBackgroundResource(R.drawable.answered_icon)
+                view.findViewById<TextView>(R.id.answeredPost_2_title).text = secondPostData.title
+                view.findViewById<TextView>(R.id.answeredPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.answeredPost_2_likecount).text = secondPostData.like_num.toString()
+                view.findViewById<TextView>(R.id.answeredPost_2_commentcount).text = secondPostData.comment_num.toString()
+                view.findViewById<ImageView>(R.id.ADAFSDFDFAF).setBackgroundResource(R.drawable.answered_icon)
 //                var mainLoading : ProgressBar = view.findViewById(R.id.mainLoading)
 //                mainLoading.visibility = View.GONE
             }
