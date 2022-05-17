@@ -115,6 +115,8 @@ class AskDefaultFragment : Fragment() {
                 allPost_1_likecount.text = firstPostData.like_num.toString()
                 var allPost_1_commentcount : TextView = view.findViewById(R.id.allPost_1_commentcount)
                 allPost_1_commentcount.text = firstPostData.comment_num.toString()
+                var allPost_1_statusimage : ImageView = view.findViewById(R.id.button2)
+                allPost_1_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 var allPost_2_title : TextView = view.findViewById(R.id.allPost_2_title)
@@ -125,6 +127,8 @@ class AskDefaultFragment : Fragment() {
                 allPost_2_likecount.text = secondPostData.like_num.toString()
                 var allPost_2_commentcount : TextView = view.findViewById(R.id.allPost_2_commentcount)
                 allPost_2_commentcount.text = secondPostData.comment_num.toString()
+                var allPost_2_statusimage : ImageView = view.findViewById(R.id.button2adadf)
+                allPost_2_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
             }
         })
 
@@ -155,6 +159,8 @@ class AskDefaultFragment : Fragment() {
                 unansweredpost_1_likenum.text = firstPostData.like_num.toString()
                 var unansweredpost_1_commentnum : TextView = view.findViewById(R.id.unAnsweredPost_1_commentcount)
                 unansweredpost_1_commentnum.text = firstPostData.comment_num.toString()
+                var unansweredpost_1_statusimage : ImageView = view.findViewById(R.id.ADFAFSDAFSDF)
+                unansweredpost_1_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 var unansweredpost_2_title : TextView = view.findViewById(R.id.unAnsweredPost_2_title)
@@ -165,6 +171,9 @@ class AskDefaultFragment : Fragment() {
                 unansweredpost_2_likecount.text = secondPostData.like_num.toString()
                 var unansweredpost_2_commentcount : TextView = view.findViewById(R.id.unAnsweredPost_2_commentcount)
                 unansweredpost_2_commentcount.text = secondPostData.comment_num.toString()
+                var unansweredpost_2_statusimage : ImageView = view.findViewById(R.id.adadadafd)
+                unansweredpost_2_statusimage.setBackgroundResource(R.drawable.unanswered_icon)
+
             }
         })
 
@@ -193,6 +202,8 @@ class AskDefaultFragment : Fragment() {
                 answeredpost_1_likecount.text = firstPostData.like_num.toString()
                 var answeredpost_1_commentcount : TextView = view.findViewById(R.id.answeredPost_1_commentcount)
                 answeredpost_1_commentcount.text = firstPostData.comment_num.toString()
+                var answeredpost_1_statusimage : ImageView = view.findViewById(R.id.adad)
+                answeredpost_1_statusimage.setBackgroundResource(R.drawable.answered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 var answeredpost_2_title : TextView = view.findViewById(R.id.answeredPost_2_title)
@@ -203,7 +214,8 @@ class AskDefaultFragment : Fragment() {
                 answeredpost_2_likecount.text = secondPostData.like_num.toString()
                 var answeredpost_2_commentcount : TextView = view.findViewById(R.id.answeredPost_2_commentcount)
                 answeredpost_2_commentcount.text = secondPostData.comment_num.toString()
-
+                var answeredpost_2_statusimage : ImageView = view.findViewById(R.id.ADAFSDFDFAF)
+                answeredpost_2_statusimage.setBackgroundResource(R.drawable.answered_icon)
 //                var mainLoading : ProgressBar = view.findViewById(R.id.mainLoading)
 //                mainLoading.visibility = View.GONE
             }
