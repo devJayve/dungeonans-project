@@ -12,3 +12,4 @@ data class PostReCommentData(var reCommentWriterProfile : Int, var reCommentWrit
 data class AskData(var askUserImage : Int, var askUserName : String, var askUserNickname : String, var askPostTitle : String, var askPostBody : String, var askStatusImage : Int, var askPostLikeCount : String, var askCommentCount : String)
 data class SearchProfileData(var userName : String, var userNickName : String, var profileImg : String)
 data class SearchData(val timestamp: String, val term: String)
+data class SpinnerModel(val image: Int, val name: String)
