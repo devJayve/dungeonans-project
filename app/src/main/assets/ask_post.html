@@ -33,8 +33,6 @@
             var checkTagRequired = true;
             var first = 0;
             var final = 0;
-<!--            【(이미지입니다)\n" + imagePath + "】-->
-
 
             var boldfirst = 0 ;
             var boldfinal = 0;
@@ -49,9 +47,9 @@
             var imagecount = 0;
 
             var result_elem = document.getElementById("count1");
+            Android2.showToast2(content)
 
-
-
+            Android2.showToast2(mycontent)
             var lines = content.split("\n");
             var resultString = "";
 
@@ -141,9 +139,12 @@
                     var mytext = resultString.slice(first+1,final);
                     var mytext2 = mytext
                     console.log(mytext)
-                    var mytext3 = mytext.replace(new RegExp("</p><p>", "g"), "<br>");
+                    var mytext3 = mytext.replace(new RegExp("<p></p>", "g"), "<br>");
+                    Android2.showToast2(mytext3);
+                    var mytext4 = mytext3.replace(/\\/g,"")
+                    Android2.showToast2(mytext4);
                     console.log(mytext3)
-                    let html = hljs.highlightAuto(mytext3).value;
+                    let html = hljs.highlightAuto(mytext4).value;
 
 
                     for (i = 0 ; i <html.length ; i ++){

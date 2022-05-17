@@ -79,6 +79,11 @@ class PostActivity : AppCompatActivity() {
             }
 
             @JavascriptInterface
+            fun showToast2(code: String) {
+                Log.d("시발",code)
+            }
+
+            @JavascriptInterface
             fun getwidth(px: Float): Float {
                 var resources = resources
                 val metrics: DisplayMetrics = resources.getDisplayMetrics()
