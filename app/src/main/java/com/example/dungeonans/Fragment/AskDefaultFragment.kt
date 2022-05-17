@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dungeonans.Activity.UserProfileActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.DataClass.AskData
-import com.example.dungeonans.DataClass.QnAPostData
+import com.example.dungeonans.DataClass.PostData
 import com.example.dungeonans.DataClass.board_req_format
 import com.example.dungeonans.DataClass.posting_format_res
 import com.example.dungeonans.R
@@ -67,12 +67,12 @@ class AskDefaultFragment : Fragment() {
         var retrofit = RetrofitClient.initClient()
         var data = board_req_format(0,2)
 
-        var getAllPost = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
-        getAllPost.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
-            override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+        var getAllPost = retrofit.create(RetrofitClient.AskApi::class.java)
+        getAllPost.getAskPost(data).enqueue(object : Callback<PostData> {
+            override fun onFailure(call: Call<PostData>, t: Throwable) {
                 Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
             }
-            override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+            override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                 var allPost_1 : ConstraintLayout = view.findViewById(R.id.allPost_1)
                 allPost_1.setOnClickListener{
                     var parameter = "0"
@@ -100,12 +100,12 @@ class AskDefaultFragment : Fragment() {
             }
         })
 
-        var getAnsweredPost = retrofit.create(RetrofitClient.GetUnAnsweredApi::class.java)
-        getAnsweredPost.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
-            override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+        var getAnsweredPost = retrofit.create(RetrofitClient.AskApi::class.java)
+        getAnsweredPost.getUnAnsweredPost(data).enqueue(object : Callback<PostData> {
+            override fun onFailure(call: Call<PostData>, t: Throwable) {
                 Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
             }
-            override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+            override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                 var unAnsweredPost_1 : ConstraintLayout = view.findViewById(R.id.unAnsweredPost_1)
                 unAnsweredPost_1.setOnClickListener{
                     var parameter = "0"
@@ -134,12 +134,12 @@ class AskDefaultFragment : Fragment() {
             }
         })
 
-        var getUnAnsweredPost = retrofit.create(RetrofitClient.GetClosedApi::class.java)
-        getUnAnsweredPost.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
-            override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+        var getUnAnsweredPost = retrofit.create(RetrofitClient.AskApi::class.java)
+        getUnAnsweredPost.getAnsweredPost(data).enqueue(object : Callback<PostData> {
+            override fun onFailure(call: Call<PostData>, t: Throwable) {
                 Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
             }
-            override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+            override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                 var answeredPost_1 : ConstraintLayout = view.findViewById(R.id.answeredPost_1)
                 answeredPost_1.setOnClickListener{
                     var parameter = "0"

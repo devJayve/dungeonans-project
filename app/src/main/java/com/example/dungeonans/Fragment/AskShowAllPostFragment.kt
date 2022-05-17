@@ -55,12 +55,12 @@ class AskShowAllPostFragment : Fragment() {
 
         //조수민 수정 : 만약 parameter 가 0 즉 전체 질문 보기라면
         if (parameter == "0") {
-            var sendData = retrofit.create(RetrofitClient.GetQnAPostApi::class.java)
-            sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
-                override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+            var sendData = retrofit.create(RetrofitClient.AskApi::class.java)
+            sendData.getAskPost(data).enqueue(object : Callback<PostData> {
+                override fun onFailure(call: Call<PostData>, t: Throwable) {
                     Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
                 }
-                override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                     var postingList = response.body()!!.posting_list
                     Log.d("vassfsadf",response.body()!!.posting_list.toString())
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
@@ -102,13 +102,13 @@ class AskShowAllPostFragment : Fragment() {
                 }
             })
         } else if (parameter == "1") {
-            var sendData = retrofit.create(RetrofitClient.GetUnAnsweredApi::class.java)
-            sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
-                override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+            var sendData = retrofit.create(RetrofitClient.AskApi::class.java)
+            sendData.getUnAnsweredPost(data).enqueue(object : Callback<PostData> {
+                override fun onFailure(call: Call<PostData>, t: Throwable) {
                     Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
                 }
 
-                override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                     var postingList = response.body()!!.posting_list
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
                     try {
@@ -135,12 +135,12 @@ class AskShowAllPostFragment : Fragment() {
         }
 
         else if (parameter == "2") {
-            var sendData = retrofit.create(RetrofitClient.GetClosedApi::class.java)
-            sendData.sendBoardReq(data).enqueue(object : Callback<QnAPostData> {
-                override fun onFailure(call: Call<QnAPostData>, t: Throwable) {
+            var sendData = retrofit.create(RetrofitClient.AskApi::class.java)
+            sendData.getAnsweredPost(data).enqueue(object : Callback<PostData> {
+                override fun onFailure(call: Call<PostData>, t: Throwable) {
                     Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
                 }
-                override fun onResponse(call: Call<QnAPostData>, response: Response<QnAPostData>) {
+                override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                     var postingList = response.body()!!.posting_list
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨ㅓ
                     try {

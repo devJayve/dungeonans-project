@@ -219,10 +219,10 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
 
 
                 val requestSearchApi = retrofit.create(RetrofitClient.SearchApi::class.java)
-                requestSearchApi.postSearchCommunity(QueryData(query = query.toString())).enqueue(object : Callback<CommunityHotPostData> {
-                    override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
+                requestSearchApi.postSearchCommunity(QueryData(query = query.toString())).enqueue(object : Callback<PostData> {
+                    override fun onFailure(call: Call<PostData>, t: Throwable) {
                     }
-                    override fun onResponse(call: Call<CommunityHotPostData>, response: Response<CommunityHotPostData>) {
+                    override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                         if (response.body()?.success == true) {
                             setData(response.body()!!.posting_list)
 
