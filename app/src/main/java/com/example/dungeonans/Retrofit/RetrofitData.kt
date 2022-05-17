@@ -35,7 +35,7 @@ data class Comment(
 data class ProfileData(
     var success: Boolean,
     var errmsg: String,
-    var profile : profile_format
+    var profile_list : List<profile_format>
 )
 
 
@@ -87,6 +87,7 @@ data class profile_format(
     var profile_photo : String
 )
 // dev_stack 추가 필요
+
 data class posting_format_res(
     var board_index : Int,
     var posting_index : Int,
