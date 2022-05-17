@@ -81,7 +81,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="30dp"
-                                            android:text="sharedPreference 사용 질문"
                                             android:layout_marginLeft="10dp"
                                             android:textColor="@color/black"
                                             android:textSize="15sp"
@@ -95,7 +94,6 @@
                                             android:layout_width="50dp"
                                             android:layout_height="15dp"
                                             android:layout_marginLeft="20dp"
-                                            android:background="@drawable/unanswered_icon"
                                             app:layout_constraintBottom_toBottomOf="@+id/allPost_1_title"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="@+id/allPost_1_title" />
@@ -104,7 +102,6 @@
                                             android:id="@+id/allPost_1_content"
                                             android:layout_width="250dp"
                                             android:layout_height="wrap_content"
-                                            android:text="sharedPreference 이번 과제"
                                             android:maxWidth="250dp"
                                             android:ellipsize="end"
                                             android:maxLines="1"
@@ -128,7 +125,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="5dp"
-                                            android:text="101"
+                                            android:text="0"
                                             android:textSize="15sp"
                                             android:textColor="@color/DarkBlue"
                                             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -149,8 +146,9 @@
                                             android:id="@+id/allPost_1_commentcount"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="101"
                                             android:textSize="15sp"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="0"
                                             android:textColor="@color/gray"
                                             app:layout_constraintBottom_toBottomOf="@+id/allPost_1_likecount"
                                             app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -188,7 +186,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="30dp"
-                                            android:text="sharedPreference 사용 질문"
                                             android:layout_marginLeft="10dp"
                                             android:textColor="@color/black"
                                             android:textSize="15sp"
@@ -202,7 +199,6 @@
                                             android:layout_width="50dp"
                                             android:layout_height="15dp"
                                             android:layout_marginLeft="20dp"
-                                            android:background="@drawable/unanswered_icon"
                                             app:layout_constraintBottom_toBottomOf="@+id/allPost_2_title"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="@+id/allPost_2_title" />
@@ -211,7 +207,6 @@
                                             android:id="@+id/allPost_2_content"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="sharedPreference 이번 과제 "
                                             android:layout_marginTop="10dp"
                                             android:maxWidth="250dp"
                                             android:ellipsize="end"
@@ -235,7 +230,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="5dp"
-                                            android:text="101"
+                                            android:text="0"
                                             android:textSize="15sp"
                                             android:textColor="@color/DarkBlue"
                                             app:layout_constraintBottom_toBottomOf="@+id/adfadfs"
@@ -256,7 +251,8 @@
                                             android:id="@+id/allPost_2_likecount"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="101"
+                                            android:text="0"
+                                            android:layout_marginLeft="5dp"
                                             android:textSize="15sp"
                                             android:textColor="@color/gray"
                                             app:layout_constraintBottom_toBottomOf="@+id/allPost_2_commentcount"
@@ -334,7 +330,6 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="10dp"
                                             android:layout_marginBottom="30dp"
-                                            android:text="sharedPreference 사용 질문"
                                             android:textColor="@color/black"
                                             android:textSize="15sp"
                                             android:textStyle="bold"
@@ -347,7 +342,6 @@
                                             android:layout_width="50dp"
                                             android:layout_height="15dp"
                                             android:layout_marginLeft="20dp"
-                                            android:background="@drawable/unanswered_icon"
                                             app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_title"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_1_title" />
@@ -360,7 +354,6 @@
                                             android:maxWidth="250dp"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="sharedPreference 이번 과제 "
                                             app:layout_constraintStart_toStartOf="@+id/ADFAFSDAFSDF"
                                             app:layout_constraintTop_toBottomOf="@+id/ADFAFSDAFSDF" />
 
@@ -380,7 +373,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="5dp"
-                                            android:text="101"
+                                            android:text="0"
                                             android:textColor="@color/DarkBlue"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/imaADFAFSDF2"
@@ -401,7 +394,8 @@
                                             android:id="@+id/unAnsweredPost_1_commentcount"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="101"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="0"
                                             android:textColor="@color/gray"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_1_likecount"
@@ -441,7 +435,6 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="10dp"
                                             android:layout_marginBottom="30dp"
-                                            android:text="sharedPreference 사용 질문"
                                             android:textColor="@color/black"
                                             android:textSize="15sp"
                                             android:textStyle="bold"
@@ -454,7 +447,6 @@
                                             android:layout_width="50dp"
                                             android:layout_height="15dp"
                                             android:layout_marginLeft="20dp"
-                                            android:background="@drawable/unanswered_icon"
                                             app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_title"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="@+id/unAnsweredPost_2_title" />
@@ -467,7 +459,6 @@
                                             android:maxWidth="250dp"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="sharedPreference 이번 과제 "
                                             app:layout_constraintStart_toStartOf="@+id/adadadafd"
                                             app:layout_constraintTop_toBottomOf="@+id/adadadafd" />
 
@@ -487,7 +478,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="5dp"
-                                            android:text="101"
+                                            android:text="0"
                                             android:textColor="@color/DarkBlue"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/AFDSFAFASFA1daSFSDF"
@@ -508,7 +499,8 @@
                                             android:id="@+id/unAnsweredPost_2_commentcount"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="101"
+                                            android:text="0"
+                                            android:layout_marginLeft="5dp"
                                             android:textColor="@color/gray"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/unAnsweredPost_2_likecount"
@@ -588,7 +580,6 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="10dp"
                                             android:layout_marginBottom="30dp"
-                                            android:text="sharedPreference 사용 질문"
                                             android:textColor="@color/black"
                                             android:textSize="15sp"
                                             android:textStyle="bold"
@@ -601,7 +592,6 @@
                                             android:layout_width="50dp"
                                             android:layout_height="15dp"
                                             android:layout_marginLeft="20dp"
-                                            android:background="@drawable/answered_icon"
                                             app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_title"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="@+id/answeredPost_1_title" />
@@ -614,7 +604,6 @@
                                             android:maxWidth="250dp"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="sharedPreference 이번 과제 "
                                             app:layout_constraintStart_toStartOf="@+id/adad"
                                             app:layout_constraintTop_toBottomOf="@+id/adad" />
 
@@ -634,7 +623,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="5dp"
-                                            android:text="101"
+                                            android:text="0"
                                             android:textColor="@color/DarkBlue"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/adfadzc"
@@ -655,7 +644,8 @@
                                             android:id="@+id/answeredPost_1_commentcount"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="101"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="0"
                                             android:textColor="@color/gray"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/answeredPost_1_likecount"
@@ -694,7 +684,6 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="10dp"
                                             android:layout_marginBottom="30dp"
-                                            android:text="sharedPreference 사용 질문"
                                             android:textColor="@color/black"
                                             android:textSize="15sp"
                                             android:textStyle="bold"
@@ -707,7 +696,6 @@
                                             android:layout_width="50dp"
                                             android:layout_height="15dp"
                                             android:layout_marginLeft="20dp"
-                                            android:background="@drawable/answered_icon"
                                             app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_title"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="@+id/answeredPost_2_title" />
@@ -720,7 +708,6 @@
                                             android:maxWidth="250dp"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="sharedPreference 이번 과제 "
                                             app:layout_constraintStart_toStartOf="@+id/ADAFSDFDFAF"
                                             app:layout_constraintTop_toBottomOf="@+id/ADAFSDFDFAF" />
 
@@ -740,7 +727,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="5dp"
-                                            android:text="101"
+                                            android:text="0"
                                             android:textColor="@color/DarkBlue"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/AFDSFAFASFASFSDF"
@@ -761,7 +748,8 @@
                                             android:id="@+id/answeredPost_2_commentcount"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="101"
+                                            android:text="0"
+                                            android:layout_marginLeft="5dp"
                                             android:textColor="@color/gray"
                                             android:textSize="15sp"
                                             app:layout_constraintBottom_toBottomOf="@+id/answeredPost_2_likecount"
@@ -816,12 +804,12 @@
                     </HorizontalScrollView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-            <ProgressBar
-                android:layout_marginTop="-100dp"
-                android:id="@+id/mainLoading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"/>
+<!--            <ProgressBar-->
+<!--                android:layout_marginTop="-100dp"-->
+<!--                android:id="@+id/mainLoading"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/white"/>-->
         </FrameLayout>
 
     </LinearLayout>
