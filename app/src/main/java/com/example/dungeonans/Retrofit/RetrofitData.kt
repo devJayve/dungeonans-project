@@ -38,7 +38,6 @@ data class ProfileData(
     var profile_list : List<profile_format>
 )
 
-
 data class CommunityPostData3(
     var success : Boolean,
     var errmsg : String,
