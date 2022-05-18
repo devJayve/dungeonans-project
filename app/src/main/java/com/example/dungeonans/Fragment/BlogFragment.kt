@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dungeonans.Activity.MainActivity
 import com.example.dungeonans.Adapter.BlogCardViewAdapter
 import com.example.dungeonans.DataClass.BlogData
-import com.example.dungeonans.DataClass.BlogPostData
+import com.example.dungeonans.DataClass.PostData
 import com.example.dungeonans.DataClass.board_req_format
 import com.example.dungeonans.DataClass.posting_format_res
 import com.example.dungeonans.R
@@ -31,11 +31,11 @@ class BlogFragment : Fragment() {
         var postDefaultCount = 6
         var retrofit = RetrofitClient.initClient()
         var reqData = board_req_format(0,postDefaultCount)
-        var sendBlogData = retrofit.create(RetrofitClient.GetBlogApi::class.java)
-        sendBlogData.sendBoardReq(reqData).enqueue(object : retrofit2.Callback<BlogPostData> {
-            override fun onFailure(call: retrofit2.Call<BlogPostData>, t: Throwable) {
+        var sendBlogData = retrofit.create(RetrofitClient.BlogApi::class.java)
+        sendBlogData.sendBoardReq(reqData).enqueue(object : retrofit2.Callback<PostData> {
+            override fun onFailure(call: retrofit2.Call<PostData>, t: Throwable) {
             }
-            override fun onResponse(call: retrofit2.Call<BlogPostData>, response: Response<BlogPostData>) {
+            override fun onResponse(call: retrofit2.Call<PostData>, response: Response<PostData>) {
                 Log.d("blog",response.body()!!.success.toString())
                 var blogData = response.body()!!.posting_list
                 Log.d("blog",blogData.toString())

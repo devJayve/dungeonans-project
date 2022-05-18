@@ -217,13 +217,20 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                 communityPostList.clear()
 
 
+
                 val requestSearchApi = retrofit.create(RetrofitClient.SearchApi::class.java)
-                requestSearchApi.postSearchCommunity(word = query.toString()).enqueue(object : Callback<CommunityHotPostData> {
-                    override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
+                requestSearchApi.postSearchCommunity(QueryData(query = query.toString())).enqueue(object : Callback<PostData> {
+                    override fun onFailure(call: Call<PostData>, t: Throwable) {
                     }
-                    override fun onResponse(call: Call<CommunityHotPostData>, response: Response<CommunityHotPostData>) {
+                    override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                         if (response.body()?.success == true) {
                             setData(response.body()!!.posting_list)
+
+                            communityRVAdapter.setItemClickListener(object : CommunityRVAdapter.OnItemClickListener {
+                                override fun postClick(v: View, position: Int) {
+                                    Log.d("TAG!", "$position SearchProfileActivity - community post click")
+                                }
+                            })
 
                             communityRVAdapter.submitList(communityPostList)
                             communityRVAdapter.notifyDataSetChanged()
@@ -233,16 +240,6 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
                         }
                     }
                 })
-
-
-
-
-                for (i in 0 until 10) {
-                    val communityData = CommunityData(postTitle = "", postBody = "", hashtag = "", likeCount = "",commentCount = "")
-                    communityPostList.add(communityData)
-                }
-                this.communityRVAdapter.submitList(communityPostList)
-                communityRVAdapter.notifyDataSetChanged()
             }
 
             1 -> { // 질문 게시글 불러오기
@@ -305,6 +302,7 @@ class SearchProfileActivity : AppCompatActivity(), SearchView.OnQueryTextListene
             }
         }
     }
+
 
     private fun setData(postingData : List<posting_format_res>) {
 

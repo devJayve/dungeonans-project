@@ -106,16 +106,16 @@ class CommunityFragment : Fragment() {
         communityPageRecyclerView.visibility = View.GONE
 
         var retrofit = RetrofitClient.initClient()
-        var getCommunityPostApi = retrofit.create(RetrofitClient.GetCommunityPostAPI::class.java)
+        var getCommunityPostApi = retrofit.create(RetrofitClient.CommunityApi::class.java)
         var data = board_req_format(start_index, 6)
-        getCommunityPostApi.sendBoardReq(data).enqueue(object : Callback<CommunityPostData> {
-            override fun onFailure(call: Call<CommunityPostData>, t: Throwable) {
+        getCommunityPostApi.getCommunityPost(data).enqueue(object : Callback<PostData> {
+            override fun onFailure(call: Call<PostData>, t: Throwable) {
                 Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
-                call: Call<CommunityPostData>,
-                response: Response<CommunityPostData>
+                call: Call<PostData>,
+                response: Response<PostData>
             ) {
 
                 var postingList = response.body()!!.success
@@ -158,14 +158,14 @@ class CommunityFragment : Fragment() {
         var mainLayout : LinearLayout = view.findViewById(R.id.mainLayout)
         var communityPageRecyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
         var retrofit = RetrofitClient.initClient()
-        var getCommunityHotPostApi = retrofit.create(RetrofitClient.GetCommunityHotPostApi::class.java)
+        var getCommunityHotPostApi = retrofit.create(RetrofitClient.CommunityApi::class.java)
         var data = send_post_cnt(2)
-        getCommunityHotPostApi.sendPostCount(data).enqueue(object : Callback<CommunityHotPostData> {
-            override fun onFailure(call: Call<CommunityHotPostData>, t: Throwable) {
+        getCommunityHotPostApi.getCommunityHotPost(data).enqueue(object : Callback<PostData> {
+            override fun onFailure(call: Call<PostData>, t: Throwable) {
                 Toast.makeText(context,"서버 연결이 불안정합니다",Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: Call<CommunityHotPostData>,response: Response<CommunityHotPostData>) {
+            override fun onResponse(call: Call<PostData>,response: Response<PostData>) {
                 var recyclerView : RecyclerView = view.findViewById(R.id.communityPageHotPostRecyclerView)
                 //조수민 수정 : communityHotPoistList 에 저장
                 for (i in 0..response.body()!!.posting_list.size-1){

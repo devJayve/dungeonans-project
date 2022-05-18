@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,12 +74,12 @@ class RegisterConfirmFragment : Fragment() {
         for (i in 0 until editTextList.size) {
             editTextList[i].addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
-                    when (i) {
-                        0 -> preferenceUtil.setString("registerName", "")
-                        1 -> preferenceUtil.setString("registerId", "")
-                        2 -> preferenceUtil.setString("registerPw", "")
-                        4 -> preferenceUtil.setString("registerEmail", "")
-                    }
+//                    when (i) {
+//                        0 -> preferenceUtil.setString("registerName", "")
+//                        1 -> preferenceUtil.setString("registerId", "")
+//                        2 -> preferenceUtil.setString("registerPw", "")
+//                        4 -> preferenceUtil.setString("registerEmail", "")
+//                    }
                 }
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     when (i) {
@@ -170,6 +171,7 @@ class RegisterConfirmFragment : Fragment() {
         val rePwIL = view?.findViewById<TextInputLayout>(R.id.rePwInputLayout)
         isRePwAcceptable = false
 
+        Log.d("TAG", "pw : ${pwET.text} rePw : ${rePwET.text}")
         if (pwET.text.toString() != rePwET.text.toString()) {
             rePwIL?.error = "비밀번호가 일치하지 않습니다."
         } else {

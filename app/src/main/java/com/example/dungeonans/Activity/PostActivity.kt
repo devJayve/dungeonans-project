@@ -27,7 +27,6 @@ import retrofit2.Call
 import retrofit2.Response
 
 
-// 답변은 답변만 보여주고, 답변의 점점점을 누르면 답변 밑에 달린 모든 댓글들 다 볼 수 있게 처리,,
 
 class PostActivity : AppCompatActivity() {
     var commentData : MutableList<PostCommentData> = mutableListOf()
@@ -113,7 +112,7 @@ class PostActivity : AppCompatActivity() {
                 commentEditText.hint = "댓글을 입력하세요"
 
                 var retrofit = RetrofitClient.initClient()
-                var putComment = retrofit.create(RetrofitClient.PostCommentApi::class.java)
+                var putComment = retrofit.create(RetrofitClient.CommentApi::class.java)
                 putComment.postComment(PrefManager.getUserToken(),put_comment_req("1","${commentEditText.text}")).enqueue(object : retrofit2.Callback<NoneData> {
                     override fun onFailure(call: Call<NoneData>, t: Throwable) {
                     }
@@ -216,7 +215,7 @@ class PostActivity : AppCompatActivity() {
     }
     private fun renderCommentUi() {
         var retrofit = RetrofitClient.initClient()
-        var getComment = retrofit.create(RetrofitClient.GetCommentApi::class.java)
+        var getComment = retrofit.create(RetrofitClient.CommentApi::class.java)
         getComment.getComment(1).enqueue(object : retrofit2.Callback<Comment> {
             override fun onFailure(call: Call<Comment>, t: Throwable) {
                 Toast.makeText(this@PostActivity,"서버 연결이 불안정합니다.",Toast.LENGTH_SHORT).show()
@@ -251,6 +250,7 @@ class PostActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun putComment(body: String, commentEditText : EditText) {
         recyclerView = findViewById(R.id.postCommentRecyclerView)
         // 대댓글

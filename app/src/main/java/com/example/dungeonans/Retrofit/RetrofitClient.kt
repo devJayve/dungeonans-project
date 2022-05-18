@@ -135,34 +135,48 @@ object RetrofitClient {
         return connection
     }
 
-    interface GetSpecificPostApi{
-        @GET("/board")
-        fun getPost(@Query("posting_index") posting_index : Int) : Call<ClickedPostData>
-    }
-
-    interface GetCommunityPostAPI{
+    /** Community Api (worked by KYJ) **/
+    interface CommunityApi{
         @GET("/board/community")
-        fun sendBoardReq(@Query("board_req_format") board_req_format : board_req_format) : Call<CommunityPostData>
-    }
+        fun getCommunityPost(@Query("board_req_format") board_req_format: board_req_format) : Call<PostData>
 
-    interface GetCommunityHotPostApi{
         @GET("/board/hot")
-        fun sendPostCount(@Query("send_post_cnt") post_cnt : send_post_cnt) : Call<CommunityHotPostData>
+        fun getCommunityHotPost(@Query("send_post_cnt") post_cnt : send_post_cnt) : Call<PostData>
     }
-
-    interface GetQnAPostApi{
+    /** QnA Api (worked by KYJ) **/
+    interface AskApi{
         @GET("/board/qna")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
-    }
+        fun getAskPost(@Query("board_req_format") board_req_format: board_req_format) : Call<PostData>
 
-    interface GetUnAnsweredApi{
         @GET("/board/openQna")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
+        fun getUnAnsweredPost(@Query("board_req_format") board_req_format: board_req_format) : Call<PostData>
+
+        @GET("/board/closedQna")
+        fun getAnsweredPost(@Query("board_req_format") board_req_format: board_req_format) : Call<PostData>
+    }
+    /** QnA Api (worked by KYJ) **/
+
+    /** Blog Api (worked by KYJ) **/
+    interface BlogApi{
+        @GET("/board/blog")
+        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<PostData>
     }
 
-    interface GetClosedApi{
-        @GET("/board/closedQna")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<QnAPostData>
+    /** Comment Api (worked by KYJ) **/
+    interface CommentApi{
+        @GET("/comment")
+        fun getComment(@Query("posting_index") posting_index: Int) : Call<Comment>
+
+        @POST("/comment")
+        fun postComment(@Header("auth") token: String?, @Body() comment_format_req : put_comment_req) : Call<NoneData>
+
+        @DELETE("/comment")
+        fun deleteComment(@Path("comment_index") comment_index : Int) : Call<NoneData>
+    }
+
+    interface ProfileApi{
+        @GET("/profile")
+        fun getMyProfile(@Header("auth") token : String) : Call<ProfileData>
     }
 
     //조수민
@@ -171,29 +185,14 @@ object RetrofitClient {
         fun sendBoardReq(@Header("auth") token : String, @Body() board_ask_format: board_ask_format) : Call<AskPostResponse>
     }
 
-    interface GetBlogApi{
-        @GET("/board/blog")
-        fun sendBoardReq(@Query("board_req_format") board_req_format: board_req_format) : Call<BlogPostData>
+    interface GetSpecificPostApi{
+        @GET("/board")
+        fun getPost(@Query("posting_index") posting_index : Int) : Call<ClickedPostData>
     }
 
     interface GetCommunityByTagApi{
         @POST("/board/commTag")
-        fun getPost(@Body() board_req_format: board_req_format) : Call<GetCommunityPostByTag>
-    }
-
-    interface GetCommentApi{
-        @GET("/comment")
-        fun getComment(@Query("posting_index") posting_index: Int) : Call<Comment>
-    }
-
-    interface PostCommentApi{
-        @POST("/comment")
-        fun postComment(@Header("auth") token: String?, @Body() comment_format_req : put_comment_req) : Call<NoneData>
-    }
-
-    interface DeleteCommentApi{
-        @DELETE("/comment")
-        fun deleteComment(@Path("comment_index") comment_index : Int) : Call<NoneData>
+        fun getPost(@Body() board_req_format: board_req_format) : Call<ClickedPostData>
     }
 
     /** Login Api (worked by KJY) **/
@@ -208,22 +207,22 @@ object RetrofitClient {
     interface SearchApi {
         @POST("/search/community")
         fun postSearchCommunity(
-            @Body word : String
-        ) : Call<CommunityHotPostData>
+            @Body query : QueryData
+        ) : Call<PostData>
 
         @POST("/search/qna")
         fun postSearchAsk(
             @Body word : String
-        ) : Call<CommunityHotPostData>
+        ) : Call<PostData>
 
         @POST("/search/blog")
         fun postSearchBlog(
             @Body word : String
-        ) : Call<CommunityHotPostData>
+        ) : Call<PostData>
 
         @POST("/search/profile")
         fun postSearchProfile(
             @Body word : String
-        ) : Call<CommunityHotPostData>
+        ) : Call<PostData>
     }
 }

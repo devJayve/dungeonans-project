@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,12 +19,23 @@ import com.example.dungeonans.Activity.ProfilePostActivity
 import com.example.dungeonans.Adapter.BlogCardViewAdapter
 import com.example.dungeonans.DataClass.BlogData
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.dungeonans.Activity.MainActivity
+import com.example.dungeonans.Activity.UserProfileEditActivity
+import com.example.dungeonans.DataClass.LoginResponse
+import com.example.dungeonans.DataClass.ProfileData
 import com.example.dungeonans.R
+import com.example.dungeonans.Retrofit.RetrofitClient
+import com.example.dungeonans.Utils.PrefManager
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
 
 
 class MyProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.myprofilepage_fragment,container,false)
+
+        getProfileInfo(view)
 
         var settingBtn = view.findViewById<ImageButton>(R.id.settingBtn)
         settingBtn.setOnClickListener{
@@ -73,16 +86,38 @@ class MyProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+        val editProfileBtn : Button = view.findViewById(R.id.editProfileBtn)
+        editProfileBtn.setOnClickListener {
+            val intent = Intent(context, UserProfileEditActivity::class.java)
+            startActivity(intent)
+        }
+
 
         renderUi(view)
         return view
+    }
+
+    private fun getProfileInfo(view : View) {
+        var retrofit = RetrofitClient.initClient()
+        var getProfileInfo = retrofit.create(RetrofitClient.ProfileApi::class.java)
+        var getToken = PrefManager.getUserToken()
+        getProfileInfo.getMyProfile(getToken).enqueue(object : retrofit2.Callback<ProfileData> {
+            override fun onFailure(call: Call<ProfileData>, t: Throwable) {
+                Toast.makeText(context,"서버 연결이 불안정합니다.",Toast.LENGTH_SHORT).show()
+            }
+            override fun onResponse(call: Call<ProfileData>, response: Response<ProfileData>) {
+                val nameTextView = view.findViewById<TextView>(R.id.nameTextView)
+                nameTextView.text = response.body()!!.profile_list[0].name
+                val nicknameTextView = view.findViewById<TextView>(R.id.nicknameTextView)
+                nicknameTextView.text = response.body()!!.profile_list[0].nickname
+            }
+        })
     }
 
     private fun renderUi(view: View) {
         var recyclerView : RecyclerView = view.findViewById(R.id.profilePageRecyclerView)
         var data : MutableList<BlogData> = setData()
         var adapter = BlogCardViewAdapter()
-
         adapter.listData = data
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(context,2)

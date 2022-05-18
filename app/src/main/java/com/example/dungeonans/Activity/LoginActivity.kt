@@ -146,14 +146,12 @@ class LoginActivity : AppCompatActivity() {
         val idValue = binding.etId.text.toString()
         val pwValue = binding.etPw.text.toString()
 
-
         val loginInfo = LoginData(
             id = idValue,
             pw = pwValue
         )
 
         val retrofit = RetrofitClient.initClient()
-
         val requestLoginApi = retrofit.create(RetrofitClient.LoginApi::class.java)
         requestLoginApi.postLogin(loginInfo).enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {

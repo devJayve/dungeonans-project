@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/setting_bottomstroke">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:scaleType="fitStart"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스택"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hashtagHorizontalScrollView"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:overScrollMode="ifContentScrolls"
+        android:layout_height="wrap_content"
+        android:background="@color/lightGrey">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/pythontag"/>
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/kotlintag"/>
+
+            <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/androidtag"/>
+
+            <RadioButton
+                android:id="@+id/radio4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="20dp"
+                android:layout_margin="5dp"
+                android:button="@null"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/htmltag"/>
+
+            <RadioButton
+                android:id="@+id/radio5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/csstag"/>
+
+            <RadioButton
+                android:id="@+id/radio6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/jstag"/>
+
+            <RadioButton
+                android:id="@+id/radio7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="20dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/javatag"/>
+
+            <RadioButton
+                android:id="@+id/radio8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/cpptag"/>
+
+            <RadioButton
+                android:id="@+id/radio9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/sqltag"/>
+
+            <RadioButton
+                android:id="@+id/radio10"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:elevation="20dp"
+                android:button="@null"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/rtag"/>
+
+            <RadioButton
+                android:id="@+id/radio11"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:elevation="20dp"
+                android:button="@null"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/phptag"/>
+
+            <RadioButton
+                android:id="@+id/radio12"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/swifttag"/>
+
+            <RadioButton
+                android:id="@+id/radio13"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/csharptag"/>
+
+            <RadioButton
+                android:id="@+id/radio14"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/gotag"/>
+
+            <RadioButton
+                android:id="@+id/radio15"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/scalatag"/>
+
+            <RadioButton
+                android:id="@+id/radio16"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/darttag"/>
+
+            <RadioButton
+                android:id="@+id/radio17"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:layout_margin="10dp"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/bashtag"/>
+
+            <RadioButton
+                android:id="@+id/radio18"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/djangotag"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/custom_stack_horizantal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:overScrollMode="ifContentScrolls"
+        android:visibility="gone"
+        android:background="@color/lightGrey">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radi12"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/djangotag"/>
+
+            <RadioButton
+                android:id="@+id/radi122"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:elevation="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/djangotag"/>
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:padding="5dp"/>
+
+        <ImageButton
+            android:id="@+id/add_custom_stack_btn"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:background="@color/transparent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="95dp"
+            android:layout_marginTop="13dp"
+            android:scaleType="fitCenter"/>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/confirm_stack_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:enabled="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/selector_radio_button"/>
+
+
+
+
+</LinearLayout>
