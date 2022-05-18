@@ -43,6 +43,7 @@ class PostActivity : AppCompatActivity() {
     lateinit var recyclerView : RecyclerView
     lateinit var commentEditText: EditText
     lateinit var askPostWebView : WebView
+    lateinit var answerActivity : Intent
     var askWebViewUrl = "file:///android_asset/ask_post.html"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,7 +125,6 @@ class PostActivity : AppCompatActivity() {
 
         var answerBtn : Button = findViewById(R.id.answerBtn)
         answerBtn.setOnClickListener{
-            val answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
             startActivity(answerActivity)
             commentEditText.hint = "답변을 입력하세요"
             commentEditText.requestFocus()
@@ -159,8 +159,15 @@ class PostActivity : AppCompatActivity() {
                 Log.d("이거입니당", response.body()!!.posting.toString())
 
                 var (board_index, posting_index, name, id, nickname,
-                    title, content, data, like_num, comment_num,
+                    title, content, date, like_num, comment_num,
                     board_tag, row_number) = response.body()!!.posting[0]
+
+                answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
+                answerActivity.putExtra("posting",content)
+                answerActivity.putExtra("name",name)
+                answerActivity.putExtra("nickname",nickname)
+                answerActivity.putExtra("title",title)
+                answerActivity.putExtra("date",date)
 
                 askPostWebView.setWebViewClient(object : WebViewClient() {
                     override fun onPageFinished(view: WebView, weburl: String) {
