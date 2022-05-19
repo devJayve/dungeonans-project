@@ -171,20 +171,16 @@ class PostActivity : AppCompatActivity() {
 
                 askPostWebView.setWebViewClient(object : WebViewClient() {
                     override fun onPageFinished(view: WebView, weburl: String) {
-                        Log.d("실험", content)
-                        askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content.toString() +'"'+")")
+                        askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content+'"'+")")
                         askPostWebView.loadUrl("javascript:myupdate()")
                     }
                 })
 
                 askPostWebView.loadUrl(askWebViewUrl)
 
-
             }
-
         })
     }
-
 
     private fun renderAnswerUi() {
         recyclerView = findViewById(R.id.postAnswerRecyclerView)
@@ -205,7 +201,6 @@ class PostActivity : AppCompatActivity() {
         adapter.listData = data
         recyclerView.adapter = adapter
         LinearLayoutManager(this).also { recyclerView.layoutManager = it }
-
     }
 
     private fun setAnswerData() : MutableList<AnswerData> {
