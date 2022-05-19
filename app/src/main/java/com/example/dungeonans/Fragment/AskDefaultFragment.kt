@@ -98,14 +98,14 @@ class AskDefaultFragment : Fragment() {
 
 
                 view.findViewById<TextView>(R.id.allPost_1_title).text = firstPostData.title
-                view.findViewById<TextView>(R.id.allPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.allPost_1_content).text = firstPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.allPost_1_likecount).text = firstPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.allPost_1_commentcount).text = firstPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.button2).setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 view.findViewById<TextView>(R.id.allPost_2_title).text = secondPostData.title
-                view.findViewById<TextView>(R.id.allPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.allPost_2_content).text = secondPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.allPost_2_likecount).text = secondPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.allPost_2_commentcount).text = secondPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.button2adadf).setBackgroundResource(R.drawable.unanswered_icon)
@@ -140,14 +140,14 @@ class AskDefaultFragment : Fragment() {
                 }
 
                 view.findViewById<TextView>(R.id.unAnsweredPost_1_title).text = firstPostData.title
-                view.findViewById<TextView>(R.id.unAnsweredPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.unAnsweredPost_1_content).text = firstPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.unAnsweredPost_1_likecount).text = firstPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.unAnsweredPost_1_commentcount).text = firstPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.ADFAFSDAFSDF).setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 view.findViewById<TextView>(R.id.unAnsweredPost_2_title).text = secondPostData.title
-                view.findViewById<TextView>(R.id.unAnsweredPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.unAnsweredPost_2_content).text = secondPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.unAnsweredPost_2_likecount).text = secondPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.unAnsweredPost_2_commentcount).text = secondPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.adadadafd).setBackgroundResource(R.drawable.unanswered_icon)
@@ -181,14 +181,14 @@ class AskDefaultFragment : Fragment() {
                 }
 
                 view.findViewById<TextView>(R.id.answeredPost_1_title).text = firstPostData.title
-                view.findViewById<TextView>(R.id.answeredPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.answeredPost_1_content).text = firstPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.answeredPost_1_likecount).text = firstPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.answeredPost_1_commentcount).text = firstPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.adad).setBackgroundResource(R.drawable.answered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 view.findViewById<TextView>(R.id.answeredPost_2_title).text = secondPostData.title
-                view.findViewById<TextView>(R.id.answeredPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.answeredPost_2_content).text = secondPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.answeredPost_2_likecount).text = secondPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.answeredPost_2_commentcount).text = secondPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.ADAFSDFDFAF).setBackgroundResource(R.drawable.answered_icon)

@@ -200,7 +200,7 @@ class AskShowAllPostFragment : Fragment() {
             var askUserName = postingData[index].name
             var userNickName = postingData[index].nickname
             var postTitle = postingData[index].title
-            var postBody = postingData[index].content
+            var postBody = postingData[index].content.replace("<p></p>", " ")
             var askStatusImage = index
             if (parameter == "1") {
                 askStatusImage = R.drawable.unanswered_icon
