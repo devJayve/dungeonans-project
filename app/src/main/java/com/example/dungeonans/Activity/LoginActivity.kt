@@ -102,7 +102,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginEvent() {
         connectLoginApi()
-
 //        val loginIntent = Intent(this, MainActivity::class.java)
 //        startActivity(loginIntent)
     }

@@ -16,9 +16,9 @@ class ViewPagerAdapter(fm : FragmentActivity) : FragmentStateAdapter(fm) {
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> CommunityFragment()
+            0 -> BlogFragment()
             1 -> AskFragment()
-            2 -> BlogFragment()
+            2 -> CommunityFragment()
             else -> MyProfileFragment()
         }
     }

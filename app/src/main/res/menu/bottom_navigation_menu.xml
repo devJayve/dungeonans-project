@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_Community"
-        android:icon="@drawable/community_icon"
+        android:icon="@drawable/blog_icon"
         android:enabled="true"
-        android:title="커뮤니티" />
+        android:title="블로그" />
 
     <item
         android:id="@+id/nav_Ask"
@@ -15,8 +15,8 @@
     <item
         android:id="@+id/nav_Blog"
         android:enabled="true"
-        android:icon="@drawable/blog_icon"
-        android:title="블로그" />
+        android:icon="@drawable/community_icon"
+        android:title="커뮤니티" />
 
     <item
         android:id="@+id/nav_MyProfile"
