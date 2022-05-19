@@ -76,11 +76,9 @@ class AskShowAllPostFragment : Fragment() {
                         var adapter = AskRVAdapter()
                         adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
                             override fun onClick(v: View, position: Int) {
-                                Log.d("tag", postingList[position].toString())
                                 var (board_index, posting_index, name, id, nickname,
                                     title, content, data, like_num, comment_num,
                                     board_tag, row_number) = postingList[position]
-                                Log.d("이거다!!!!!!!", posting_index.toString())
                                 val intent = Intent(context, PostActivity::class.java)
                                 intent.putExtra("posting_index",posting_index.toString())
                                 startActivity(intent)
