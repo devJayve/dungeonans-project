@@ -91,7 +91,7 @@ class AskPostActivity : AppCompatActivity() {
     var firstClicked = 0;
     var cameraPath = ""
     var mWebViewImageUpload: ValueCallback<Array<Uri>>? = null
-
+    var width: Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,14 +102,14 @@ class AskPostActivity : AppCompatActivity() {
         body_webview.settings.domStorageEnabled = true
         body_webview.settings.allowContentAccess = true
         body_webview.settings.allowFileAccess = true
+        var linear = findViewById<WebView>(R.id.body_webview)
 
         var weburl = "file:///android_asset/auto_highlight.html"
 
         class WebBrideg(private val mContext: Context) {
             @JavascriptInterface
-            fun getwidth(): Float {
-                var width: Float = 0.0f
-                var linear = findViewById<LinearLayout>(R.id.body_box)
+            fun getmywidth(): Float {
+
                 width = linear.width.toFloat()
                 return width
             }
@@ -187,7 +187,7 @@ class AskPostActivity : AppCompatActivity() {
 
         }
 
-        body_webview.addJavascriptInterface(WebBrideg(this), "Android")
+        body_webview.addJavascriptInterface(WebBrideg(this), "Android2")
         body_webview.setWebViewClient(WebViewClient())
 
         body_webview?.apply {
@@ -204,10 +204,7 @@ class AskPostActivity : AppCompatActivity() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
 
-                    runOnUiThread(Runnable {
-                        Log.d("asdfasdfads", "Asdfasfsfewf")
-                        body_webview.loadUrl("javascript:myupdate()")
-                    })
+                    body_webview.loadUrl("javascript:myupdate2()")
 
                 }
             }

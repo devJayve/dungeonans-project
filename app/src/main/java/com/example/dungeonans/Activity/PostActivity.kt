@@ -31,6 +31,7 @@ import retrofit2.Response
 class PostActivity : AppCompatActivity() {
     var commentData : MutableList<PostCommentData> = mutableListOf()
     var answerData : MutableList<AnswerData> = mutableListOf()
+    var width: Float = 0.0f
 
     private var doubleBackToExitPressedOnce = false
 
@@ -57,6 +58,7 @@ class PostActivity : AppCompatActivity() {
         askPostWebView.settings.domStorageEnabled = true
         askPostWebView.settings.allowContentAccess = true
         askPostWebView.settings.allowFileAccess = true
+        var linear = findViewById<WebView>(R.id.askPostWebView)
 
         commentEditText = findViewById(R.id.commentEditText)
         renderWebView(posting_list!!.toInt())
@@ -67,8 +69,6 @@ class PostActivity : AppCompatActivity() {
         class WebBrideg(private val mContext: Context) {
             @JavascriptInterface
             fun getmywidth(): Float {
-                var width: Float = 0.0f
-                var linear = findViewById<LinearLayout>(R.id.mywidth)
                 width = linear.width.toFloat()
                 return width
             }
@@ -172,7 +172,7 @@ class PostActivity : AppCompatActivity() {
                 askPostWebView.setWebViewClient(object : WebViewClient() {
                     override fun onPageFinished(view: WebView, weburl: String) {
                         askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content+'"'+")")
-                        askPostWebView.loadUrl("javascript:myupdate()")
+                        askPostWebView.loadUrl("javascript:myupdate2()")
                     }
                 })
 

@@ -70,7 +70,6 @@
             100% {margin-top: 0px;}
         }
 
-
         .wmd-button-bar {
             clear: both;
             background-color: transparent;
@@ -169,15 +168,12 @@
             element.classList.add('chatbox');
         }
 
-
-
         function update_mycode(){
             var asdf = 0;
             var textcound = 0 ;
             var checkTagRequired = true;
             var first = 0;
             var final = 0;
-<!--            【(이미지입니다)\n" + imagePath + "】-->
 
             var boldfirst = 0 ;
             var boldfinal = 0;
@@ -314,24 +310,8 @@
 
             }
 
-
-
-
             result_elem.innerHTML = resultString;
 
-        }
-
-
-
-        function update_code2() {
-            var result_elem = document.querySelector("#count1");
-            var text = document.querySelector("#editing-code")
-        }
-
-        function auto_grow(element) {
-            console.log(element);
-            element.style.height = "5px";
-            element.style.height = (element.scrollHeight)+"px";
         }
 
 
@@ -341,9 +321,6 @@
             editor.style.height = (editor.scrollHeight + 5)+"px";
             document.getElementById("undobutton").style.backgroundPosition = "-200px 0px"
         }
-
-
-
 
         function insertCodeBlock(position){
             var paper = document.getElementById("editing-code");
@@ -419,7 +396,6 @@
         }
         }
 
-
         function updateImage(uri){
             var str=document.getElementById("editing-code");
             var imagePath = "file://" + uri;
@@ -429,8 +405,6 @@
             str.innerHTML = resultStr
 
         }
-
-
 
         function changeBoldStyle() {
             var count = 0;
@@ -500,17 +474,6 @@
             update_mycode()
         }
 
-        window.onload = function showAndroidToast() {
-            var mywidth = Android.getmywidth();
-            var px = Android.getwidth(mywidth);
-            var mypx = px - 7;
-            var mypx_codeblcok = px - 40;
-            var transe = document.getElementById("editing-code");
-            var code_block = document.getElementById("count1")
-            transe.style.width = mypx+"px";
-            code_block.style.width = mypx_codeblcok +"px";
-        }
-
         function loadImage(){
             document.getElementById("loadfile").click();
         }
@@ -532,10 +495,12 @@
         function myupdate2() {
             var mywidth = Android2.getmywidth();
             var px = Android2.getwidth(mywidth);
-            var mypx = px - 40;
-            var mypx_codeblcok = px - 30;
-            var code_block = document.getElementById("editing-code")
-            code_block.style.width = mypx_codeblcok+"px";
+            var mypx = px - 7;
+            var mypx_codeblcok = px - 50;
+            var transe = document.getElementById("editing-code");
+            var code_block = document.getElementById("count1")
+            transe.style.width = mypx+"px";
+            code_block.style.width = mypx_codeblcok +"px";
         }
 
 
@@ -641,14 +606,14 @@
             id="editing-code"
             placeholder="소스코드 입력"
             spellcheck="false"
-            style="border: none; margin-top: -3px; min-height:400px; max-height: 400px; width:400px; top: 10px; resize: none; margin : 0; outline: none; "
-            onclick="update_code2(); resize();  "
-            oninput="update_mycode(); resize();"></textarea>
+            style="overflow-y: scroll; border: none; margin-top: -3px; min-height:400px; max-height: 400px; width:400px; top: 10px; resize: none; margin : 0; outline: none; "
+            onclick="resize();  "
+            oninput="resize();"></textarea>
 
 </div>
 
 
-<pre class = "hljs" style=" position: absolute; display: none; left: 1px; top: 70.5px; margin: 0; word-break: break-all; white-space: pre-wrap; height:390px; width:388px; background-color: white; color: black" id = "count1">
+<pre class = "hljs" style="overflow-y: scroll; position: absolute; display: none; left: 1px; top: 70.5px; margin: 0; word-break: break-all; white-space: pre-wrap; height:390px; width:388px; background-color: white; color: black" id = "count1">
     </pre>
 
 <button onclick="uploadPost()" style="font-size: 10px; margin-top:30px; margin-bottom:30px; padding: 5px; box-shadow:inset 0 1px 0 0 hsl(0deg 0% 100% / 40%); border:none; border-radius:3px; background-color: hsl(206,100%,52%); color: white;">질문하기</button>

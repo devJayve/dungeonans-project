@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.webkit.JavascriptInterface
-import android.webkit.WebChromeClient
 import android.webkit.WebView
-import android.webkit.WebView.WebViewTransport
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -23,6 +21,7 @@ class AskApplyActivity :AppCompatActivity() {
     lateinit var nickname : String
     lateinit var title : String
     lateinit var date : String
+    var mywidth: Float = 0.0f
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +40,7 @@ class AskApplyActivity :AppCompatActivity() {
         var writerNickName = findViewById<TextView>(R.id.writerNickName)
         var writerDate = findViewById<TextView>(R.id.writeDate)
         var writeTitle = findViewById<TextView>(R.id.title_to_answer)
+        var linear = findViewById<WebView>(R.id.body_webview)
 
         writerName.text = name
         writerNickName.text = nickname
@@ -62,11 +62,10 @@ class AskApplyActivity :AppCompatActivity() {
 
         class WebBrideg(private val mContext: Context) {
             @JavascriptInterface
+
             fun getmywidth(): Float {
-                var width: Float = 0.0f
-                var linear = findViewById<LinearLayout>(R.id.body_box2)
-                width = linear.width.toFloat()
-                return width
+                mywidth = linear.width.toFloat()
+                return mywidth
             }
 
             @JavascriptInterface
@@ -113,7 +112,6 @@ class AskApplyActivity :AppCompatActivity() {
             override fun onPageFinished(view: WebView, weburl: String) {
                 askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content +'"'+")")
                 askPostWebView.loadUrl("javascript:myupdate2()")
-                askPostWebView.loadUrl("javascript:updateBox()")
                 applyWebView.loadUrl("javascript:myupdate2()")
 //                updateBox
             }
