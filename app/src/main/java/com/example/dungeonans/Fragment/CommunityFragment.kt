@@ -70,7 +70,7 @@ class CommunityFragment : Fragment() {
                 TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,10f,resources.displayMetrics).toInt(),0,0,0)
             radioButton.layoutParams = buttonParams
             radioGroup.addView(radioButton)
-            }
+        }
 
         // 라디오 버튼 텍스트 설정, 선택 해제 로직
         for (index in 0 until radioButtonText.count()) {
@@ -222,4 +222,3 @@ class CommunityFragment : Fragment() {
         })
     }
 }
-
