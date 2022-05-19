@@ -484,8 +484,8 @@
             var mycontent;
             mycontent = str.replace(new RegExp("\"","g"),"\\"+"\"")
             var mycontent2 = mycontent.replace(new RegExp("\n","g"),"<p></p>")
-            var mytitle = Android.getTitle()
-            Android.SendPostToApi(mytitle,mycontent2);
+            var mytitle = Android2.getTitle()
+            Android2.SendPostToApi(mytitle,mycontent2);
         }
 
         function getPost(){

@@ -141,11 +141,11 @@
                         android:layout_height="1dp"/>
                 </LinearLayout>
 
-                <WebView
+                <com.mypackage.common.custom.android.widgets.CustomWebview
                     android:id="@+id/body_webview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                </WebView>
+                </com.mypackage.common.custom.android.widgets.CustomWebview>
 
 
 

@@ -116,29 +116,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/writerName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="#F2F2F2"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+<!--        <HorizontalScrollView-->
+<!--            android:id="@+id/horizontalScrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:background="#F2F2F2"-->
+<!--            android:scrollbars="none"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintHorizontal_weight="1"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/linearLayout">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal">-->
 
+<!--            </LinearLayout>-->
 
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
+<!--        </HorizontalScrollView>-->
 
 
         <ScrollView
@@ -201,14 +199,14 @@
                     android:layout_height="wrap_content">
                 </WebView>
 
-                <WebView
+                <com.mypackage.common.custom.android.widgets.CustomWebview
                     android:id="@+id/body_webview"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
-                </WebView>
+                </com.mypackage.common.custom.android.widgets.CustomWebview>
 
 
 

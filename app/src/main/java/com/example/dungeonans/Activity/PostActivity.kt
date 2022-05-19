@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.webkit.JavascriptInterface
@@ -22,10 +24,8 @@ import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Utils.PrefManager
-import kotlinx.android.synthetic.main.myprofilepage_fragment.*
 import retrofit2.Call
 import retrofit2.Response
-
 
 
 class PostActivity : AppCompatActivity() {
@@ -51,6 +51,10 @@ class PostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ask_post_fragment)
         val posting_list: String? = intent.getStringExtra("posting_index")
+        var writerName = findViewById<TextView>(R.id.writerName2)
+        var writerNickName = findViewById<TextView>(R.id.writerNickName2)
+        var writerDate = findViewById<TextView>(R.id.writeDate2)
+        var writeTitle = findViewById<TextView>(R.id.textView17)
 
 
         askPostWebView = findViewById(R.id.askPostWebView)
@@ -93,6 +97,7 @@ class PostActivity : AppCompatActivity() {
         }
         askPostWebView.addJavascriptInterface(WebBrideg(this), "Android2")
         askPostWebView.setWebViewClient(WebViewClient())
+
 
         var backBtn : ImageView = findViewById(R.id.backBtn)
         backBtn.setOnClickListener{
@@ -143,6 +148,7 @@ class PostActivity : AppCompatActivity() {
         renderAnswerUi()
     }
 
+
     private fun renderWebView(posting_index : Int){
         var retrofit = RetrofitClient.initClient()
         var sendData = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
@@ -170,6 +176,7 @@ class PostActivity : AppCompatActivity() {
                 answerActivity.putExtra("date",date)
 
                 askPostWebView.setWebViewClient(object : WebViewClient() {
+
                     override fun onPageFinished(view: WebView, weburl: String) {
                         askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content+'"'+")")
                         askPostWebView.loadUrl("javascript:myupdate2()")
@@ -354,3 +361,4 @@ class PostActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 }
+
