@@ -31,17 +31,20 @@ class CommunityFragment : Fragment() {
     var communityPostingList = ArrayList<posting_format_res>()
     //조수민 수정 : boarding_index 가 1인 ... api 가 달라서 따로 배열을 만들어야 할듯
     var communityHotPostList = ArrayList<posting_format_res>()
+    // 한번 스크롤 내릴때마다 + 6 씩
+    var my_start_index = 0
     //
     var selectedBtn : Int? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.communitypage_fragment2,container,false)
 
         setHashTag(view)
-        renderPost(view,0)
+        renderPost(view,my_start_index)
         renderHotPost(view)
         connectScrollListener(view)
 
         var swipe = view.findViewById<SwipeRefreshLayout>(R.id.swapeView)
+        var communityPageRecyclerView = view.findViewById<RecyclerView>(R.id.communityPageRecyclerView)
         swipe.setOnRefreshListener {
 
             renderPost(view,0)
@@ -49,6 +52,7 @@ class CommunityFragment : Fragment() {
 
             swipe.isRefreshing = false
         }
+
 
         return view
 
@@ -119,7 +123,7 @@ class CommunityFragment : Fragment() {
             ) {
 
                 var postingList = response.body()!!.success
-                Log.d("Asdfasdf",postingList.toString())
+                Log.d("startIndex",response.body()!!.posting_list.toString())
                 var recyclerView: RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
 
                 //조수민 수정 : 전체 posting_format_res 를 받고, for 문 돌려서 index 가 1인것 찾고, 저 위 선언해놓았던 배열에 넣어주기
@@ -150,6 +154,8 @@ class CommunityFragment : Fragment() {
                 recyclerView.addItemDecoration(space)
                 mainLayout.visibility = View.VISIBLE
                 communityPageRecyclerView.visibility = View.VISIBLE
+                my_start_index += 6
+
             }
         })
     }

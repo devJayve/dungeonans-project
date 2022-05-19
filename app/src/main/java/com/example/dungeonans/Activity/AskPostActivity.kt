@@ -87,8 +87,6 @@ import kotlin.collections.HashMap
 
 class AskPostActivity : AppCompatActivity() {
 
-    var isCodeBlockClicked = 0;
-    var firstClicked = 0;
     var cameraPath = ""
     var mWebViewImageUpload: ValueCallback<Array<Uri>>? = null
     var width: Float = 0.0f
