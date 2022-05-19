@@ -11,6 +11,9 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <style>
+        #asdf{
+            box-shadow: inset 1px 1px 4px 0px gray;
+        }
         pre{
             font-family: 'Source Code Pro';
             font-size: 12px;
@@ -302,7 +305,7 @@
                     var html4 = html3.replace(new RegExp('<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>', "g"),'<br>')
 
 
-                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + "style = width:fit-content;" +"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
+                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + "style = width:100%-10px;"+"padding:10px;" +"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
                     textcound = 0;
                 }
 
@@ -336,18 +339,7 @@
             document.getElementById("undobutton").style.backgroundPosition = "-200px 0px"
         }
 
-<!--        function myupdate(){-->
-<!--            var mywidth = window.Android.getwidth();-->
-<!--            var px = window.Android.getwidth(mywidth);-->
-<!--            window.Android.showToast("asdf");-->
-<!--            var mypx = px - 29.5;-->
-<!--            var mypx_codeblcok = px - 32.5;-->
-<!--            var transe = document.getElementById("editing-code");-->
-<!--            var code_block = document.getElementById("count1")-->
-<!--            transe.style.width = mypx+"px";-->
-<!--            code_block.style.width = mypx_codeblcok+"px";-->
-<!--            }-->
-<!--        }-->
+
 
 
         function insertCodeBlock(position){
@@ -424,19 +416,6 @@
         }
         }
 
-<!--        function updateImage(uri){-->
-<!--            var str=document.getElementById("editing-code");-->
-<!--&lt;!&ndash;            var img = document.createElement("img");&ndash;&gt;-->
-<!--            var imagePath = "file://" + uri;-->
-<!--&lt;!&ndash;            img.style.width = "100%";&ndash;&gt;-->
-<!--&lt;!&ndash;            img.style.height = "50%";&ndash;&gt;-->
-<!--&lt;!&ndash;            img.src = imagePath;&ndash;&gt;-->
-<!--&lt;!&ndash;            Android.showToast(imagePath);&ndash;&gt;-->
-<!--&lt;!&ndash;            str.appendChild(img);&ndash;&gt;-->
-<!--            var resultStr = str.innerHTML;-->
-<!--            resultStr += "【(이미지입니다)" + imagePath + "】"-->
-
-<!--        }-->
 
         function updateImage(uri){
             var str=document.getElementById("editing-code");
@@ -519,7 +498,7 @@
         }
 
         window.onload = function showAndroidToast() {
-            var mywidth = Android.getwidth();
+            var mywidth = Android.getmywidth();
             var px = Android.getwidth(mywidth);
             var mypx = px - 7;
             var mypx_codeblcok = px - 40;
@@ -527,7 +506,6 @@
             var code_block = document.getElementById("count1")
             transe.style.width = mypx+"px";
             code_block.style.width = mypx_codeblcok +"px";
-            document.getElementById(id).width = newContent;
         }
 
         function loadImage(){
@@ -546,6 +524,15 @@
 
         function getPost(){
             Android.GetPostFromApi();
+        }
+
+        function myupdate2() {
+            var mywidth = Android2.getmywidth();
+            var px = Android2.getwidth(mywidth);
+            var mypx = px - 40;
+            var mypx_codeblcok = px - 30;
+            var code_block = document.getElementById("editing-code")
+            code_block.style.width = mypx_codeblcok+"px";
         }
 
 

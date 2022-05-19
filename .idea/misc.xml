@@ -7,7 +7,7 @@
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/activity_main.xml" value="0.29981884057971014" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/answer_cardview.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_allpost_cardview.xml" value="0.30344202898550726" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_default_fragment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_default_fragment.xml" value="0.4478442280945758" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/ask_head_fragment.xml" value="0.3625" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/askpage_fragment.xml" value="0.30344202898550726" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/askpage_viewall_fragment.xml" value="0.30344202898550726" />
@@ -16,12 +16,6 @@
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/comment_cardview.xml" value="0.3625" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/communitypage_fragment.xml" value="0.30344202898550726" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/communitypage_fragment2.xml" value="0.3625" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/dialog_custom_stack.xml" value="0.2453125" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/fragment_edit_introduce.xml" value="0.18541666666666667" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/fragment_edit_stack.xml" value="0.2453125" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/fragment_link_edit.xml" value="0.2453125" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/fragment_profile_edit.xml" value="0.2453125" />
-        <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/myprofilepage_fragment.xml" value="0.6" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/post_cardview.xml" value="0.7333333333333334" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/layout/setting_account_page_fragment.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/dydwn/Desktop/dungeonans-android-f911e408b975180e4cb65132a9f3c5caff73b7db/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.14537037037037037" />
@@ -193,7 +187,7 @@
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/activity_login.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/answer_fragment.xml" value="0.264" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_allpost_cardview.xml" value="0.4" />
-        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_apply_fragment.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_apply_fragment.xml" value="0.2" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_head_fragment.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/ask_post_fragment.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/soo86/Desktop/soomindev/app/src/main/res/layout/askpage_fragment.xml" value="0.16770833333333332" />
