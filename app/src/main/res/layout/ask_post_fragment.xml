@@ -61,7 +61,7 @@
                 android:layout_height="50dp">
 
                 <ImageView
-                    android:id="@+id/writerProfileImageView2"
+                    android:id="@+id/writerProfileImageView"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="15dp"
@@ -71,7 +71,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/writerName2"
+                    android:id="@+id/writerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -83,7 +83,7 @@
                     app:layout_constraintTop_toTopOf="@+id/writerProfileImageView" />
 
                 <TextView
-                    android:id="@+id/writerNickName2"
+                    android:id="@+id/writerNickName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -94,7 +94,7 @@
                     app:layout_constraintStart_toEndOf="@+id/writerName" />
 
                 <TextView
-                    android:id="@+id/writeDate2"
+                    android:id="@+id/writeDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="03/31 12:36"

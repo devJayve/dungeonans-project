@@ -2,6 +2,7 @@ package com.example.dungeonans.Activity
 
 import android.content.Context
 import android.content.Intent
+import android.icu.text.CaseMap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -46,16 +47,29 @@ class PostActivity : AppCompatActivity() {
     lateinit var askPostWebView : WebView
     lateinit var answerActivity : Intent
     var askWebViewUrl = "file:///android_asset/ask_post.html"
+    lateinit var name : String
+    lateinit var nickname : String
+    lateinit var title: String
+    lateinit var date: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ask_post_fragment)
         val posting_list: String? = intent.getStringExtra("posting_index")
-        var writerName = findViewById<TextView>(R.id.writerName2)
-        var writerNickName = findViewById<TextView>(R.id.writerNickName2)
-        var writerDate = findViewById<TextView>(R.id.writeDate2)
+        var writerName = findViewById<TextView>(R.id.writerName)
+        var writerNickName = findViewById<TextView>(R.id.writerNickName)
+        var writerDate = findViewById<TextView>(R.id.writeDate)
         var writeTitle = findViewById<TextView>(R.id.textView17)
 
+        name = intent.getStringExtra("name").toString()
+        nickname = intent.getStringExtra("nickname").toString()
+        title = intent.getStringExtra("title").toString()
+        date = intent.getStringExtra("date").toString()
+
+        writerName.text = name
+        writerNickName.text = nickname
+        writeTitle.text = title
+        writerDate.text = date
 
         askPostWebView = findViewById(R.id.askPostWebView)
         askPostWebView.settings.javaScriptEnabled = true

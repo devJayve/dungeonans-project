@@ -14,6 +14,7 @@ import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dungeonans.Activity.AskApplyActivity
 import com.example.dungeonans.Activity.PostActivity
 import com.example.dungeonans.Activity.UserProfileActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
@@ -81,6 +82,10 @@ class AskDefaultFragment : Fragment() {
                     var position = 1
 
                     val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
                     intent.putExtra("posting_index",firstPostData.posting_index.toString())
                     startActivity(intent)
                 }
@@ -91,6 +96,10 @@ class AskDefaultFragment : Fragment() {
                     var position = 2
 
                     val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
                     intent.putExtra("posting_index",firstPostData.posting_index.toString())
                     startActivity(intent)
 
@@ -125,6 +134,10 @@ class AskDefaultFragment : Fragment() {
                     var position = 1
 
                     val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
                     intent.putExtra("posting_index",firstPostData.posting_index.toString())
                     startActivity(intent)
                 }
@@ -135,6 +148,10 @@ class AskDefaultFragment : Fragment() {
                     var position = 2
 
                     val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
                     intent.putExtra("posting_index",firstPostData.posting_index.toString())
                     startActivity(intent)
                 }
@@ -167,6 +184,10 @@ class AskDefaultFragment : Fragment() {
                     var position = 1
 
                     val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
                     intent.putExtra("posting_index",firstPostData.posting_index.toString())
                     startActivity(intent)
                 }
@@ -176,6 +197,10 @@ class AskDefaultFragment : Fragment() {
                     var position = 2
 
                     val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
                     intent.putExtra("posting_index",firstPostData.posting_index.toString())
                     startActivity(intent)
                 }
