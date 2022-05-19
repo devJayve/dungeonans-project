@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.webkit.JavascriptInterface
+import android.webkit.WebChromeClient
 import android.webkit.WebView
+import android.webkit.WebView.WebViewTransport
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dungeonans.R
+
 
 class AskApplyActivity :AppCompatActivity() {
 
@@ -101,7 +104,6 @@ class AskApplyActivity :AppCompatActivity() {
                 Toast.makeText(mContext, "Asdfasdf", Toast.LENGTH_SHORT).show()
             }
 
-
         }
 
         applyWebView.addJavascriptInterface(WebBrideg(this), "Android2")
@@ -116,6 +118,7 @@ class AskApplyActivity :AppCompatActivity() {
 //                updateBox
             }
         })
+
 
         askPostWebView.loadUrl(askWebViewUrl)
         applyWebView.loadUrl(applyWebViewUrl)
