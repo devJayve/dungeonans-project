@@ -171,6 +171,14 @@ data class LoginData(
     val id: String,
     val pw : String
 )
+/** 계정생성 Request **/
+data class RegisterData(
+    val id : String,
+    val pw : String,
+    val name : String,
+    val nickname : String,
+    val email : String
+)
 
 data class LoginResponse(
     val errmsg: String,

@@ -206,6 +206,11 @@ object RetrofitClient {
         fun getLogout(
             @Header("auth") token: String
         ) :Call<LoginResponse>
+
+        @POST("/account")
+        fun postAccount(
+            @Body registerData : RegisterData
+        ) :Call<NoneData>
     }
 
     /** Search Api (worked by KJY) **/
