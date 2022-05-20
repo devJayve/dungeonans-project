@@ -11,65 +11,132 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/title_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                <ImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/direction_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView15" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="글 쓰기"></TextView>
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="답변하기"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                <ImageButton
+                    android:id="@+id/temp_store_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_temp_store"
+                    android:textColor="@color/white"
+                    app:layout_constraintWidth_percent="0.16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:background="@color/black"
-                android:text="저장하기"
-                android:textColor="@color/white"></androidx.appcompat.widget.AppCompatButton>
 
         </LinearLayout>
 
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mywidth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="#F2F2F2"
-            android:scrollbars="none"
+            android:layout_height="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/title_answer">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/writerProfileImageView"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/profile_base_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/writerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="조수민"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/writerProfileImageView"
+                app:layout_constraintTop_toTopOf="@+id/writerProfileImageView" />
 
+            <TextView
+                android:id="@+id/writerNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="(@grow_up_hair)"
+                android:textColor="@color/black"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/writerName"
+                app:layout_constraintStart_toEndOf="@+id/writerName" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/writeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03/31 12:36"
+                android:textSize="7sp"
+                app:layout_constraintStart_toStartOf="@+id/writerName"
+                app:layout_constraintTop_toBottomOf="@+id/writerName" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </HorizontalScrollView>
+<!--        <HorizontalScrollView-->
+<!--            android:id="@+id/horizontalScrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:background="#F2F2F2"-->
+<!--            android:scrollbars="none"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintHorizontal_weight="1"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/linearLayout">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal">-->
+
+<!--            </LinearLayout>-->
+
+<!--        </HorizontalScrollView>-->
 
 
         <ScrollView
@@ -81,41 +148,65 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+            app:layout_constraintTop_toBottomOf="@+id/mywidth"
             app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
-                android:id="@+id/body_box"
+                android:id="@+id/body_box2"
                 android:background="@drawable/body_box"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp"
-                android:layout_margin="10dp">
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="50dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/unanswered_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/title_to_answer"
+                    app:layout_constraintEnd_toStartOf="@+id/title_to_answer"
+                    app:layout_constraintTop_toTopOf="@+id/title_to_answer" />
 
                 <TextView
+                    android:id="@+id/title_to_answer"
                     android:layout_width="wrap_content"
-                    android:id="@+id/test"
                     android:layout_height="wrap_content"
-                    android:text="작성자"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="10dp"
+                    android:text="변수 호이스팅 관련 질문"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textSize="16sp">
-                </TextView>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <WebView
                     android:id="@+id/ask_webview"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="30dp"
-                    android:layout_height="200dp">
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content">
                 </WebView>
 
-                <WebView
+                <com.mypackage.common.custom.android.widgets.CustomWebview
                     android:id="@+id/body_webview"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:layout_height="wrap_content"
                     >
-                </WebView>
+                </com.mypackage.common.custom.android.widgets.CustomWebview>
 
 
 

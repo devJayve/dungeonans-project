@@ -14,6 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/parlinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -93,6 +94,7 @@
                     app:layout_constraintStart_toEndOf="@+id/writerName" />
 
                 <TextView
+                    android:id="@+id/writeDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="03/31 12:36"
@@ -149,9 +151,12 @@
                     android:layout_height="match_parent"
                     android:id="@+id/askPostWebView"
                     android:padding="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
                     android:textSize="10sp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -159,6 +164,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
+
                 android:background="@color/lightGrey" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/postCommentRecyclerView"

@@ -65,7 +65,6 @@ class AskShowAllPostFragment : Fragment() {
                     Log.d("vassfsadf",response.body()!!.posting_list.toString())
                     // 조수민 수정 : 게시물이 6개 미만이면 오류가 뜨기 때문에 try 써야됨
 
-
                     try {
                         setData = setData(parameter,dataCount, postingList)
                     }
@@ -76,13 +75,15 @@ class AskShowAllPostFragment : Fragment() {
                         var adapter = AskRVAdapter()
                         adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
                             override fun onClick(v: View, position: Int) {
-                                Log.d("tag", postingList[position].toString())
                                 var (board_index, posting_index, name, id, nickname,
-                                    title, content, data, like_num, comment_num,
+                                    title, content, date, like_num, comment_num,
                                     board_tag, row_number) = postingList[position]
-                                Log.d("이거다!!!!!!!", posting_index.toString())
                                 val intent = Intent(context, PostActivity::class.java)
                                 intent.putExtra("posting_index",posting_index.toString())
+                                intent.putExtra("name",name)
+                                intent.putExtra("nickname",nickname)
+                                intent.putExtra("title",title)
+                                intent.putExtra("date",date)
                                 startActivity(intent)
                             }
                         })
@@ -120,7 +121,16 @@ class AskShowAllPostFragment : Fragment() {
                         var adapter = AskRVAdapter()
                         adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
                             override fun onClick(v: View, position: Int) {
-                                Log.d("tag", "$parameter $position")
+                                var (board_index, posting_index, name, id, nickname,
+                                    title, content, date, like_num, comment_num,
+                                    board_tag, row_number) = postingList[position]
+                                val intent = Intent(context, PostActivity::class.java)
+                                intent.putExtra("posting_index",posting_index.toString())
+                                intent.putExtra("name",name)
+                                intent.putExtra("nickname",nickname)
+                                intent.putExtra("title",title)
+                                intent.putExtra("date",date)
+                                startActivity(intent)
                             }
                         })
                         adapter.listData = setData
@@ -152,7 +162,16 @@ class AskShowAllPostFragment : Fragment() {
                         var adapter = AskRVAdapter()
                         adapter.setItemClickListener(object : AskRVAdapter.OnItemClickListener{
                             override fun onClick(v: View, position: Int) {
-                                Log.d("tag", "$parameter $position")
+                                var (board_index, posting_index, name, id, nickname,
+                                    title, content, date, like_num, comment_num,
+                                    board_tag, row_number) = postingList[position]
+                                val intent = Intent(context, PostActivity::class.java)
+                                intent.putExtra("posting_index",posting_index.toString())
+                                intent.putExtra("name",name)
+                                intent.putExtra("nickname",nickname)
+                                intent.putExtra("title",title)
+                                intent.putExtra("date",date)
+                                startActivity(intent)
                             }
                         })
                         adapter.listData = setData
@@ -202,7 +221,7 @@ class AskShowAllPostFragment : Fragment() {
             var askUserName = postingData[index].name
             var userNickName = postingData[index].nickname
             var postTitle = postingData[index].title
-            var postBody = postingData[index].content
+            var postBody = postingData[index].content.replace("<p></p>", " ")
             var askStatusImage = index
             if (parameter == "1") {
                 askStatusImage = R.drawable.unanswered_icon

@@ -2,11 +2,14 @@ package com.example.dungeonans.Activity
 
 import android.content.Context
 import android.content.Intent
+import android.icu.text.CaseMap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.webkit.JavascriptInterface
@@ -22,15 +25,14 @@ import com.example.dungeonans.DataClass.*
 import com.example.dungeonans.R
 import com.example.dungeonans.Retrofit.RetrofitClient
 import com.example.dungeonans.Utils.PrefManager
-import kotlinx.android.synthetic.main.myprofilepage_fragment.*
 import retrofit2.Call
 import retrofit2.Response
-
 
 
 class PostActivity : AppCompatActivity() {
     var commentData : MutableList<PostCommentData> = mutableListOf()
     var answerData : MutableList<AnswerData> = mutableListOf()
+    var width: Float = 0.0f
 
     private var doubleBackToExitPressedOnce = false
 
@@ -43,19 +45,38 @@ class PostActivity : AppCompatActivity() {
     lateinit var recyclerView : RecyclerView
     lateinit var commentEditText: EditText
     lateinit var askPostWebView : WebView
+    lateinit var answerActivity : Intent
     var askWebViewUrl = "file:///android_asset/ask_post.html"
+    lateinit var name : String
+    lateinit var nickname : String
+    lateinit var title: String
+    lateinit var date: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ask_post_fragment)
         val posting_list: String? = intent.getStringExtra("posting_index")
+        var writerName = findViewById<TextView>(R.id.writerName)
+        var writerNickName = findViewById<TextView>(R.id.writerNickName)
+        var writerDate = findViewById<TextView>(R.id.writeDate)
+        var writeTitle = findViewById<TextView>(R.id.textView17)
 
+        name = intent.getStringExtra("name").toString()
+        nickname = intent.getStringExtra("nickname").toString()
+        title = intent.getStringExtra("title").toString()
+        date = intent.getStringExtra("date").toString()
+
+        writerName.text = name
+        writerNickName.text = nickname
+        writeTitle.text = title
+        writerDate.text = date
 
         askPostWebView = findViewById(R.id.askPostWebView)
         askPostWebView.settings.javaScriptEnabled = true
         askPostWebView.settings.domStorageEnabled = true
         askPostWebView.settings.allowContentAccess = true
         askPostWebView.settings.allowFileAccess = true
+        var linear = findViewById<WebView>(R.id.askPostWebView)
 
         commentEditText = findViewById(R.id.commentEditText)
         renderWebView(posting_list!!.toInt())
@@ -66,8 +87,6 @@ class PostActivity : AppCompatActivity() {
         class WebBrideg(private val mContext: Context) {
             @JavascriptInterface
             fun getmywidth(): Float {
-                var width: Float = 0.0f
-                var linear = findViewById<LinearLayout>(R.id.mywidth)
                 width = linear.width.toFloat()
                 return width
             }
@@ -92,6 +111,7 @@ class PostActivity : AppCompatActivity() {
         }
         askPostWebView.addJavascriptInterface(WebBrideg(this), "Android2")
         askPostWebView.setWebViewClient(WebViewClient())
+
 
         var backBtn : ImageView = findViewById(R.id.backBtn)
         backBtn.setOnClickListener{
@@ -124,7 +144,6 @@ class PostActivity : AppCompatActivity() {
 
         var answerBtn : Button = findViewById(R.id.answerBtn)
         answerBtn.setOnClickListener{
-            val answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
             startActivity(answerActivity)
             commentEditText.hint = "답변을 입력하세요"
             commentEditText.requestFocus()
@@ -143,6 +162,7 @@ class PostActivity : AppCompatActivity() {
         renderAnswerUi()
     }
 
+
     private fun renderWebView(posting_index : Int){
         var retrofit = RetrofitClient.initClient()
         var sendData = retrofit.create(RetrofitClient.GetSpecificPostApi::class.java)
@@ -159,25 +179,29 @@ class PostActivity : AppCompatActivity() {
                 Log.d("이거입니당", response.body()!!.posting.toString())
 
                 var (board_index, posting_index, name, id, nickname,
-                    title, content, data, like_num, comment_num,
+                    title, content, date, like_num, comment_num,
                     board_tag, row_number) = response.body()!!.posting[0]
 
+                answerActivity = Intent(this@PostActivity, AskApplyActivity::class.java)
+                answerActivity.putExtra("posting",content)
+                answerActivity.putExtra("name",name)
+                answerActivity.putExtra("nickname",nickname)
+                answerActivity.putExtra("title",title)
+                answerActivity.putExtra("date",date)
+
                 askPostWebView.setWebViewClient(object : WebViewClient() {
+
                     override fun onPageFinished(view: WebView, weburl: String) {
-                        Log.d("실험", content)
-                        askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content.toString() +'"'+")")
-                        askPostWebView.loadUrl("javascript:myupdate()")
+                        askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content+'"'+")")
+                        askPostWebView.loadUrl("javascript:myupdate2()")
                     }
                 })
 
                 askPostWebView.loadUrl(askWebViewUrl)
 
-
             }
-
         })
     }
-
 
     private fun renderAnswerUi() {
         recyclerView = findViewById(R.id.postAnswerRecyclerView)
@@ -198,7 +222,6 @@ class PostActivity : AppCompatActivity() {
         adapter.listData = data
         recyclerView.adapter = adapter
         LinearLayoutManager(this).also { recyclerView.layoutManager = it }
-
     }
 
     private fun setAnswerData() : MutableList<AnswerData> {
@@ -352,3 +375,4 @@ class PostActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 }
+

@@ -14,11 +14,6 @@ import com.example.dungeonans.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationBarView
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.dungeonans.BuildConfig
-import com.example.dungeonans.DataClass.ClickedPostData
-import com.example.dungeonans.Retrofit.RetrofitClient
-import retrofit2.Call
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
     lateinit var binding: ActivityMainBinding

@@ -6,20 +6,46 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dungeonans.R
 
+
 class AskApplyActivity :AppCompatActivity() {
+
+    lateinit var content : String
+    lateinit var name : String
+    lateinit var nickname : String
+    lateinit var title : String
+    lateinit var date : String
+    var mywidth: Float = 0.0f
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.ask_apply_fragment)
+        content = intent.getStringExtra("posting").toString()
+        name = intent.getStringExtra("name").toString()
+        nickname = intent.getStringExtra("nickname").toString()
+        title = intent.getStringExtra("title").toString()
+        date = intent.getStringExtra("date").toString()
 
         var askPostWebView = findViewById<WebView>(R.id.ask_webview)
         var applyWebView = findViewById<WebView>(R.id.body_webview)
+        var writerName = findViewById<TextView>(R.id.writerName)
+        var writerNickName = findViewById<TextView>(R.id.writerNickName)
+        var writerDate = findViewById<TextView>(R.id.writeDate)
+        var writeTitle = findViewById<TextView>(R.id.title_to_answer)
+        var linear = findViewById<WebView>(R.id.body_webview)
+
+        writerName.text = name
+        writerNickName.text = nickname
+        writeTitle.text = title
+        writerDate.text = date
 
         var askWebViewUrl = "file:///android_asset/ask_post.html"
         var applyWebViewUrl = "file:///android_asset/auto_highlight.html"
@@ -36,11 +62,10 @@ class AskApplyActivity :AppCompatActivity() {
 
         class WebBrideg(private val mContext: Context) {
             @JavascriptInterface
-            fun getwidth(): Float {
-                var width: Float = 0.0f
-                var linear = findViewById<LinearLayout>(R.id.body_box)
-                width = linear.width.toFloat()
-                return width
+
+            fun getmywidth(): Float {
+                mywidth = linear.width.toFloat()
+                return mywidth
             }
 
             @JavascriptInterface
@@ -78,11 +103,20 @@ class AskApplyActivity :AppCompatActivity() {
                 Toast.makeText(mContext, "Asdfasdf", Toast.LENGTH_SHORT).show()
             }
 
-
         }
 
-        applyWebView.addJavascriptInterface(WebBrideg(this), "Android")
-        askPostWebView.addJavascriptInterface(WebBrideg(this), "Android")
+        applyWebView.addJavascriptInterface(WebBrideg(this), "Android2")
+        askPostWebView.addJavascriptInterface(WebBrideg(this), "Android2")
+
+        askPostWebView.setWebViewClient(object : WebViewClient() {
+            override fun onPageFinished(view: WebView, weburl: String) {
+                askPostWebView.loadUrl("javascript:update_mycode("+ '"' + content +'"'+")")
+                askPostWebView.loadUrl("javascript:myupdate2()")
+                applyWebView.loadUrl("javascript:myupdate2()")
+//                updateBox
+            }
+        })
+
 
         askPostWebView.loadUrl(askWebViewUrl)
         applyWebView.loadUrl(applyWebViewUrl)

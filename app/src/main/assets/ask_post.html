@@ -8,18 +8,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/solarized-light.min.css">
     <script>hljs.highlightAll();</script>
+    <style>
+        #asdf{
+            box-shadow: inset 1px 1px 4px 0px gray;
+        }
+        * {
+          -webkit-tap-highlight-color:rgba(255,255,255,0);
+        }
+    </style>
     <script type="text/javascript">
 
 
-        function myupdate(){
+        function myupdate2() {
             var mywidth = Android2.getmywidth();
+            console.log(mywidth)
             var px = Android2.getwidth(mywidth);
-            var mypx = px - 29;
-            var mypx_codeblcok = px - 20;
-            Android2.showToast("Asdfsef");
-            var code_block = document.getElementById("count1")
-            code_block.style.width = mypx_codeblcok+"px";
-          }
+            console.log(px);
+            var mypx = px - 20;
+            console.log(mypx)
+            var code_block = document.getElementById("count1");
+            code_block.style.width = mypx+"px";
+        }
 
         function mygetPost(content){
             var real = content.replace(new RegExp("\"","g"),"‘");
@@ -47,9 +56,7 @@
             var imagecount = 0;
 
             var result_elem = document.getElementById("count1");
-            Android2.showToast2(content)
 
-            Android2.showToast2(mycontent)
             var lines = content.split("\n");
             var resultString = "";
 
@@ -75,7 +82,6 @@
                 if (boldcount == 2){
                     var boldtext = resultString.slice(boldfirst,boldfinal + 1);
                     var boldinnertext = resultString.slice(boldfirst+1,boldfinal);
-                    console.log(boldtext)
                     resultString = resultString.replace(new RegExp(boldtext, "g"),"<span style=" + "font-weight:bold;"+">"+boldinnertext+"</span>");
                     boldcount = 0;
                 }
@@ -95,7 +101,6 @@
                 if (italiccount == 2){
                     var italictext = resultString.slice(italicfirst,italicfinal + 1);
                     var italicinnertext = resultString.slice(italicfirst+1,italicfinal);
-                    console.log(italicfirst,italicfinal)
                     resultString = resultString.replace(new RegExp(italictext, "g"),"<span style=" + "font-style:italic;"+">"+italicinnertext+"</span>");
                     italiccount = 0;
                 }
@@ -138,22 +143,15 @@
 
                     var mytext = resultString.slice(first+1,final);
                     var mytext2 = mytext
-                    console.log(mytext)
                     var mytext3 = mytext.replace(new RegExp("<p></p>", "g"), "<br>");
-                    Android2.showToast2(mytext3);
                     var mytext4 = mytext3.replace(/\\/g,"")
-                    Android2.showToast2(mytext4);
-                    console.log(mytext3)
                     let html = hljs.highlightAuto(mytext4).value;
-
 
                     for (i = 0 ; i <html.length ; i ++){
                         try{
                             if (html[i] == " "){
                                 if (html[i-1] && html[i+1] == " "){
-                                    console.log(i)
                                     html = html.slice(0,i) + "&nbsp;" + html.slice(i+1)
-                                    console.log(html)
                                 }
                             }
                         }
@@ -162,30 +160,25 @@
                         }
                     }
 
-                    console.log(html)
                     var html3 = html.replace(new RegExp('&lt;br&gt;', "g"),'<br>')
                     var html4 = html3.replace(new RegExp('<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>', "g"),'<br>')
-
-
-                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + "style = width:fit-content;" +"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
+                    resultString = resultString.replace(resultString.slice(first,final+1),"<pre id = 'asdf' " + "style = width:100%-10px;"+"padding:10px;"+"white-space:pre-line;" +"background-color:#D3D3D3;"+ "><code style = border-radius:3px;"+"word-break:break-all;"+">"  + html4 + "</code></pre>")
                     textcound = 0;
                 }
 
             }
 
-
-
-
             result_elem.innerHTML = resultString;
 
         }
+
 
     </script>
 </head>
 <body>
 
 <body style="margin: 0;" >
-<pre class = "hljs" style="border : 2px solid black; position: absolute;  left: 1px;  margin: 0; word-break: break-all; white-space: pre-wrap; height:390px; width:388px; background-color: white; color: black" id = "count1">
+<pre class = "hljs" style="overflow-y: scroll; border : 1px solid gray; border-radius:3px; position: absolute;  left: 1px;  margin: 0; word-break: break-all; white-space: pre-wrap; height:fit-content; background-color: white; color: black" id = "count1">
 d=안녕 나는 조수민이야!!
 </pre>
 

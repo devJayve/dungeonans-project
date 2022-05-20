@@ -14,6 +14,8 @@ import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dungeonans.Activity.AskApplyActivity
+import com.example.dungeonans.Activity.PostActivity
 import com.example.dungeonans.Activity.UserProfileActivity
 import com.example.dungeonans.Adapter.AskRVAdapter
 import com.example.dungeonans.DataClass.AskData
@@ -74,26 +76,45 @@ class AskDefaultFragment : Fragment() {
             }
             override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                 var allPost_1 : ConstraintLayout = view.findViewById(R.id.allPost_1)
+                var firstPostData = response.body()!!.posting_list[0]
                 allPost_1.setOnClickListener{
                     var parameter = "0"
                     var position = 1
+
+                    val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
+                    intent.putExtra("posting_index",firstPostData.posting_index.toString())
+                    startActivity(intent)
                 }
+
                 var allPost_2 : ConstraintLayout = view.findViewById(R.id.allPost_2)
                 allPost_2.setOnClickListener{
                     var parameter = "0"
                     var position = 2
+
+                    val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
+                    intent.putExtra("posting_index",firstPostData.posting_index.toString())
+                    startActivity(intent)
+
                 }
 
-                var firstPostData = response.body()!!.posting_list[0]
+
                 view.findViewById<TextView>(R.id.allPost_1_title).text = firstPostData.title
-                view.findViewById<TextView>(R.id.allPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.allPost_1_content).text = firstPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.allPost_1_likecount).text = firstPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.allPost_1_commentcount).text = firstPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.button2).setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 view.findViewById<TextView>(R.id.allPost_2_title).text = secondPostData.title
-                view.findViewById<TextView>(R.id.allPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.allPost_2_content).text = secondPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.allPost_2_likecount).text = secondPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.allPost_2_commentcount).text = secondPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.button2adadf).setBackgroundResource(R.drawable.unanswered_icon)
@@ -107,27 +128,43 @@ class AskDefaultFragment : Fragment() {
             }
             override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                 var unAnsweredPost_1 : ConstraintLayout = view.findViewById(R.id.unAnsweredPost_1)
+                var firstPostData = response.body()!!.posting_list[0]
                 unAnsweredPost_1.setOnClickListener{
                     var parameter = "0"
                     var position = 1
+
+                    val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
+                    intent.putExtra("posting_index",firstPostData.posting_index.toString())
+                    startActivity(intent)
                 }
 
                 var unAnsweredPost_2 : ConstraintLayout = view.findViewById(R.id.unAnsweredPost_2)
                 unAnsweredPost_2.setOnClickListener{
                     var parameter = "0"
                     var position = 2
+
+                    val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
+                    intent.putExtra("posting_index",firstPostData.posting_index.toString())
+                    startActivity(intent)
                 }
 
-                var firstPostData = response.body()!!.posting_list[0]
                 view.findViewById<TextView>(R.id.unAnsweredPost_1_title).text = firstPostData.title
-                view.findViewById<TextView>(R.id.unAnsweredPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.unAnsweredPost_1_content).text = firstPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.unAnsweredPost_1_likecount).text = firstPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.unAnsweredPost_1_commentcount).text = firstPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.ADFAFSDAFSDF).setBackgroundResource(R.drawable.unanswered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 view.findViewById<TextView>(R.id.unAnsweredPost_2_title).text = secondPostData.title
-                view.findViewById<TextView>(R.id.unAnsweredPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.unAnsweredPost_2_content).text = secondPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.unAnsweredPost_2_likecount).text = secondPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.unAnsweredPost_2_commentcount).text = secondPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.adadadafd).setBackgroundResource(R.drawable.unanswered_icon)
@@ -141,25 +178,42 @@ class AskDefaultFragment : Fragment() {
             }
             override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                 var answeredPost_1 : ConstraintLayout = view.findViewById(R.id.answeredPost_1)
+                var firstPostData = response.body()!!.posting_list[0]
                 answeredPost_1.setOnClickListener{
                     var parameter = "0"
                     var position = 1
+
+                    val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
+                    intent.putExtra("posting_index",firstPostData.posting_index.toString())
+                    startActivity(intent)
                 }
                 var answeredPost_2 : ConstraintLayout = view.findViewById(R.id.answeredPost_2)
                 answeredPost_2.setOnClickListener{
                     var parameter = "0"
                     var position = 2
+
+                    val intent = Intent(context, PostActivity::class.java)
+                    intent.putExtra("name",firstPostData.name)
+                    intent.putExtra("nickname",firstPostData.nickname)
+                    intent.putExtra("title",firstPostData.title)
+                    intent.putExtra("date",firstPostData.date)
+                    intent.putExtra("posting_index",firstPostData.posting_index.toString())
+                    startActivity(intent)
                 }
-                var firstPostData = response.body()!!.posting_list[0]
+
                 view.findViewById<TextView>(R.id.answeredPost_1_title).text = firstPostData.title
-                view.findViewById<TextView>(R.id.answeredPost_1_content).text = firstPostData.content
+                view.findViewById<TextView>(R.id.answeredPost_1_content).text = firstPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.answeredPost_1_likecount).text = firstPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.answeredPost_1_commentcount).text = firstPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.adad).setBackgroundResource(R.drawable.answered_icon)
 
                 var secondPostData = response.body()!!.posting_list[1]
                 view.findViewById<TextView>(R.id.answeredPost_2_title).text = secondPostData.title
-                view.findViewById<TextView>(R.id.answeredPost_2_content).text = secondPostData.content
+                view.findViewById<TextView>(R.id.answeredPost_2_content).text = secondPostData.content.replace("<p></p>", " ")
                 view.findViewById<TextView>(R.id.answeredPost_2_likecount).text = secondPostData.like_num.toString()
                 view.findViewById<TextView>(R.id.answeredPost_2_commentcount).text = secondPostData.comment_num.toString()
                 view.findViewById<ImageView>(R.id.ADAFSDFDFAF).setBackgroundResource(R.drawable.answered_icon)

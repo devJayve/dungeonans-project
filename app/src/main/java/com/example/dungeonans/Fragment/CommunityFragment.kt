@@ -25,34 +25,37 @@ import com.example.dungeonans.Space.LinearSpacingItemDecoration
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
 
 class CommunityFragment : Fragment() {
     //조수민 수정 : boarding_index 가 1인 posting_format_res 를 담는 리스트
     var communityPostingList = ArrayList<posting_format_res>()
     //조수민 수정 : boarding_index 가 1인 ... api 가 달라서 따로 배열을 만들어야 할듯
     var communityHotPostList = ArrayList<posting_format_res>()
+    // 한번 스크롤 내릴때마다 + 6 씩
+    var my_start_index = 0
     //
     var selectedBtn : Int? = null
+
+    var postData : MutableList<CommunityData>  = mutableListOf()
+    lateinit var sendData : MutableList<CommunityData>
+
+    var start_index = 0
+
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.communitypage_fragment2,container,false)
-
         setHashTag(view)
-        renderPost(view,0)
+        renderPost(view,my_start_index)
         renderHotPost(view)
-        connectScrollListener(view)
 
         var swipe = view.findViewById<SwipeRefreshLayout>(R.id.swapeView)
+        var communityPageRecyclerView = view.findViewById<RecyclerView>(R.id.communityPageRecyclerView)
         swipe.setOnRefreshListener {
-
-            renderPost(view,0)
+            renderPost(view,start_index)
             renderHotPost(view)
-
             swipe.isRefreshing = false
         }
-
         return view
-
-
     }
 
     private fun setHashTag(view:View) {
@@ -70,7 +73,7 @@ class CommunityFragment : Fragment() {
                 TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,10f,resources.displayMetrics).toInt(),0,0,0)
             radioButton.layoutParams = buttonParams
             radioGroup.addView(radioButton)
-            }
+        }
 
         // 라디오 버튼 텍스트 설정, 선택 해제 로직
         for (index in 0 until radioButtonText.count()) {
@@ -101,8 +104,7 @@ class CommunityFragment : Fragment() {
 
     private fun renderPost(view: View, start_index : Int) {
         var mainLayout: LinearLayout = view.findViewById(R.id.mainLayout)
-        var communityPageRecyclerView: RecyclerView =
-            view.findViewById(R.id.communityPageRecyclerView)
+        var communityPageRecyclerView: RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
         communityPageRecyclerView.visibility = View.GONE
 
         var retrofit = RetrofitClient.initClient()
@@ -113,14 +115,8 @@ class CommunityFragment : Fragment() {
                 Toast.makeText(context, "서버 연결이 불안정합니다", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(
-                call: Call<PostData>,
-                response: Response<PostData>
-            ) {
-
-                var postingList = response.body()!!.success
-                Log.d("Asdfasdf",postingList.toString())
-                var recyclerView: RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
+            override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
+                Log.d("startIndex",response.body()!!.posting_list.toString())
 
                 //조수민 수정 : 전체 posting_format_res 를 받고, for 문 돌려서 index 가 1인것 찾고, 저 위 선언해놓았던 배열에 넣어주기
                 for (i in 0..response.body()!!.posting_list.size - 1) {
@@ -132,8 +128,8 @@ class CommunityFragment : Fragment() {
                 }
                 //
 
-                //조수민 수정 : setData 에 위에 배열 삽입
-                var sendData: MutableList<CommunityData> = setData(6, communityPostingList)
+                //조수민 수정 : setPostData 에 위에 배열 삽입
+                sendData = setPostData(6, communityPostingList)
                 //
                 var adapter = CommunityRVAdapter()
                 adapter.setItemClickListener(object : CommunityRVAdapter.OnItemClickListener {
@@ -144,19 +140,21 @@ class CommunityFragment : Fragment() {
                     }
                 })
                 adapter.communityList = sendData
-                recyclerView.adapter = adapter
-                LinearLayoutManager(context).also { recyclerView.layoutManager = it }
+                communityPageRecyclerView.adapter = adapter
+                communityPageRecyclerView.layoutManager = LinearLayoutManager(context)
                 var space = LinearSpacingItemDecoration(10)
-                recyclerView.addItemDecoration(space)
+                communityPageRecyclerView.addItemDecoration(space)
                 mainLayout.visibility = View.VISIBLE
                 communityPageRecyclerView.visibility = View.VISIBLE
+                connectScrollListener(view)
+                my_start_index += 6
+
             }
         })
     }
 
     private fun renderHotPost(view : View) {
         var mainLayout : LinearLayout = view.findViewById(R.id.mainLayout)
-        var communityPageRecyclerView : RecyclerView = view.findViewById(R.id.communityPageRecyclerView)
         var retrofit = RetrofitClient.initClient()
         var getCommunityHotPostApi = retrofit.create(RetrofitClient.CommunityApi::class.java)
         var data = send_post_cnt(2)
@@ -176,8 +174,8 @@ class CommunityFragment : Fragment() {
                     }
                 }
 
-                //조수민 수정 : setData 에 위에 배열 삽입
-                var sendData : MutableList<CommunityData> = setData(2,communityHotPostList)
+                //조수민 수정 : setPostData 에 위에 배열 삽입
+                sendData = setHotPostData(2,communityHotPostList)
                 //
                 var adapter = CommunityRVAdapter()
                 adapter.setItemClickListener(object : CommunityRVAdapter.OnItemClickListener {
@@ -193,14 +191,25 @@ class CommunityFragment : Fragment() {
                 var space = LinearSpacingItemDecoration(10)
                 recyclerView.addItemDecoration(space)
                 mainLayout.visibility = View.VISIBLE
-                communityPageRecyclerView.visibility = View.VISIBLE
-
             }
         })
     }
 
-    private fun setData(postCount : Int, postingData : ArrayList<posting_format_res>) : MutableList<CommunityData> {
-        var data : MutableList<CommunityData>  = mutableListOf()
+    private fun setPostData(postCount : Int, postingData : ArrayList<posting_format_res>) : MutableList<CommunityData> {
+        for (index in 0 until postCount) {
+            var postTitle = postingData[index].title
+            var postBody = postingData[index].content
+            var hashtag = postingData[index].board_tag.toString()
+            var likeCount = postingData[index].like_num.toString()
+            var commentCount = postingData[index].comment_num.toString()
+            var listData = CommunityData(postTitle,postBody,hashtag,likeCount,commentCount)
+            postData.add(listData)
+        }
+        return postData
+    }
+
+    private fun setHotPostData(postCount : Int, postingData : ArrayList<posting_format_res>) : MutableList<CommunityData> {
+        var data : MutableList<CommunityData> = mutableListOf()
         for (index in 0 until postCount) {
             var postTitle = postingData[index].title
             var postBody = postingData[index].content
@@ -213,13 +222,30 @@ class CommunityFragment : Fragment() {
         return data
     }
 
+
     private fun connectScrollListener(view:View) {
-        var recyclerView = view.findViewById<NestedScrollView>(R.id.communityPageScrollView)
-        recyclerView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener {
-            val scrollY: Int = recyclerView.scrollY
-            if (recyclerView.getChildAt(0).bottom <=(recyclerView.height +scrollY)) {
+        var scrollView = view.findViewById<NestedScrollView>(R.id.communityPageScrollView)
+        scrollView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener {
+            val scrollY: Int = scrollView.scrollY
+            if (scrollView.getChildAt(0).bottom <=(scrollView.height +scrollY)) {
+                var retrofit = RetrofitClient.initClient()
+                var getCommunityPostApi = retrofit.create(RetrofitClient.CommunityApi::class.java)
+                getCommunityPostApi.getCommunityPost(board_req_format(start_index,6)).enqueue(object : Callback<PostData> {
+                    override fun onFailure(call: Call<PostData>, t: Throwable) {
+                    }
+                    override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
+                        val communityPageRecyclerView = view.findViewById<RecyclerView>(R.id.communityPageRecyclerView)
+                        val newPosition = communityPageRecyclerView.adapter!!.itemCount
+                        try {
+                            sendData = setPostData(6,response.body()!!.posting_list)
+                        } catch (e : IndexOutOfBoundsException) {
+                            sendData = setPostData(response.body()!!.posting_list.count(),response.body()!!.posting_list)
+                        } finally {
+                            communityPageRecyclerView.adapter!!.notifyItemInserted(newPosition)
+                        }
+                    }
+                })
             }
         })
     }
 }
-
